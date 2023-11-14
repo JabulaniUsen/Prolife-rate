@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,500;0,600;0,700;0,800;1,100;1,200&family=Playfair+Display:ital@1&family=Poppins:wght@200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+.college {
+    background-image: url('../src/Assets/Image.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.college2 {
+    background-image: url('../src/Assets/college2.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.about-hero {
+    background-image: url('./Assets/about-us.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.contact-hero {
+    background-image: url('./Assets/contact.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.tutor-hero {
+    background-image: url('./Assets/Tutor-hero.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
