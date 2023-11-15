@@ -1,28 +1,38 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import kristin from '../../../Assets/kristin.png';
 import brooklyn from '../../../Assets/brooklyn.png'
+import img1 from '../../../Assets/img1.png'
+import img2 from '../../../Assets/img2.png'
+import img3 from '../../../Assets/img3.png'
+import img4 from '../../../Assets/img4.png'
+import img5 from '../../../Assets/img5.png'
+import img6 from '../../../Assets/img6.png'
+import img7 from '../../../Assets/img7.png'
+import img8 from '../../../Assets/img8.png'
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 const allMentors = [
     { id: 1, name: 'Kristin Watson', course: 'Mathematics, Science', image: kristin },
-    { id: 2, name: 'Product ', course: 'Nulla facilisi..' , image: kristin },
-    { id: 3, name: 'Product ', course: 'Fusce semper porta.', image: kristin  },
-    { id: 4, name: 'Product ', course: 'Vestibulum lacinia .',image: kristin },
-    { id: 5, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 6, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 7, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 8, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 9, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 10, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 11, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 12, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 13, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 14, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 15, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 16, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 17, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 18, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 19, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 20, name: 'Product ', course: 'Class aptent.' , image: kristin },
+    { id: 2, name: 'Product ', course: 'Nulla facilisi..' , image: brooklyn },
+    { id: 3, name: 'Product ', course: 'Fusce semper porta.', image: img1  },
+    { id: 4, name: 'Product ', course: 'Vestibulum lacinia .',image: img2 },
+    { id: 5, name: 'Product ', course: 'Class aptent.' , image: img3 },
+    { id: 6, name: 'Product ', course: 'Class aptent.' , image: img4 },
+    { id: 7, name: 'Product ', course: 'Class aptent.' , image: img5 },
+    { id: 8, name: 'Product ', course: 'Class aptent.' , image: img6 },
+    { id: 9, name: 'Product ', course: 'Class aptent.' , image: img7 },
+    { id: 10, name: 'Product ', course: 'Class aptent.' , image: img8 },
+    { id: 11, name: 'Product ', course: 'Class aptent.' , image: brooklyn },
+    { id: 12, name: 'Product ', course: 'Class aptent.' , image: img1 },
+    { id: 13, name: 'Product ', course: 'Class aptent.' , image: img4 },
+    { id: 14, name: 'Product ', course: 'Class aptent.' , image: img3 },
+    { id: 15, name: 'Product ', course: 'Class aptent.' , image: img2 },
+    { id: 16, name: 'Product ', course: 'Class aptent.' , image: img8 },
+    { id: 17, name: 'Product ', course: 'Class aptent.' , image: img7 },
+    { id: 18, name: 'Product ', course: 'Class aptent.' , image: img6 },
+    { id: 19, name: 'Product ', course: 'Class aptent.' , image: img5 },
+    { id: 20, name: 'Product ', course: 'Class aptent.' , image: brooklyn },
     { id: 21, name: 'Product ', course: 'Class aptent.' , image: kristin },
     { id: 22, name: 'Product ', course: 'Class aptent.' , image: kristin },
     { id: 23, name: 'Product ', course: 'Class aptent.' , image: kristin },
@@ -86,7 +96,7 @@ const Tutors = () => {
     const [displayedMentors, setDisplayedMentors] = useState(allMentors);
     const [currentPage, setCurrentPage] = useState(1);
     const [activeTab, setActiveTab] = useState('all'); // Default to 'all'
-    const tutorsPerPage = 30;
+    const tutorsPerPage = 12;
 
     ///////////////
     const totalPages = Math.ceil(allMentors.length / tutorsPerPage);
@@ -94,7 +104,7 @@ const Tutors = () => {
     const startIndex = (currentPage - 1) * tutorsPerPage;
     const endIndex = currentPage * tutorsPerPage;
   
-    const currentTutors = allMentors.slice(startIndex, endIndex);
+    const currentTutors = displayedMentors.slice(startIndex, endIndex);
 
     const handleNextPage = () => {
       setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
@@ -141,7 +151,7 @@ const Tutors = () => {
 
 
   return (
-    <div className='poppins my-40 flex flex-col px-10 lg:px-28'>
+    <div className='poppins my-10 flex flex-col px-10 lg:px-28'>
     
     <div className="search px-10 lg:px-28 m-auto">
         <div className='border-2 flex justify-center pl-7 rounded-xl w-[90%]'>
@@ -170,7 +180,7 @@ const Tutors = () => {
         </div>
     </div>
 
-      <div className="tabs flex justify-center items-center gap-20 py-9">
+      <div className="tabs flex justify-left items-center gap-20 py-9">
         <h2 onClick={() => handleTabClick('all')} className={activeTab === 'all' ? 'text-white bg-red-600 p-3 px-5 rounded-lg cursor-pointer' : 'cursor-pointer'}>All Mentor</h2>
         <h2 onClick={() => handleTabClick('kindergarten')} className={activeTab === 'kindergarten' ? 'text-white bg-red-600 p-3 px-5 rounded-lg cursor-pointer' : 'cursor-pointer'}>For Kindergarten</h2>
         <h2 onClick={() => handleTabClick('highSchool')} className={activeTab === 'highSchool' ? 'text-white bg-red-600 p-3 px-5 rounded-lg cursor-pointer' : 'cursor-pointer'}>For High School</h2>
@@ -180,15 +190,15 @@ const Tutors = () => {
 
             {/* All Tutors */}
             {activeTab === 'all' && (
-                <ul className='flex flex-row flex-wrap justify-center gap-10'>
-                {displayedMentors.map((tutor) => (
-                    <li key={tutor.id}>
+              <ul className='flex flex-row flex-wrap justify-between gap-0'>
+                {currentTutors.map((tutor) => (
+                  <li key={tutor.id} className='w-[270px] hover:shadow-md p-5'>
                     <img src={tutor.image} alt="" />
-                    <h3 className='text-[#186BAD] font-bold text-lg'>{tutor.name}</h3>
+                    <h3 className='text-[#186BAD] mt-2 text-lg'>{tutor.name}</h3>
                     <small>{tutor.course}</small>
-                    </li>
+                  </li>
                 ))}
-                </ul>
+              </ul>
             )}
 
       {/* Kindergarten */}
@@ -206,17 +216,17 @@ const Tutors = () => {
 
       {/* You can add similar blocks for other tabs with different content */}
 
-      <div className='mt-4 flex justify-center items-center'>
-        <button onClick={handlePrevPage} disabled={currentPage === 1} className={`mr-2 ${currentPage === 1 ? 'hidden' : ''}`}>
-          Prev
+      <div className='mt-4 flex justify-center items-center py-10'>
+        <button onClick={handlePrevPage} disabled={currentPage === 1} style={{ opacity: currentPage === 1 ? 0.5 : 1 }} className={`mr-2 border-2 p-2 px-4 rounded-lg bg-[#F2E5FF] active:bg-[#186BAD] text-[#186BAD] active:text-[#fff]`}>
+          <FontAwesomeIcon icon={faAngleLeft} className='' />
         </button>
-        {Array.from({ length: totalPages }).map((_, index) => (
-          <button key={index + 1} onClick={() => handlePageClick(index + 1)}>
-            {index + 1}
-          </button>
-        ))}
-        <button onClick={handleNextPage} disabled={currentPage === totalPages} className={`ml-2 ${currentPage === totalPages ? 'hidden' : ''}`}>
-          Next
+        
+        <p className="mx-2 text-[#186BAD]">
+          Page {currentPage}   of   {totalPages}
+        </p>
+
+        <button onClick={handleNextPage} disabled={currentPage === totalPages} style={{ opacity: currentPage === totalPages ? 0.5 : 1 }} className={`ml-2 border-2 p-2 px-4 rounded-lg bg-[#F2E5FF] active:bg-[#186BAD] text-[#186BAD] active:text-[#fff]`}>
+          <FontAwesomeIcon icon={faAngleRight} className='text-[#186BAD]' />
         </button>
       </div>
     </div>

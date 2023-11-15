@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import logo from '../Assets/logo.png'
 
@@ -13,12 +14,12 @@ function Header() {
 
       <div className="list">
         <ul className='flex gap-6 text-sm font-semibold'>
-          <li>Find Tutor</li>
-          <li>About us</li>
-          <li>Our Programs</li>
-          <li>Pricing</li>
-          <li>Blog</li>
-          <li>Contact</li>
+          <Link to='/tutor'>Find Tutor</Link>
+          <Link to='/about'>About us</Link>
+          <Link>Our Programs</Link>
+          <Link to='/pricingpage'>Pricing</Link>
+          <Link>Blog</Link>
+          <Link to='/contact'>Contact</Link>
         </ul>
       </div>
       
