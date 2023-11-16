@@ -16,7 +16,7 @@ function Header() {
         <ul className='flex gap-6 text-sm font-semibold'>
           <Link to='/tutor'>Find Tutor</Link>
           <Link to='/about'>About us</Link>
-          <Link>Our Programs</Link>
+          <Link to='/program'>Our Programs</Link>
           <Link to='/pricingpage'>Pricing</Link>
           <Link>Blog</Link>
           <Link to='/contact'>Contact</Link>

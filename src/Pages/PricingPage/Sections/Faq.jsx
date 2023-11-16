@@ -5,12 +5,12 @@ import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 const FaqItem = ({ question, answer, isOpen, toggleFaq }) => {
   return (
     <div
-      className={`w-[60%] m-auto faq-item p-4 shadow-lg cursor-pointer border rounded-md overflow-hidden transition-all duration-300 ease-in-out relative ${
-        isOpen ? 'h-auto' : 'h-14'
+      className={`poppins w-[60%] m-auto faq-item p-5 shadow-lg cursor-pointer border rounded-md overflow-hidden transition-all duration-300 ease-in-out relative ${
+        isOpen ? 'h-auto' : 'h-16'
       }`}
     >
       <div onClick={toggleFaq} className="flex justify-between items-center">
-        <div className="font-bold">{question}</div>
+        <div className="font-semibold text-xl">{question}</div>
         <button>
           <FontAwesomeIcon icon={isOpen ? faAngleUp : faAngleDown} />
         </button>
@@ -24,39 +24,33 @@ const Faq = () => {
   const faqData = [
     {
       id: 1,
-      question: 'What is Lorem Ipsum?',
+      question: 'What is the difference between a UI and UX Designer?',
       answer:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
+        'A UI (User Interface) designer focuses on the visual aspects and layout of a digital product, ensuring it is aesthetically pleasing and user-friendly. On the other hand, a UX (User Experience) designer is concerned with the overall user experience, including user research, usability, and interaction design, aiming to create a seamless and satisfying experience for users.',
     },
     {
       id: 2,
-      question: 'Why do we use it?',
+      question: 'How to become a UI designer?',
       answer:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout...',
+        'To become a UI designer, acquire design education, develop skills with tools like Figma, build a diverse portfolio, and stay updated on design principles and trends.',
     },
     {
       id: 3,
-      question: 'Why do we use it?',
+      question: 'What is the best UI design tool?',
       answer:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout...',
+        'Figma is widely regarded as one of the best UI design tools.',
     },
     {
       id: 4,
-      question: 'Why do we use it?',
+      question: 'What is the best place to learn Figma?',
       answer:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout...',
+        "Online platforms like Figma's official website, YouTube tutorials, and courses on platforms like Udemy or Coursera are great places to learn Figma.",
     },
     {
       id: 5,
-      question: 'Why do we use it?',
+      question: 'Should designers code?',
       answer:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout...',
-    },
-    {
-      id: 6,
-      question: 'Why do we use it?',
-      answer:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout...',
+        "While not mandatory, learning basic coding skills can enhance a designer's understanding and collaboration with developers, improving the overall design process.",
     },
   ];
 
@@ -69,7 +63,7 @@ const Faq = () => {
   return (
     <div className="Faq px-10 lg:px-28 flex flex-col gap-5 my-28 ">
       <div className="">
-        <h1></h1>
+        <h1 className='font-bold text-3xl text-center mb-10'>FREQUENTLY ANSWERED <span className='text-[#186BAD]'>QUESTIONS</span></h1>
       </div>
       {faqData.map((faq, index) => (
         <FaqItem

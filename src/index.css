@@ -45,3 +45,8 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+.program-hero {
+    background-image: url('./Assets/program-hero.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}

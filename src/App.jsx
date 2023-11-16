@@ -5,6 +5,7 @@ import About from './Pages/About/About'
 import Contact from './Pages/Contact/Contact'
 import Tutor from './Pages/Tutor/Tutor'
 import PricingPage from './Pages/PricingPage/PricingPage';
+import Program from './Pages/Program/Program';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/contact" element={<Contact/>} />
         <Route path='/tutor' element={<Tutor/>} />
         <Route path='/pricingpage' element={<PricingPage/>} />
+        <Route path='/program' element={<Program/>} />
       </Routes>
     </BrowserRouter>
   )
