@@ -6,6 +6,9 @@ import Contact from './Pages/Contact/Contact'
 import Tutor from './Pages/Tutor/Tutor'
 import PricingPage from './Pages/PricingPage/PricingPage';
 import Program from './Pages/Program/Program';
+import Register from './Modals/Register';
+import Signup from './Modals/Signup';
+import Signin from './Modals/Signin';
 
 function App() {
 
@@ -18,6 +21,9 @@ function App() {
         <Route path='/tutor' element={<Tutor/>} />
         <Route path='/pricingpage' element={<PricingPage/>} />
         <Route path="/program" element={<Program/>} />
+        <Route path='/register' element={<Register/>} />
+        <Route path='/signup' element={<Signup/>} />
+        <Route path='/signin' element={<Signin/>} />
       </Routes>
     </BrowserRouter>
   )

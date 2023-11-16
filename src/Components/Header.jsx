@@ -9,7 +9,9 @@ function Header() {
     <div className='poppins flex justify-between items-center px-10 lg:px-28 py-5 shadow-lg z-10'>
 
       <div className="logo">
-        <img src={logo} alt="" />
+        <Link to='/'>
+          <img src={logo} alt="" />
+        </Link>
       </div>
 
       <div className="list">
@@ -24,8 +26,8 @@ function Header() {
       </div>
       
       <div className="accounts flex gap-3 font-semibold">
-        <button className='bg-[#186bad] px-8 py-1 text-white rounded-lg'>Login</button>
-        <button className='bg-transparent px-6 py-1 rounded-lg border-2'>Sign Up</button>
+        <button className='bg-[#186bad] px-8 py-1 text-white rounded-lg'><Link to='/signin'>Login</Link></button>
+        <button className='bg-transparent px-6 py-1 rounded-lg border-2'><Link to='/register'>Sign Up</Link></button>
       </div>
 
     </div>
