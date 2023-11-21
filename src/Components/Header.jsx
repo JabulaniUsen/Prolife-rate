@@ -6,7 +6,7 @@ import logo from '../Assets/logo.png'
 
 function Header() {
   return (
-    <div className='poppins flex justify-between items-center px-10 lg:px-28 py-5 shadow-lg z-10'>
+    <div className='poppins flex justify-between items-center px-10 lg:px-28 py-5 z-10'>
 
       <div className="logo">
         <Link to='/'>

@@ -9,6 +9,7 @@ import Program from './Pages/Program/Program';
 import Register from './Modals/Register';
 import Signup from './Modals/Signup';
 import Signin from './Modals/Signin';
+import TutorDetail from './Pages/TutorDetail/TutorDetail';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path='/register' element={<Register/>} />
         <Route path='/signup' element={<Signup/>} />
         <Route path='/signin' element={<Signin/>} />
+        <Route path='/tutordetail' element={<TutorDetail/>} />
       </Routes>
     </BrowserRouter>
   )

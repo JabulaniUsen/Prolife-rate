@@ -32,7 +32,7 @@ function Form() {
                 <input type="text" placeholder='Your Name'  className='bg-[#F2F1F1] rounded-lg p-3 px-4 outline-none'/>
                 <input type="email" placeholder='Your Email' name="" id=""  className='bg-[#F2F1F1] rounded-lg p-3 px-4 outline-none'/>
                 <input type="number" placeholder='Your Phone Number' name="" id=""  className='bg-[#F2F1F1] rounded-lg p-3 px-4 outline-none'/>
-                <textarea name="" id="" cols="40" rows="5" placeholder='Your Message' className='bg-[#F2F1F1] rounded-lg p-3 px-4 outline-none'></textarea>
+                <textarea name="" id="" cols="40" rows="5" placeholder='Your Message' className='bg-[#F2F1F1] rounded-lg p-3 px-4 outline-none border-none'></textarea>
                 <button type="submit" className='bg-[#186bad] hover:bg-[#0e4979] py-3 rounded-lg text-white'>Send Message</button>
             </form>
         </div>
