@@ -24,7 +24,7 @@ function Signin() {
                         <input type="checkbox" name="" id="" />
                         <p className='text-[#186BAD] font-semibold'>Keep me signed in</p>
                     </div>
-                    <button type="submit" className='text-white font-semibold py-3 bg-[#186BAD] w-[400px]  rounded-lg'>Sign in</button>
+                    <button type="submit" className='text-white font-semibold py-3 bg-[#186BAD] w-[400px]  rounded-lg'><Link to='/dashboard'>Sign in</Link></button>
                     <p className='text-[#898A8B] text-center py-5'>Don't have an account? <span className='text-[#186BAD] ml-2'><Link to='/signup'>Sign Up</Link></span></p>
                 </form>
             </div>
