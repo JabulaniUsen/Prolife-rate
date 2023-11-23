@@ -24,10 +24,11 @@ import setting from './Icons/settings.png';
 import Classes from './Tabs/Classes';
 import Home from './Tabs/Home';
 import Assignment from './Tabs/Assignment';
-import Settings from './Tabs/Home';
+import Settings from './Tabs/Settings';
 import Messages from './Tabs/Messages';
 import PaymentInfo from './Tabs/PaymentInfo';
 import Reports from './Tabs/Reports';
+import Footer2 from '../../Components/Footer2';
 
 // Tabs Component
 const Tabs = ({ tabs, setActiveTab, activeTab }) => {
@@ -98,75 +99,79 @@ const Dashboard = () => {
     ];
 
   return (
-    <div className={`flex w-[20%] ${isSidebarVisible ? '' : 'sidebar-hidden'}`}>
-      <div
-        className={`sideBar bg-[#2977B5] h-[100%] flex flex-col items-center px-5 ${
-          isSidebarVisible ? '' : 'hidden'
-        }`}
-      >
-        <div className="logo py-10 px-10">
-          <img src={logo} alt="" />
-        </div>
-        <div className=" flex flex-col gap-2 my-20">
-          <Tabs tabs={tabs} setActiveTab={setActiveTab} />
-        </div>
-
-        <div className="logout">
-          <button className="flex gap-2 items-center justify-start text-white bg-[#186bad] w-[200px] py-3 text-sm px-5 hover:bg-[#509cdb] rounded">
-            <FontAwesomeIcon icon={faRightFromBracket} />
-            Logout
-          </button>
-        </div>
-
-        <div className="refer flex flex-col justify-center item-center my-20">
-          <img src={refer} alt="" />
-          <button className="bg-[#D9D9D9] py-2 px-4 rounded-full shadow">Refer your friend</button>
-        </div>
-
-        <div className="">
-          <button className="flex gap-2 items-center justify-start bg-[#ffffff] w-[200px] py-3 text-sm px-5 rounded-lg my-2 text-[#344054]">
-            <img src={support} alt="" />
-            Support
-          </button>
-          <button className="flex gap-2 items-center justify-start bg-[#ffffff] w-[200px] py-3 text-sm px-5 rounded-lg my-2 text-[#344054]">
-            <img src={setting} alt="" />
-            Settings
-          </button>
-        </div>
-      </div>
-
-      
-
-      <div className="body px-[20px]">
-        <div className={`header flex justify-between p-10 w-[1100px] bg-white items-center ${isSidebarVisible ? '' : 'sidebar-hidden'}`}>
-          <div className="menu" onClick={toggleSidebar}>
-            <img src={menu} className="cursor-pointer" alt="" />
+    <div className="">
+      <div className={`flex w-[20%] ${isSidebarVisible ? '' : 'sidebar-hidden'}`}>
+        <div
+          className={`sideBar bg-[#2977B5] h-[100%] flex flex-col items-center px-5 ${
+            isSidebarVisible ? '' : 'hidden'
+          }`}
+        >
+          <div className="logo py-10 px-10">
+            <img src={logo} alt="" />
           </div>
-          <div className="div w-[400px]">
-            <FontAwesomeIcon icon={faMagnifyingGlass} className="text-slate-400 mx-3" />
-            <input type="text" placeholder="Search anything" />
+          <div className=" flex flex-col gap-2 my-20">
+            <Tabs tabs={tabs} setActiveTab={setActiveTab} />
           </div>
+
+          <div className="logout">
+            <button className="flex gap-2 items-center justify-start text-white bg-[#186bad] w-[200px] py-3 text-sm px-5 hover:bg-[#509cdb] rounded">
+              <FontAwesomeIcon icon={faRightFromBracket} />
+              Logout
+            </button>
+          </div>
+
+          <div className="refer flex flex-col justify-center item-center my-20">
+            <img src={refer} alt="" />
+            <button className="bg-[#D9D9D9] py-2 px-4 rounded-full shadow">Refer your friend</button>
+          </div>
+
           <div className="">
-            <button className="bg-[#186bad] py-3 px-6 text-white rounded-lg text-sm">+ Add Student</button>
-          </div>
-          <div className="relative">
-            <span className="absolute text-white bg-[#186bad] p-[0,5px] px-[5.5px] rounded-full text-[11px] top-[-5px] right-[-6px]">9</span>
-            <FontAwesomeIcon icon={faBell} className="text-2xl text-[#56606D]" />
-          </div>
-          <FontAwesomeIcon icon={faCartShopping} className="text-2xl text-[#56606D]" />
-          <div className="user flex items-center gap-2">
-            <img src={user} alt="" />
-            <div className="">
-              <h2>Carl Esquer</h2>
-              <p className="text-[#56606d] text-sm">Level 3</p>
-            </div>
-            <FontAwesomeIcon icon={faChevronDown} />
+            <button className="flex gap-2 items-center justify-start bg-[#ffffff] w-[200px] py-3 text-sm px-5 rounded-lg my-2 text-[#344054]">
+              <img src={support} alt="" />
+              Support
+            </button>
+            <button className="flex gap-2 items-center justify-start bg-[#ffffff] w-[200px] py-3 text-sm px-5 rounded-lg my-2 text-[#344054]">
+              <img src={setting} alt="" />
+              Settings
+            </button>
           </div>
         </div>
 
+        
 
-        {tabs[activeTab].contentComponent}
+        <div className="body px-[20px]">
+          <div className={`header flex justify-between p-10 w-[1100px] bg-white items-center ${isSidebarVisible ? '' : 'sidebar-hidden'}`}>
+            <div className="menu" onClick={toggleSidebar}>
+              <img src={menu} className="cursor-pointer" alt="" />
+            </div>
+            <div className="div w-[400px]">
+              <FontAwesomeIcon icon={faMagnifyingGlass} className="text-slate-400 mx-3" />
+              <input type="text" placeholder="Search anything" />
+            </div>
+            <div className="">
+              <button className="bg-[#186bad] py-3 px-6 text-white rounded-lg text-sm">+ Add Student</button>
+            </div>
+            <div className="relative">
+              <span className="absolute text-white bg-[#186bad] p-[0,5px] px-[5.5px] rounded-full text-[11px] top-[-5px] right-[-6px]">9</span>
+              <FontAwesomeIcon icon={faBell} className="text-2xl text-[#56606D]" />
+            </div>
+            <FontAwesomeIcon icon={faCartShopping} className="text-2xl text-[#56606D]" />
+            <div className="user flex items-center gap-2">
+              <img src={user} alt="" />
+              <div className="">
+                <h2>Carl Esquer</h2>
+                <p className="text-[#56606d] text-sm">Level 3</p>
+              </div>
+              <FontAwesomeIcon icon={faChevronDown} />
+            </div>
+          </div>
+
+
+          {tabs[activeTab].contentComponent}
+        </div>
+
       </div>
+        <Footer2/>
     </div>
   );
 };

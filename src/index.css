@@ -55,3 +55,8 @@ input {
     border: none;
 }
 
+.footer2 {
+    background-image: url('./Assets/footerbg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
