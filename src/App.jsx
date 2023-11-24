@@ -11,6 +11,7 @@ import Signup from './Modals/Signup';
 import Signin from './Modals/Signin';
 import TutorDetail from './Pages/TutorDetail/TutorDetail';
 import Dashboard from './Pages/Dashboard/Dashboard';
+import PaymentPage from './Pages/Payment/PaymentPage';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path='/signup' element={<Signup/>} />
         <Route path='/signin' element={<Signin/>} />
         <Route path='/tutordetail' element={<TutorDetail/>} />
+        <Route path='/paymentpage' element={<PaymentPage/>} />
         <Route path='/dashboard' element={<Dashboard/>} />
       </Routes>
     </BrowserRouter>

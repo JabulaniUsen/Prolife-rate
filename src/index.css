@@ -55,7 +55,7 @@ input {
     border: none;
 }
 
-.footer2 {
+.footer2, .payment-bg {
     background-image: url('./Assets/footerbg.png');
     background-size: cover;
     background-repeat: no-repeat;

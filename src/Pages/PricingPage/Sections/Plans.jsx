@@ -1,10 +1,12 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 function Plans() {
   return (
     <div className='px-10 lg:px-28 flex my-28 justify-around flex-wrap'>
+        <Link to='/paymentpage'>
         <div className='inter flex flex-col justify-between p-8 shadow-md'>
             <div className="price-header">
                 <div className="">
@@ -36,7 +38,9 @@ function Plans() {
             </div>
             <button className='border-2 rounded-xl text-[#186BAD] hover:bg-[#186BAD] hover:text-white font-bold p-4'>Extended license</button>
         </div>
+        </Link>
 
+        <Link to='/paymentpage'>
         <div className='inter flex flex-col justify-between shadow-xl p-10'>
             <div className="price-header">
                 <div className="flex justify-between">
@@ -73,7 +77,9 @@ function Plans() {
             </div>
             <button className='border-2 rounded-xl text-[#186BAD] hover:bg-[#186BAD] hover:text-white font-bold p-4'>Extended license</button>
         </div>
+        </Link>
 
+        <Link to='/paymentpage'>
         <div className='inter flex flex-col justify-between p-8 shadow-md'>
             <div className="price-header">
                 <div className="">
@@ -105,6 +111,7 @@ function Plans() {
             </div>
             <button className='border-2 rounded-xl text-[#186BAD] hover:bg-[#186BAD] hover:text-white font-bold p-4'>Extended license</button>
         </div>
+        </Link>
     </div>
   )
 }
