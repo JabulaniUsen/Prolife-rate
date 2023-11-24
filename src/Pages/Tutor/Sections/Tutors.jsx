@@ -11,6 +11,7 @@ import img6 from '../../../Assets/img6.png'
 import img7 from '../../../Assets/img7.png'
 import img8 from '../../../Assets/img8.png'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const allMentors = [
     { id: 1, name: 'Kristin Watson', course: 'Mathematics, Science', image: kristin },
@@ -190,31 +191,33 @@ const Tutors = () => {
 
             {/* All Tutors */}
             {activeTab === 'all' && (
-              <ul className='flex flex-row flex-wrap justify-between gap-0'>
-                {currentTutors.map((tutor) => (
-                  <li key={tutor.id} className='w-[270px] hover:shadow-md p-5'>
-                    <img src={tutor.image} alt="" />
-                    <h3 className='text-[#186BAD] mt-2 text-lg'>{tutor.name}</h3>
-                    <small>{tutor.course}</small>
+              <Link to='/tutordetail/#'>
+                <ul className='flex flex-row flex-wrap justify-between gap-0'>
+                  {currentTutors.map((tutor) => (
+                    <li key={tutor.id} className='w-[270px] hover:shadow-md p-5'>
+                      <img src={tutor.image} alt="" />
+                      <h3 className='text-[#186BAD] mt-2 text-lg'>{tutor.name}</h3>
+                      <small>{tutor.course}</small>
+                    </li>
+                  ))}
+                </ul>
+              </Link>
+            )}
+
+            {/* Kindergarten */}
+            {activeTab === 'kindergarten' && (
+              <ul className='flex flex-row flex-wrap justify-center gap-10'>
+                {displayedMentors.map((mentor) => (
+                  <li key={mentor.id}>
+                    <img src={mentor.image} alt="" />
+                    <h3 className='text-[#186BAD] font-bold text-lg'>{mentor.name}</h3>
+                    <small>{mentor.course}</small>
                   </li>
                 ))}
               </ul>
             )}
 
-      {/* Kindergarten */}
-      {activeTab === 'kindergarten' && (
-        <ul className='flex flex-row flex-wrap justify-center gap-10'>
-          {displayedMentors.map((mentor) => (
-            <li key={mentor.id}>
-              <img src={mentor.image} alt="" />
-              <h3 className='text-[#186BAD] font-bold text-lg'>{mentor.name}</h3>
-              <small>{mentor.course}</small>
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {/* You can add similar blocks for other tabs with different content */}
+      {/* Similar blocks for other tabs with different content here*/}
 
       <div className='mt-4 flex justify-center items-center py-10'>
         <button onClick={handlePrevPage} disabled={currentPage === 1} style={{ opacity: currentPage === 1 ? 0.5 : 1 }} className={`mr-2 border-2 p-2 px-4 rounded-lg bg-[#F2E5FF] active:bg-[#186BAD] text-[#186BAD] active:text-[#fff]`}>

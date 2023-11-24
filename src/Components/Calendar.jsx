@@ -38,7 +38,7 @@ const Calendar = () => {
     const monthDays = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
     const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
     return (
-      <div className="grid grid-cols-7 gap-5 p-2">
+      <div className="grid grid-cols-7 gap-3 p-2 cursor-pointer">
         {[...Array(firstDayOfMonth)].map((_, index) => (
           <div key={index}></div>
         ))}
@@ -62,11 +62,17 @@ const Calendar = () => {
     );
  };
 
+ const [time, setTime] = useState('');
+   
+ const handleChange = (e) => {
+    setTime(e.target.value);
+ };
  return (
     <div className="bg-white rounded-lg shadow p-4">
       {renderHeader()}
       {renderDays()}
       {renderCells()}
+      
     </div>
  );
 };
