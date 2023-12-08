@@ -20,6 +20,8 @@
     "@mui/styled-engine-sc": "^6.0.0-alpha.6",
     "flowbite": "^2.1.1",
     "react": "^18.2.0",
+    "react-big-calendar": "^1.8.5",
+    "react-calendar": "^4.6.1",
     "react-dom": "^18.2.0",
     "react-id-swiper": "^4.0.0",
     "react-intersection-observer": "^9.5.3",

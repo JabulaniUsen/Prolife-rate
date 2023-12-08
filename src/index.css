@@ -67,3 +67,6 @@ input {
 .sub-head {
     border-top-right-radius: 1rem;
 }
+.cal {
+    background-image: url(./Pages/Dashboard/Icons/calendar-bg.png);
+}

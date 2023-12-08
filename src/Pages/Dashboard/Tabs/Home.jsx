@@ -3,6 +3,7 @@ import sub1 from '../Icons/sub1.png'
 import sub2 from '../Icons/sub2.png'
 import { faBookmark, faChevronRight, faEarthAmericas, faEllipsisVertical, faSquareRootVariable } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Calender2 from '../../../Components/Calender2';
 
 function Home() {
   return (
@@ -41,6 +42,10 @@ function Home() {
           <p className='text-[#0997D9] font-semibold text-lg'>See all</p>
           <FontAwesomeIcon icon={faChevronRight} className='text-3xl' />
         </div>
+      </div>
+
+      <div className="calender my-10">
+        <Calender2/>
       </div>
     </div>
   )
