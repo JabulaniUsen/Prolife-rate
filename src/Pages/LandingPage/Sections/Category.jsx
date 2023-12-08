@@ -17,6 +17,7 @@ function Category() {
     <div className='poppins py-20 flex flex-col items-center gap-20 justify-center'>
         <div className="cat-header">
             <h1 className=' text-[#186BAD] text-5xl font-bold'>Browse top category </h1>
+            <h3 className='text-2xl font-semibold text-center my-7'>Dive into a World of Knowledge</h3>
         </div>
 
         <div className="cats flex flex-wrap justify-center items-center gap-5 px-5">
@@ -26,7 +27,7 @@ function Category() {
                     <img src={label} alt="" />
                 </div>
                 <div className="text flex flex-col items-left justify-center gap-[5px]">
-                    <h3 className='font-semibold w-[200px] text-[#1D2026]'>Label</h3>
+                    <h3 className='font-semibold w-[200px] text-[#1D2026]'>Mathematics</h3>
                     <p className='text-[#6E7485] text-sm'>63,476 Courses</p>
                 </div>
             </div>

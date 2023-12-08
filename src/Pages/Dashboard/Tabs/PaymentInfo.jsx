@@ -1,5 +1,3 @@
-// src/App.js
-
 import React, { useState } from 'react';
 
 const tabs = ['Reports', 'Transactions', 'Credit', 'Debit', 'Upcoming', 'Due'];
