@@ -30,7 +30,7 @@ function Breaking() {
         </h1>
       </div>
       <div className="flex flex-col items-center lg:flex-row">
-        <div className="signup flex flex-col items-center gap-5 p-7 text-center w-[30%] relative ">
+        <div className=" flex flex-col items-center gap-5 p-7 text-center w-[30%] relative ">
           <img src={circle1} className='' alt="" />
           <Counter value={500} />
           <p className='text-xl text-[#186BAD] font-semibold'>Total Students Enrolled</p>

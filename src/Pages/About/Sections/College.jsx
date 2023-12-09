@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function College() {
   return (
@@ -17,7 +18,9 @@ function College() {
                 knowledge.
             </p>
             
-            <button className='rounded-xl mt-8 p-4 bg-[#186bad] text-white font-semibold'>Sign up as Student</button>
+            <Link to='/signup'>
+              <button className='signup rounded-xl mt-8 p-4 bg-[#186bad] text-white font-semibold'>Sign up as Student</button>
+            </Link>
             
           </div>
     </div>

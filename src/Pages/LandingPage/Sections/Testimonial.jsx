@@ -2,6 +2,7 @@ import React from 'react'
 import gloria from '../../../Assets/gloria.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 function Testimonial() {
   return (
@@ -31,7 +32,9 @@ function Testimonial() {
                     and quality than standard-definition. 
                 </p>
             </div>
-            <button className='rounded-xl  p-4 bg-[#186bad] text-white font-semibold'>Check out our programs</button>
+            <Link to='/signin'>
+                <button className='signup rounded-xl  p-4 bg-[#186bad] text-white font-semibold'>Check out our programs</button>
+            </Link>
         </div>
 
         <div className="image relative p-20 poppins">  

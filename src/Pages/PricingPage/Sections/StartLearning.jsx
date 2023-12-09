@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function StartLearning() {
   return (
@@ -10,7 +11,7 @@ function StartLearning() {
             sitamet, consectetur adipiscing elit, sed do 
             eiusmod tempor
         </p>
-        <button className='py-4 w-[250px] bg-white font-bold rounded-xl'>Start learning now</button>
+        <Link to='/Signup'><button className='py-4 w-[250px] bg-white font-bold rounded-xl'>Start learning now</button></Link>
     </div>
   )
 }

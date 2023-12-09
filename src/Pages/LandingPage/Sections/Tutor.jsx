@@ -25,7 +25,7 @@ function Tutor() {
             </div>
 
             <Link to='/signup'>
-                <button className='signup rounded-xl mt-8 p-4 bg-[#186bad] text-white font-semibold'>Sign up as Student</button>
+                <button className='signup rounded-xl mt-8 p-4 bg-[#186bad] text-white font-semibold'>Sign up as Tutor</button>
             </Link>
         </div>
     </div>

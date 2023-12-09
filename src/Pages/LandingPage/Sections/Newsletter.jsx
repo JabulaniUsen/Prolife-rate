@@ -35,7 +35,7 @@ const Newsletter = () => {
         <form onSubmit={handleSubmit}>
           <div className="flex bg-white my-5 px-2 py-1 w-[450px] gap-4 text-black rounded-lg shadow-lg">
             <input
-              type="text"
+              type="email"
               className='bg-transparent outline-none pl-4'
               placeholder='Enter your email'
               value={email}
