@@ -70,3 +70,105 @@ input {
 .cal {
     background-image: url(./Pages/Dashboard/Icons/calendar-bg.png);
 }
+
+.signup {
+    background: #13578f;
+    transition: background 0.2s;
+}
+
+.signup:hover {
+    background: #13578f;
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}
+
+.signup:active {
+    animation: vibration 0.3s linear infinite;
+}
+
+@keyframes vibration {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px) translateY(-5px); }
+    50% { transform: translateX(5px) translateY(5px); }
+    75% { transform: translateX(-5px) translateY(-5px); }
+    100% { transform: translateX(5px) translateY(5px); }
+}
+
+
+/* News letter */
+
+.popup-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: bounce 0.6s ease-out;
+  
+    /* Add any additional styles you want for the modal */
+  }
+
+  .modal-icon {
+    width: 40px; /* Adjust the size as needed */
+    height: 40px; /* Adjust the size as needed */
+    margin-bottom: 10px;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-30px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+  
+
+.cat:hover {
+    scale: 1.1;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+/* .login  */
+
+/* Add this to your styles or style sheet */
+.popup-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    animation: bounceIn 0.5s ease-in-out;
+  }
+  
+  @keyframes bounceIn {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+  
+    40% {
+      transform: translateY(-30px);
+    }
+  
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+  

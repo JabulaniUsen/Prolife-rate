@@ -4,6 +4,7 @@ import sub2 from '../Icons/sub2.png'
 import { faBookmark, faChevronRight, faEarthAmericas, faEllipsisVertical, faSquareRootVariable } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Calender2 from '../../../Components/Calender2';
+import StackedBarChart from '../../../Components/StackedBarChart';
 
 function Home() {
   return (
@@ -46,6 +47,10 @@ function Home() {
 
       <div className="calender my-10">
         <Calender2/>
+      </div>
+
+      <div className="">
+        <StackedBarChart/>
       </div>
     </div>
   )

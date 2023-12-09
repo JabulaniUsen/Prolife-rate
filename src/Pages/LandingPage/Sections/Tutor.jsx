@@ -1,5 +1,6 @@
 import React from 'react'
 import tutor from '../../../Assets/tutorr.png'
+import { Link } from 'react-router-dom'
 
 function Tutor() {
   return (
@@ -23,7 +24,9 @@ function Tutor() {
                 </p>
             </div>
 
-            <button className='rounded-xl mt-8 p-4 bg-[#186bad] text-white font-semibold'>Sign up as Student</button>
+            <Link to='/signup'>
+                <button className='signup rounded-xl mt-8 p-4 bg-[#186bad] text-white font-semibold'>Sign up as Student</button>
+            </Link>
         </div>
     </div>
   )
