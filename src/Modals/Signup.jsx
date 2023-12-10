@@ -61,7 +61,7 @@ function Signup() {
       {/* Popup Modal */}
       {showModal && (
         <div className="popup-modal">
-          <FontAwesomeIcon icon={faCheckCircle} className='text-6xl text-[#28f128]' />
+          <FontAwesomeIcon icon={faCheckCircle} className='text-6xl text-[#186BAD]' />
           <h2 className='text-2xl font-bold'>Account Created Successfully!</h2>
           {redirectingText && <p className='my-3 text-[#186BAD] font-semibold'>Redirecting to Dashboard...</p>}
         </div>

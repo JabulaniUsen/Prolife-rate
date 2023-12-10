@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion, useAnimation } from 'framer-motion';
 import { Link } from 'react-router-dom'
 
 function College() {
@@ -19,7 +20,12 @@ function College() {
             </p>
             
             <Link to='/signin'>
-              <button className='signup rounded-xl mt-8 p-4 bg-[#186bad] text-white font-semibold'>Sign up as Student</button>
+              <motion.button
+               className='rounded-xl mt-8 p-4 bg-[#186bad] text-white font-semibold'
+               whileHover={{ scale: 1.05 }}
+               whileTap={{ scale: 0.95 }}
+               > Sign up as Student
+               </motion.button>
             </Link>
             
           </div>

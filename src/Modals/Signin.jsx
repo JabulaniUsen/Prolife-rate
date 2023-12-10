@@ -55,7 +55,7 @@ function Signin() {
       {/* Popup Modal */}
       {showModal && (
         <div className="popup-modal">
-          <FontAwesomeIcon icon={faCheckCircle} className='text-6xl text-[#28f128] my-2' />
+          <FontAwesomeIcon icon={faCheckCircle} className='text-6xl text-[#186BAD] my-2' />
           <h2 className='text-2xl font-bold'>Welcome back, Buddy!</h2>
           {proceedingText && <p className='my-3 text-[#186BAD] font-semibold'>Proceeding to Dashboard...</p>}
         </div>

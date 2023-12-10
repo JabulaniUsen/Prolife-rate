@@ -1,35 +1,68 @@
-import React from 'react'
-import tutor from '../../../Assets/tutorr.png'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import tutor from '../../../Assets/tutorr.png';
+import { Link } from 'react-router-dom';
 
 function Tutor() {
+  const controls = useAnimation();
+
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+
+    // You can adjust the offset and duration as needed
+    if (scrollY > 500) {
+      controls.start({ opacity: 1, x: 0 });
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className='flex justify-between flex-wrap-reverse items-center px-10 lg:px-28 my-28'>
-        <div className="img lg:w-[50%]">
-            <img src={tutor} alt="" />
+      <motion.div
+        className="img lg:w-[50%]"
+        initial={{ opacity: 0, x: 50 }}
+        animate={controls}
+        transition={{ duration: 0.8 }}
+      >
+        <img src={tutor} alt="" />
+      </motion.div>
+
+      <motion.div
+        className="text poppins lg:w-[40%]"
+        initial={{ opacity: 0, x: -50 }}
+        animate={controls}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="header pb-5">
+          <h1 className='font-semibold text-4xl leading-[45px]'>
+            Want to share <br /> your <span className='text-[#186BAD] font-semibold'>Knowledge? </span>
+          </h1>
+        </div>
+        <div className="description">
+          <p>
+            High-definition video is video of higher resolution
+            and quality than standard-definition. While there is
+            no standardized meaning for high-definition, generally
+            any video.
+          </p>
         </div>
 
-        <div className="text poppins lg:w-[40%]">
-            <div className="header pb-5">
-                <h1 className='font-semibold text-4xl leading-[45px]'>
-                    Want to share <br /> your <span className='text-[#186BAD] font-semibold'>Knowledge? </span>
-                </h1>
-            </div>
-            <div className="description">
-                <p>
-                    High-definition video is video of higher resolution 
-                    and quality than standard-definition. While there is 
-                    no standardized meaning for high-definition, generally 
-                    any video.
-                </p>
-            </div>
-
-            <Link to='/signup'>
-                <button className='signup rounded-xl mt-8 p-4 bg-[#186bad] text-white font-semibold'>Sign up as Tutor</button>
-            </Link>
-        </div>
+        <Link to='/signup'>
+          <motion.button
+            className='rounded-xl mt-8 p-4 bg-[#186bad] text-white font-semibold'
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Sign up as Tutor
+          </motion.button>
+        </Link>
+      </motion.div>
     </div>
-  )
+  );
 }
 
-export default Tutor
+export default Tutor;

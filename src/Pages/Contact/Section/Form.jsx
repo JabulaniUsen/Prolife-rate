@@ -65,7 +65,7 @@ function Form() {
       {/* Popup Modal */}
       {showModal && (
         <div className="popup-modal text-center">
-          <FontAwesomeIcon icon={faCheckCircle} className='text-7xl text-[#008000] my-4' />
+          <FontAwesomeIcon icon={faCheckCircle} className='text-7xl text-[#186BAD] my-4' />
           <h2 className='text-2xl'>Thank you <span className='text-[#186BAD] font-semibold '>{document.getElementById('name').value}</span> <br />
            <span className='text-xl my-2'>for reaching out to us! <br /> We will get back to you <br /> as soon as possible.</span></h2>
         </div>

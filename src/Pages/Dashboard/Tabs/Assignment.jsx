@@ -41,22 +41,21 @@ const assignment = [
     setDropdownStates(newDropdownStates);
   };
 
-  
   return (
-    <div className={`poppins p-12`}>
+    <div className="poppins p-12">
       <div className="header text-4xl font-semibold">Assignment</div>
 
       {assignment.map((item, index) => (
         <div key={item.id} className="body">
           <div
             className={`assignment subject relative cursor-pointer rounded-xl ${
-              dropdownStates[index] ? 'bg-[#186BAD] text-white' : ''
+              dropdownStates[index] ? 'active' : ''
             }`}
             onClick={() => toggleDropdown(index)}
           >
             <h2
-              className={`text-3xl font-semibold w-[100wv] border-[1px] text-black border-black rounded-xl h-[150px] p-8 mt-8 ${
-                dropdownStates[index] ? ' text-white border-0' : ''
+              className={`text-3xl font-semibold w-[100wv] border-[1px] text-black border-black rounded-xl h-[150px] p-8 mt-8 transition-all ${
+                dropdownStates[index] ? 'text-white border-0' : ''
               }`}
             >
               {item.subject}
@@ -65,7 +64,7 @@ const assignment = [
           </div>
 
           {dropdownStates[index] && (
-            <div className="dropDown bg-[#F2F1F1] p-10 rounded-b-xl mt-[-10px] transition-max-height ease-out duration-300">
+            <div className="dropDown bg-[#F2F1F1] p-10 rounded-b-xl mt-[-10px] transition-all">
               <div className="up">
                 <p>{item.instruction}</p>
                 <div className="names flex justify-between items-center pt-10">
@@ -74,7 +73,7 @@ const assignment = [
                     <h3 className="text-xl font-semibold">Date of Submission: {item.date}</h3>
                   </div>
                   <div className="side2 flex gap-10 items-center">
-                    <a href="" className="text-[#186BAD]">
+                    <a href="/" className="text-[#186BAD]">
                       Download Materials
                     </a>
                     <button className="bg-[#186BAD] py-3 px-5 rounded-lg text-white">
