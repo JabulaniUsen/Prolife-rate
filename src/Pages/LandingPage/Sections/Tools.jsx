@@ -39,7 +39,7 @@ function Tools() {
           className="text poppins lg:w-[40%]"
           initial={{ opacity: 0, x: -50 }}
           animate={controlsLeft}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          transition={{ duration: 0.2, delay: 0.2 }}
         >
           <div className="header pb-5">
             <h1 className='font-semibold text-4xl leading-[45px]'>

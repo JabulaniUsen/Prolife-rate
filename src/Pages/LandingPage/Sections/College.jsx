@@ -19,7 +19,7 @@ function College() {
                 knowledge.
             </p>
             
-            <Link to='/signin'>
+            <Link to='/signup'>
               <motion.button
                className='rounded-xl mt-8 p-4 bg-[#186bad] text-white font-semibold'
                whileHover={{ scale: 1.05 }}

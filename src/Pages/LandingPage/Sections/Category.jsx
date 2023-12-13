@@ -11,6 +11,7 @@ import lifestyle from '../../../Assets/lifestyle.png'
 import design from '../../../Assets/design.png'
 import health from '../../../Assets/health.png'
 import music from '../../../Assets/music.png'
+import { Link } from 'react-router-dom'
 
 function Category() {
   return (
@@ -137,7 +138,7 @@ function Category() {
 
         <div className="more">
             <h2>
-                We have more category & subcategory. <span className='text-[#186bad] font-bold text-lg ml-2 cursor-pointer'>Browse All</span>
+                We have more category & subcategory. <Link to='/program'><span className='text-[#186bad] font-bold text-lg ml-2 cursor-pointer'>Browse All</span></Link>
             </h2>
         </div>
     </div>

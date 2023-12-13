@@ -19,6 +19,8 @@ function Signup() {
   const [isloading, setIsloading] = useState(false);
   const [fullNameEmpty, setFullNameEmpty] = useState(false);
   const [emailEmpty, setEmailEmpty] = useState(false); // Added state for emailEmpty
+  const [showModal, setShowModal] = useState(false)
+  
 
   const dispatch = useDispatch();
   const authSelector = useSelector((state) => state.authenticationSlice);
@@ -32,7 +34,7 @@ function Signup() {
 
   useEffect(() => {
     if (authSelector.signingUpStatus === 'completed') {
-      // setSuccessMessage(true); // This variable is not defined, please uncomment if it's supposed to be used
+      setSuccessMessage(true); // This variable is not defined, please uncomment if it's supposed to be used
       return;
     }
     // dispatch(clearLoginStatus());
@@ -53,7 +55,8 @@ function Signup() {
       setFullNameEmpty(!fullName);
       setEmailEmpty(!email);
       setPasswordEmpty(!password);
-      return;
+      return; 
+      showModal(true)
     }
 
     // Check for password match
@@ -65,12 +68,13 @@ function Signup() {
     // Dispatch the signup action
     dispatch(
       signUpAction({
-        fullName: fullName,
+        // fullName: fullName,
         email: email,
         password: password,
+        password2: password2
       })
     );
-    setIsloading(true);
+    // setIsloading(true);
   };
 
   return (
@@ -195,13 +199,13 @@ function Signup() {
       </div>
 
       {/* Popup Modal */}
-      {/* {showModal && (
+      {showModal && (
         <div className="popup-modal">
           <FontAwesomeIcon icon={faCheckCircle} className="text-6xl text-[#186BAD]" />
           <h2 className="text-2xl font-bold">Account Created Successfully!</h2>
           {redirectingText && <p className="my-3 text-[#186BAD] font-semibold">Redirecting to Dashboard...</p>}
         </div>
-      )} */}
+      )}
     </div>
   );
 }

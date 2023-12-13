@@ -24,33 +24,39 @@ const Faq = () => {
   const faqData = [
     {
       id: 1,
-      question: 'What is the difference between a UI and UX Designer?',
+      question: 'Are there any hidden fees?',
       answer:
-        'A UI (User Interface) designer focuses on the visual aspects and layout of a digital product, ensuring it is aesthetically pleasing and user-friendly. On the other hand, a UX (User Experience) designer is concerned with the overall user experience, including user research, usability, and interaction design, aiming to create a seamless and satisfying experience for users.',
+        'No, our pricing is transparent with no hidden costs.',
     },
     {
       id: 2,
-      question: 'How to become a UI designer?',
+      question: 'Can I change my plan later?',
       answer:
-        'To become a UI designer, acquire design education, develop skills with tools like Figma, build a diverse portfolio, and stay updated on design principles and trends.',
+        'Yes, you can upgrade or downgrade your plan at any time.',
     },
     {
       id: 3,
-      question: 'What is the best UI design tool?',
+      question: ' Is there a free trial available?',
       answer:
-        'Figma is widely regarded as one of the best UI design tools.',
+        'Yes, we offer a free trial for our individual and family plans.',
     },
     {
       id: 4,
-      question: 'What is the best place to learn Figma?',
+      question: 'What payment methods do you accept? ',
       answer:
-        "Online platforms like Figma's official website, YouTube tutorials, and courses on platforms like Udemy or Coursera are great places to learn Figma.",
+        "We accept major credit cards and PayPal.",
     },
     {
       id: 5,
-      question: 'Should designers code?',
+      question: 'Do you offer refunds? ',
       answer:
-        "While not mandatory, learning basic coding skills can enhance a designer's understanding and collaboration with developers, improving the overall design process.",
+        "Yes, we have a satisfaction guarantee. If you're not satisfied within the first 30 days, we'll refund your payment.",
+    },
+    {
+      id: 6,
+      question: 'How do I get started? ',
+      answer:
+        "Simply click on the 'Get Started' button under your preferred plan, and you'll be guided through the signup process.",
     },
   ];
 

@@ -31,7 +31,7 @@ const Newsletter = () => {
         <h1 className='text-[#186bad] text-4xl font-bold text-center'>Subscribe For Get Update <br />
           Every New Courses
         </h1>
-        <p className='text-sm'>20k+ students daily learn with Eduvi. Subscribe for new courses.</p>
+        <p className='text-sm'>20k+ students daily learn with Proliferate. Subscribe for new courses.</p>
         <form onSubmit={handleSubmit}>
           <div className="flex bg-white my-5 px-2 py-1 w-[450px] gap-4 text-black rounded-lg shadow-lg">
             <input

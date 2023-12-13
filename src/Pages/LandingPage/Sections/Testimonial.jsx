@@ -32,7 +32,7 @@ function Testimonial() {
                     and quality than standard-definition. 
                 </p>
             </div>
-            <Link to='/signin'>
+            <Link to='/program'>
                 <button className='signup rounded-xl  p-4 bg-[#186bad] text-white font-semibold'>Check out our programs</button>
             </Link>
         </div>

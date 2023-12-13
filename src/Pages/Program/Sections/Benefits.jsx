@@ -2,6 +2,7 @@ import React from 'react'
 import student from '../../../Assets/student.png'
 import college from '../../../Assets/college.png'
 import school from '../../../Assets/school.png'
+import { Link } from 'react-router-dom'
 
 function Benefits() {
   return (
@@ -15,17 +16,17 @@ function Benefits() {
             <div className="p-4 flex flex-col justify-center items-center gap-4 border-[1px] border-[#646464] rounded-lg w-[300px]">
                 <h3 className='text-lg font-bold'>K-12 Students</h3>
                 <img src={student} alt="" />
-                <button className='bg-[#186BAD] rounded-2xl text-2xl py-3 px-7 text-white font-semibold'>Sign Up</button>
+                <button className='bg-[#186BAD] rounded-2xl text-2xl py-3 px-7 text-white font-semibold'><Link to='/signup'>Sign Up</Link></button>
             </div>
             <div className="p-4 flex flex-col justify-center items-center gap-4 border-[1px] border-[#646464] rounded-lg w-[300px]">
                 <h3 className='text-lg font-bold'>K-12 Students</h3>
                 <img src={college} alt="" />
-                <button className='bg-[#186BAD] rounded-2xl text-2xl py-3 px-7 text-white font-semibold'>Sign Up</button>
+                <button className='bg-[#186BAD] rounded-2xl text-2xl py-3 px-7 text-white font-semibold'><Link to='/signup'>Sign Up</Link></button>
             </div>
             <div className="p-4 flex flex-col justify-center items-center gap-4 border-[1px] border-[#646464] rounded-lg w-[300px]">
                 <h3 className='text-lg font-bold'>K-12 Students</h3>
                 <img src={school} className='w-[165px]' alt="" />
-                <button className='bg-[#186BAD] rounded-2xl text-2xl py-3 px-7 text-white font-semibold'>Sign Up</button>
+                <button className='bg-[#186BAD] rounded-2xl text-2xl py-3 px-7 text-white font-semibold'><Link to='/signup'>Sign Up</Link></button>
             </div>
         </div>
     </div>

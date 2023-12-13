@@ -12,7 +12,20 @@ function TutorDetail() {
     const [isClicked, setClicked] = useState(false);
     const [isClicked2, setClicked2] = useState(false);
     const [selectedOption, setSelectedOption] = useState('');
+    const [showMessage, setShowMessage] = useState(false)
     const [message, setMessage] = useState("'Hello Bamidele, I'm in search of a tutor. Can we schedule a complimentary meeting? I'm eager to learn more about your approach. Anxiously awaiting your response!'");
+
+
+    const initialText = `Greetings! I'm passionate about exploring the intersection of technology
+    and creativity. I thrive on the journey of continuous learning and believe 
+    in the power of collaboration to bring innovative ideas to life.
+    In my endeavours, I strive to create meaningful and impactful solutions. 
+    Whether it's navigating the complexities of technology or delving into 
+    the nuances of creative expression, I am dedicated to pushing boundaries 
+    and discovering new possibilities.`;
+
+  const [showFullText, setShowFullText] = useState(false);
+  const truncatedText = showFullText ? initialText : initialText.slice(0, Math.floor(initialText.length * 0.4));
 
     const handleChange = (e) => {
         setTime(e.target.value);
@@ -33,6 +46,14 @@ function TutorDetail() {
         setMessage(e.target.value);
     };
 
+    const show = () => {
+        setShowMessage(true);
+    
+        setTimeout(() => {
+          setShowMessage(false);
+        }, 3000);
+      };
+    
     const Tutors = [
         {
             id: 1,
@@ -97,16 +118,15 @@ function TutorDetail() {
 
                     <div className="about-me my-10 ">
                         <h3 className='text-[#186BAD] font-bold text-lg my-5'>About me</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit 
-                            Ut et massa mi. Aliquam in hendrerit  urna. Pellentesque 
-                            sit amet sapien fringilla, mattis ligula consectetur, 
-                            ultrices mauris. Maecenas vitae mattis tellus. Nullam 
-                            quis imperdiet augue. Vestibulum auctor ornare leo, non 
-                            suscipit  magna interdum eu. Curabitur pellentesque nibh 
-                            nibh, at maximus ante.
-                        </p>
-                        <p className='text-[#186BAD] text-sm my-5'>View more</p>
+                        <p>{truncatedText}</p>
+                        {!showFullText && (
+                            <p
+                            className='text-[#186BAD] cursor-pointer text-sm my-5'
+                            onClick={() => setShowFullText(true)}
+                            >
+                            View more
+                            </p>
+                        )}
                     </div>
 
                     <hr />
@@ -259,11 +279,22 @@ function TutorDetail() {
                                 className="mt-1 block w-full h-40 py-2 px-3 border bg-[#f2f1f1] rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                             />
                         </div>
-                        <button className='bg-[#186bad] p-3 rounded-lg w-[100%] text-white'>Send Message</button>
+                        <button onClick={show} className='bg-[#186bad] p-3 rounded-lg w-[100%] text-white'>
+                            Send Message
+                        </button>
                         
                     </div>
-                    <p className='p-2 shadow rounded-lg w-[230px] text float-right text-sm flex items-center gap-2 mb-5'>Tutor has been contacted <FontAwesomeIcon icon={faCircleInfo} /></p>
-                    <img src={call} alt="" />
+                    {showMessage && (
+                        <p className='p-2 shadow rounded-lg w-[230px] text float-right text-sm flex items-center gap-2 mb-5'>
+                        Tutor has been contacted <FontAwesomeIcon icon={faCircleInfo} />
+                        </p>
+                    )}
+                    <iframe className='h-[50vh]'
+                        width="100%"
+                        src="https://www.youtube.com/embed/vVCakfUchVI?si=7vi8Xd8TkTIb7K_6"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    ></iframe>
                 </div>
             </div>
 
