@@ -26,8 +26,8 @@ function Header() {
       </div>
       
       <div className="accounts flex gap-3 font-semibold">
-        <button className='bg-[#186bad] px-8 py-1 text-white rounded-lg'><Link to='/signin'>Login</Link></button>
-        <button className='bg-transparent px-6 py-1 rounded-lg border-2'><Link to='/register'>Sign Up</Link></button>
+        <Link to='/signin'><p className='bg-[#186bad] px-8 flex items-center py-1 text-white rounded-lg'>Login</p></Link>
+        <Link to='/register'><button className='bg-transparent px-6 py-1 rounded-lg border-2'>Sign Up</button></Link>
       </div>
 
     </div>
