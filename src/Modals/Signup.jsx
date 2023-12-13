@@ -190,7 +190,7 @@ function Signup() {
                 By creating an account, you have agreed to the terms of use and our privacy policy
               </p>
             </div>
-            <button
+            <Link to='/dashboard'><button
               onClick={handleSignUp}
               type="submit"
               className={`signup text-white font-semibold py-3 bg-[#186BAD] w-[400px]  rounded-lg ${
@@ -199,7 +199,7 @@ function Signup() {
               disabled={!fullName || !email || !password || !password2}
             >
               Sign up
-            </button>
+            </button></Link>
             <p className="text-[#898A8B] text-center py-5">
               Already have an account? <span className="text-[#186BAD] ml-2"><Link to="/signin">Sign in</Link></span>
             </p>
