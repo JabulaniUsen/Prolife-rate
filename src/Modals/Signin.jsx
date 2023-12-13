@@ -108,14 +108,14 @@ function Signin() {
               <input type="checkbox" name="" id="" required />
               <p className='text-[#186BAD] font-semibold'>Keep me signed in</p>
             </div>
-            <button
+            <Link to='/dashboard'><button
               onClick={handleLogin}
               type="submit"
               className={`signup text-white font-semibold py-3 bg-[#186BAD] w-[400px]  rounded-lg ${!email || !password ? 'opacity-50 cursor-not-allowed' : ''}`}
               disabled={!email || !password}
             >
               Sign in
-            </button>
+            </button></Link>
             <p className='text-[#898A8B] text-center py-5'>Don't have an account? <span className='text-[#186BAD] ml-2'><Link to='/signup'>Sign Up</Link></span></p>
           </div>
         </div>
