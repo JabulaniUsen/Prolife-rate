@@ -55,8 +55,7 @@ function Signup() {
       setFullNameEmpty(!fullName);
       setEmailEmpty(!email);
       setPasswordEmpty(!password);
-      return; 
-      showModal(true)
+      return;
     }
 
     // Check for password match

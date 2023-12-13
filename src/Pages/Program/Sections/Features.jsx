@@ -87,7 +87,7 @@ function Features() {
         src="https://www.youtube.com/embed/vVCakfUchVI?si=7vi8Xd8TkTIb7K_6"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
-              ></iframe>
+      ></iframe>
         <button className='text-white bg-[#186bad] py-3 px-12 rounded-full font-semibold absolute right-[5rem] bottom-10'>Sign Up</button>
       </div>
     </div>

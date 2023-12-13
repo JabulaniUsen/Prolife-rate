@@ -1,59 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../Components/Header';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch, useSelector } from "react-redux";
-import { signInAction } from '../Redux/actions/Auth'
-import { toast } from "react-toastify";
+import { useDispatch, useSelector } from 'react-redux';
+import { signInAction } from '../Redux/actions/Auth';
+import { toast } from 'react-toastify';
 import { clearLoginStatus } from '../Redux/reducers/authReducer';
 
 function Signin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showModal, setShowModal] = useState(false);
-  const [proceedingText, setProceedingText] = useState(false);
   const [isloading, setIsloading] = useState(false);
 
   // New state variables for empty field status and error messages
   const [emailEmpty, setEmailEmpty] = useState(false);
   const [passwordEmpty, setPasswordEmpty] = useState(false);
 
-  const navigate = useNavigate();
+  const history = useHistory(); // Use the useHistory hook for navigation
 
   const dispatch = useDispatch();
   const authSelector = useSelector((state) => state.authenticationSlice);
 
   useEffect(() => {
-    // Check if the button has been clicked
-    if (isloading && authSelector.signingInStatus === "failed") {
+    if (isloading && authSelector.signingInStatus === 'failed') {
       toast.error(`${authSelector.signingInError}`);
       setIsloading(false);
     }
-    // Clear the login status when needed
-    if (authSelector.signingInStatus === "failed" || authSelector.signingInStatus === "completed") {
+    if (authSelector.signingInStatus === 'failed' || authSelector.signingInStatus === 'completed') {
       dispatch(clearLoginStatus());
     }
   }, [isloading, authSelector.signingInStatus, authSelector.signingInError, dispatch]);
 
   useEffect(() => {
-    if (authSelector.signingInStatus === "completed") {
-      //   setIsLoading(false);
-      //   setAuthState(true);
-      //   navigate("/");
-      return;
+    if (authSelector.signingInStatus === 'completed') {
+      // Show the popup modal
+      setShowModal(true);
+      // Set a timer to hide the popup and navigate to the dashboard after 3 seconds
+      setTimeout(() => {
+        setShowModal(false);
+        history.push('/dashboard');
+      }, 3000);
     }
-    // dispatch(clearLoginStatus());
-  }, [authSelector.signingInStatus]);
-
-  useEffect(() => {
-    if (authSelector.signingInStatus === "failed") {
-      toast.error(`${authSelector.signingInError}`);
-      setIsloading(false);
-      return;
-    }
-    dispatch(clearLoginStatus());
-  }, [authSelector.signingInStatus]);
+  }, [authSelector.signingInStatus, history]);
 
   const handleLogin = () => {
     // Check for empty fields
@@ -64,12 +52,15 @@ function Signin() {
     }
 
     // Dispatch the login action
-    dispatch(signInAction({
-      email: email,
-      password: password
-    }));
-    // setIsloading(true);
+    dispatch(
+      signInAction({
+        email: email,
+        password: password,
+      })
+    );
+    setIsloading(true);
   };
+
 
   return (
     <div>
@@ -127,14 +118,14 @@ function Signin() {
         </div>
       </div>
 
-      {/* Popup Modal */}
-      {/* {showModal && (
+      {/* signup successfull */}
+      {showModal && (
         <div className="popup-modal">
-          <FontAwesomeIcon icon={faCheckCircle} className='text-6xl text-[#186BAD] my-2' />
-          <h2 className='text-2xl font-bold'>Welcome back, Buddy!</h2>
-          {proceedingText && <p className='my-3 text-[#186BAD] font-semibold'>Proceeding to Dashboard...</p>}
+          <FontAwesomeIcon icon={faCheckCircle} className="text-6xl text-[#186BAD] my-2" />
+          <h2 className="text-2xl font-bold">Welcome back, Buddy!</h2>
+          <p className="my-3 text-[#186BAD] font-semibold">Proceeding to Dashboard...</p>
         </div>
-      )} */}
+      )}
     </div>
   );
 }
