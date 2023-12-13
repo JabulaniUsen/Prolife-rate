@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInAction } from '../Redux/actions/Auth';
 import { toast } from 'react-toastify';
 import { clearLoginStatus } from '../Redux/reducers/authReducer';
+import Header from '../Components/Header';
 
 function Signin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isloading, setIsloading] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   // New state variables for empty field status and error messages
   const [emailEmpty, setEmailEmpty] = useState(false);
   const [passwordEmpty, setPasswordEmpty] = useState(false);
 
-  const history = useHistory(); // Use the useHistory hook for navigation
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const authSelector = useSelector((state) => state.authenticationSlice);
@@ -38,11 +40,12 @@ function Signin() {
       // Set a timer to hide the popup and navigate to the dashboard after 3 seconds
       setTimeout(() => {
         setShowModal(false);
-        history.push('/dashboard');
+        // Use navigate instead of history
+        navigate('/dashboard');
       }, 3000);
     }
-  }, [authSelector.signingInStatus, history]);
-
+  }, [authSelector.signingInStatus, navigate]);
+  
   const handleLogin = () => {
     // Check for empty fields
     if (!email || !password) {

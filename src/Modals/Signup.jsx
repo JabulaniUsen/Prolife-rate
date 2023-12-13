@@ -19,8 +19,11 @@ function Signup() {
   const [isloading, setIsloading] = useState(false);
   const [fullNameEmpty, setFullNameEmpty] = useState(false);
   const [emailEmpty, setEmailEmpty] = useState(false); // Added state for emailEmpty
-  const [showModal, setShowModal] = useState(false)
-  
+  const [showModal, setShowModal] = useState(false);
+  // New state for redirecting text
+  const [redirectingText, setRedirectingText] = useState(false);
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const authSelector = useSelector((state) => state.authenticationSlice);
@@ -33,14 +36,6 @@ function Signup() {
   }, [authSelector.signingUpStatus]);
 
   useEffect(() => {
-    if (authSelector.signingUpStatus === 'completed') {
-      setSuccessMessage(true); // This variable is not defined, please uncomment if it's supposed to be used
-      return;
-    }
-    // dispatch(clearLoginStatus());
-  }, [authSelector.signingUpStatus]);
-
-  useEffect(() => {
     if (authSelector.signingUpStatus === 'failed') {
       toast.error(`${authSelector.signingUpError}`);
       setIsloading(false);
@@ -48,6 +43,21 @@ function Signup() {
     }
     dispatch(clearSignUpStatus());
   }, [authSelector.signingUpStatus]);
+
+  useEffect(() => {
+    if (authSelector.signingInStatus === 'completed') {
+      // Show the popup modal
+      setShowModal(true);
+      setRedirectingText(true); // Set redirecting text to true
+      // Set a timer to hide the popup and navigate to the dashboard after 3 seconds
+      setTimeout(() => {
+        setShowModal(false);
+        setRedirectingText(false); // Set redirecting text back to false
+        // Use navigate instead of history
+        navigate('/dashboard');
+      }, 3000);
+    }
+  }, [authSelector.signingInStatus, navigate]);
 
   const handleSignUp = () => {
     // Check for empty fields
