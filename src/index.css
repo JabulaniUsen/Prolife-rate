@@ -18,11 +18,7 @@
     background-position: center;
     background-repeat: no-repeat;
 }
-@media (max-width: 768px) {
-  .college {
-    background-image: none;
-}
-}
+
 .college2 {
     background-image: url('../src/Assets/college2.png');
     background-size: contain;
@@ -30,6 +26,14 @@
     background-repeat: no-repeat;
 }
 
+@media (max-width: 768px) {
+  .college {
+    background-image: none;
+  }
+  .college2 {
+    background-image: none;
+  }
+}
 .about-hero {
     background-image: url('./Assets/about-us.png');
     background-size: cover;

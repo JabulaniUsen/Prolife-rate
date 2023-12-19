@@ -5,14 +5,14 @@ import unleash from '../../../Assets/unleash.png'
 
 function Mission() {
   return (
-    <div className='px-10 lg:px-28'>
+    <div className='px-5 lg:px-28'>
         <div className="poppins">
-            <div className="header text-center font-bold leading-10 text-3xl">
-                <h1><span className='text-[#186BAD]'>Proliferate</span> Tutoring is beyond a <br /> business, It's a Vision</h1>
+            <div className="header text-center font-bold lg:leading-10 lg:text-3xl text-xl">
+                <h1><span className='text-[#186BAD]'>Proliferate</span> Tutoring is beyond a business, It's a Vision</h1>
             </div>
 
-            <div className="flex ">
-                <div className="vision flex items-center gap-1 p-8">
+            <div className="flex lg:flex-row flex-col">
+                <div className="vision flex items-center gap-1 lg:p-8 py-8">
                     <img src={vision} alt="" />
                     <div className="">
                         <h1 className='text-[#186bad] my-2 text-2xl font-bold'>Our Vision</h1>
@@ -23,8 +23,8 @@ function Mission() {
                         </p>
                     </div>
                 </div>
-                <div className="mission flex items-center gap-1 p-8">
-                    <img src={mission} alt="" />
+                <div className="mission flex items-center gap-0 lg:p-8 py-8">
+                    <img src={mission} alt="" className='w-[100px]' />
                     <div className="">
                         <h1 className='text-[#186bad] py-2 text-2xl font-bold'>Our Mission</h1>
                         <p>
@@ -37,9 +37,9 @@ function Mission() {
             </div>
         </div>
 
-        <div className="poppins my-28 flex justify-between items-center">
-            <div className="header w-[50%]">
-                <h1 className='text-3xl font-bold py-8 leading-10'>
+        <div className="poppins my-28 flex lg:flex-row flex-col justify-between items-center">
+            <div className="header lg:w-[50%]">
+                <h1 className='lg:text-3xl text-2xl font-bold py-8 lg:leading-10'>
                     Unleash Your <span className='text-[#186bad] '> Academic Potential, </span><br />
                     One session at a time
                 </h1>
