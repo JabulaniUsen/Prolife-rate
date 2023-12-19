@@ -44,49 +44,49 @@ function Hero() {
   return (
     <div className="poppins slider-container">
       <Swiper ref={swiperRef} loop>
-        <div className=" px-10 lg:px-28 py-20 flex  lg:justify-between justify-center flex-col lg:flex-row bg-[#f0f9f8]">
+        <div className=" px-5 lg:px-28 lg:py-20 pt-10 lg:pt-initial flex  lg:justify-between justify-center flex-col lg:flex-row bg-[#f0f9f8]">
           <div className="slide w-[100%] lg:w-[60%]" style={{ color: "#000" }}>
             <h2 className='text-[#D23323] my-8 bg-white p-2 rounded-lg w-[178px] shadow-lg'>Never Stop Learning</h2>
-            <h1 className='font-bold text-4xl leading-snug my-0'>Unlock Your Potential with Proliferate</h1>
-            <h2 className='text-2xl font-semibold mb-5 mt-2' style={{ color: "#5D5A6F" }}>Your Path to Personalized Learning</h2>
-            <p className=' w-[500px] text-[#5D5A6F]  '>Welcome to Proliferate, your gateway to a world of knowledge. Our platform connects you with experienced tutors, interactive virtual classrooms, and a diverse range of subjects to empower your learning journey.</p>
+            <h1 className='font-bold lg:text-4xl text-3xl leading-snug my-0'>Unlock Your Potential with Proliferate</h1>
+            <h2 className='lg:text-2xl font-semibold mb-5 mt-2' style={{ color: "#5D5A6F" }}>Your Path to Personalized Learning</h2>
+            <p className=' lg:w-[500px] text-sm lg:text-base text-[#5D5A6F]'>Welcome to Proliferate, your gateway to a world of knowledge. Our platform connects you with experienced tutors, interactive virtual classrooms, and a diverse range of subjects to empower your learning journey.</p>
             
             <Search/>
             
           </div>
-          <div className=" bg-img lg:w-[50%] w-[80%]">
-            <img src={bgImg1} className='absolute top-[-4.5rem] right-10' alt="" />
-            <img src={sliderImage1} className='absolute bottom-0' alt="" />
+          <div className=" bg-img lg:w-[50%] w-[100%]">
+            <img src={bgImg1} className='absolute top-[-5rem] lg:block hidden right-10' alt="" />
+            <img src={sliderImage1} className='lg:absolute bottom-0' alt="" />
           </div>
         </div>
 
-        <div className=" px-10 lg:px-28 py-20 flex  lg:justify-between justify-center flex-col lg:flex-row bg-[#186bad] ">
+        <div className=" px-5 lg:px-28 lg:py-20 pt-10 lg:pt-initial flex  lg:justify-between justify-center flex-col lg:flex-row bg-[#186bad] ">
           <div className="slide w-[100%] lg:w-[60%]" style={{ color: "#ffff" }}>
             <h2 className='text-[#D23323] my-8 bg-white p-2 rounded-lg w-[178px] shadow-lg'>Never Stop Learning</h2>
-            <h1 className='font-bold text-4xl leading-snug my-0'>Experience Excellence in Education</h1>
-            <h2 className='text-2xl font-semibold mb-5 mt-2'>Expert Tutors, Personalized Guidance</h2>
-            <p className=' w-[500px] ' style={{ color: "#ffff" }}>At Proliferate, our experienced tutors are committed to your success. Whether it's test preparation, subject mastery, or personal growth, our tutors are here to provide personalized guidance for your educational journey.</p>
+            <h1 className='font-bold lg:text-4xl text-3xl leading-snug my-0'>Experience Excellence in Education</h1>
+            <h2 className='lg:text-2xl font-semibold mb-5 mt-2'>Expert Tutors, Personalized Guidance</h2>
+            <p className=' lg:w-[500px] text-sm lg:text-base ' style={{ color: "#ffff" }}>At Proliferate, our experienced tutors are committed to your success. Whether it's test preparation, subject mastery, or personal growth, our tutors are here to provide personalized guidance for your educational journey.</p>
             
             <Search/>
 
           </div>
-          <div className="bg-img lg:w-[50%] w-[80%]">
-            <img src={sliderImage2} className='absolute bottom-0' alt="" />
+          <div className="bg-img lg:w-[50%] w-[100%]">
+            <img src={sliderImage2} className='lg:absolute bottom-0' alt="" />
           </div>
         </div>
 
-        <div className=" px-10 lg:px-28 py-20 flex  lg:justify-between justify-center flex-col lg:flex-row bg-[#186bad]">
+        <div className=" px-5 lg:px-28 lg:py-20 pt-10 lg:pt-initial flex  lg:justify-between justify-center flex-col lg:flex-row bg-[#186bad]">
           <div className="slide w-[100%] lg:w-[60%]" style={{ color: "#ffff" }}>
             <h2 className='text-[#D23323] my-8 bg-white p-2 rounded-lg w-[178px] shadow-lg'>Never Stop Learning</h2>
-            <h1 className='font-bold text-4xl leading-snug my-0'>Unlock Your Potential with Proliferate</h1>
-            <h2 className='text-2xl font-semibold mb-5 mt-2'>Your Path to Personalized Learning</h2>
-            <p className=' w-[500px] ' style={{ color: "#ffff" }}>Welcome to Proliferate, your gateway to a world of knowledge. Our platform connects you with experienced tutors, interactive virtual classrooms, and a diverse range of subjects to empower your learning journey.</p>
+            <h1 className='font-bold lg:text-4xl text-3xl leading-snug my-0'>Unlock Your Potential with Proliferate</h1>
+            <h2 className='lg:text-2xl font-semibold mb-5 mt-2'>Your Path to Personalized Learning</h2>
+            <p className=' lg:w-[500px] text-sm lg:text-base ' style={{ color: "#ffff" }}>Welcome to Proliferate, your gateway to a world of knowledge. Our platform connects you with experienced tutors, interactive virtual classrooms, and a diverse range of subjects to empower your learning journey.</p>
             
             <Search/>
 
           </div>
-          <div className="bg-img lg:w-[50%] w-[80%]">
-            <img src={sliderImage3} className='absolute bottom-0 w-[700px] right-3' alt="" />
+          <div className="bg-img lg:w-[50%] w-[100%]">
+            <img src={sliderImage3} className='lg:absolute bottom-0 w-[700px] right-3' alt="" />
           </div>
         </div>
       </Swiper>

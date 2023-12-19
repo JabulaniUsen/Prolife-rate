@@ -5,9 +5,9 @@ import { faFacebookF, faInstagram, faTwitter, faLinkedin } from '@fortawesome/fr
 
 function Footer() {
   return (
-    <div className='poppins px-10 lg:px-28 py-20 flex justify-between items-start bg-[#204c6c]'>
-      <div className="flex flex-col items-center justify-center gap-4">
-        <div className="logo ">
+    <div className='poppins px-5 lg:px-28 py-20 flex lg:flex-row flex-col justify-between items-start bg-[#204c6c]'>
+      <div className="flex flex-col lg:items-center justify-center lg:gap-4 gap-10">
+        <div className="logo lg:w-[300px] w-[170px]">
           <img src={logo} alt="" />
         </div>
         <div className="socials flex gap-3 items-center">

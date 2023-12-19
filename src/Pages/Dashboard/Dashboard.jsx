@@ -29,6 +29,7 @@ import Messages from './Tabs/Messages';
 import PaymentInfo from './Tabs/PaymentInfo';
 import Reports from './Tabs/Reports';
 import Footer2 from '../../Components/Footer2';
+import { Link } from 'react-router-dom';
 
 // Tabs Component
 const Tabs = ({ tabs, setActiveTab, activeTab }) => {
@@ -106,9 +107,9 @@ const Dashboard = () => {
             isSidebarVisible ? '' : 'hidden'
           }`}
         >
-          <div className="logo py-10 px-10">
+          <Link to='/'><div className="logo py-10 px-10">
             <img src={logo} alt="" />
-          </div>
+          </div></Link>
           <div className=" flex flex-col gap-2 my-20">
             <Tabs tabs={tabs} setActiveTab={setActiveTab} />
           </div>
@@ -165,8 +166,6 @@ const Dashboard = () => {
               <FontAwesomeIcon icon={faChevronDown} />
             </div>
           </div>
-
-
           {tabs[activeTab].contentComponent}
         </div>
 
@@ -177,4 +176,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-

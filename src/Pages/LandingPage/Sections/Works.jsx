@@ -23,10 +23,10 @@ function Works() {
   }, []);
 
   return (
-    <div className='bg-[#f2f1f1] poppins flex flex-col lg:flex-row my-10 py-8 px-10 lg:px-28'>
+    <div className='bg-[#f2f1f1] poppins flex flex-col lg:flex-row my-10 py-8 px-5 lg:px-28'>
 
       <motion.div
-        className="flex flex-col items-center gap-5 p-7 text-center w-[30%]"
+        className="flex flex-col items-center gap-5 p-7 text-center lg:w-[30%]"
         initial={{ opacity: 0, x: -50 }}
         animate={controls}
         transition={{ duration: 0.8 }}
@@ -42,13 +42,13 @@ function Works() {
       </motion.div>
 
       <motion.div
-        className="tutor flex flex-col items-center gap-5 p-7 text-center w-[30%] border-x-4"
+        className="tutor flex flex-col items-center gap-5 p-7 text-center lg:w-[30%] lg:border-x-4"
         initial={{ opacity: 0, x: 50 }}
         animate={controls}
         transition={{ duration: 0.8 }}
       >
         <img src={tutor} className='w-10' alt="" />
-        <h1 className='text-2xl font-bold'>Choose Tutor</h1>
+        <h1 className='text-2xl font-bold '>Choose Tutor</h1>
         <p className='leading-7 text-sm'>
           Find your personal online tutor
           from our wide range of
@@ -58,7 +58,7 @@ function Works() {
       </motion.div>
 
       <motion.div
-        className="learning flex flex-col items-center gap-5 p-7 text-center w-[30%] border-r-4"
+        className="learning flex flex-col items-center gap-5 p-7 text-center lg:w-[30%] border-r-4"
         initial={{ opacity: 0, x: -50 }}
         animate={controls}
         transition={{ duration: 0.8 }}
@@ -73,7 +73,7 @@ function Works() {
       </motion.div>
 
       <motion.div
-        className="evaluate flex flex-col items-center gap-5 p-7 text-center w-[30%]"
+        className="evaluate flex flex-col items-center gap-5 p-7 text-center lg:w-[30%]"
         initial={{ opacity: 0, x: 50 }}
         animate={controls}
         transition={{ duration: 0.8 }}

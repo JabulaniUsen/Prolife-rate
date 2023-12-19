@@ -16,9 +16,10 @@ import { Link } from 'react-router-dom'
 function Category() {
   return (
     <div className='poppins py-20 flex flex-col items-center gap-20 justify-center'>
-        <div className="cat-header">
-            <h1 className=' text-[#186BAD] text-5xl font-bold'>Browse top category </h1>
-            <h3 className='text-2xl font-semibold text-center my-7'>Dive into a World of Knowledge</h3>
+        <div className="cat-header text-center">
+            <h1 className=' text-[#186BAD] lg:text-5xl text-3xl font-bold'>Browse top category </h1>
+            <h3 className='lg:text-2xl font-semibold text-center my-7'>Dive into a World of Knowledge</h3>
+            <a href="#">omor</a>
         </div>
 
         <div className="cats flex flex-wrap justify-center items-center gap-5 px-5">
@@ -136,7 +137,7 @@ function Category() {
 
         </div>
 
-        <div className="more">
+        <div className="more px-11">
             <h2>
                 We have more category & subcategory. <Link to='/program'><span className='text-[#186bad] font-bold text-lg ml-2 cursor-pointer'>Browse All</span></Link>
             </h2>
@@ -144,5 +145,4 @@ function Category() {
     </div>
   )
 }
-// flex flex-wrap justify-center items-center gap-5
 export default Category

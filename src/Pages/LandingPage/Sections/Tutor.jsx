@@ -21,7 +21,7 @@ function Tutor() {
   }, []);
 
   return (
-    <div className='flex justify-between flex-wrap-reverse items-center px-10 lg:px-28 my-28'>
+    <div className='flex justify-between flex-wrap-reverse items-center px-5 lg:px-28 my-28'>
       <motion.div
         className="img lg:w-[50%]"
         initial={{ opacity: 0, x: 50 }}
@@ -38,7 +38,7 @@ function Tutor() {
         transition={{ duration: 0.8 }}
       >
         <div className="header pb-5">
-          <h1 className='font-semibold text-4xl leading-[45px]'>
+          <h1 className='font-semibold lg:text-4xl text-2xl lg:leading-[45px]'>
             Want to share <br /> your <span className='text-[#186BAD] font-semibold'>Knowledge? </span>
           </h1>
         </div>
@@ -53,7 +53,7 @@ function Tutor() {
 
         <Link to='/signup'>
           <motion.button
-            className='rounded-xl mt-8 p-4 bg-[#186bad] text-white font-semibold'
+            className='rounded-xl my-8 lg:p-4 p-3 bg-[#186bad] text-white font-semibold'
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

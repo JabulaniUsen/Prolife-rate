@@ -34,7 +34,7 @@ function Tools() {
 
   return (
     <div className="">
-      <div className='flex justify-between items-center flex-wrap px-10 lg:px-28'>
+      <div className='flex justify-between items-center flex-wrap px-5 lg:px-28'>
         <motion.div
           className="text poppins lg:w-[40%]"
           initial={{ opacity: 0, x: -50 }}
@@ -42,7 +42,7 @@ function Tools() {
           transition={{ duration: 0.2, delay: 0.2 }}
         >
           <div className="header pb-5">
-            <h1 className='font-semibold text-4xl leading-[45px]'>
+            <h1 className='font-semibold lg:text-4xl text-2xl lg:leading-[45px]'>
               <span className='text-[#186BAD] font-semibold'>Tools </span> For Teachers <br /> And Learners
             </h1>
           </div>
@@ -67,7 +67,7 @@ function Tools() {
         </motion.div>
       </div>
 
-      <div className='flex justify-between flex-wrap-reverse items-center px-10 lg:px-28 my-28'>
+      <div className='flex justify-between flex-wrap-reverse items-center px-5 lg:px-28 my-28'>
         <motion.div
           className="image lg:w-[50%]"
           initial={{ opacity: 0, x: -50 }}
@@ -82,7 +82,7 @@ function Tools() {
           animate={controlsRight}
         >
           <div className="header pb-5">
-            <h1 className='font-semibold text-4xl leading-[45px]'>
+            <h1 className='font-semibold lg:text-4xl text-2xl lg:leading-[45px]'>
               Our <span className='text-[#186BAD] font-semibold'>Offer </span> are <br /> child centered
             </h1>
           </div>
