@@ -89,9 +89,9 @@ function Signup() {
   return (
     <div>
       <Header />
-      <div className="px-10 lg:px-28 my-16">
+      <div className="px-5 lg:px-28 my-16">
         <div className="poppins header text-center">
-          <h1 className="text-3xl">Hey there, Sign Up!</h1>
+          <h1 className="lg:text-3xl text-2xl">Hey there, Sign Up!</h1>
         </div>
         <div className="poppins m-auto flex items-center justify-center py-10">
           <div className="form">
@@ -101,7 +101,7 @@ function Signup() {
                 type="text"
                 name=""
                 placeholder="Full Name"
-                className={`bg-[#F2F1F1] p-3 w-[400px] outline-none rounded-sm ${fullNameEmpty ? 'border-red-500' : ''}`}
+                className={`bg-[#F2F1F1] p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${fullNameEmpty ? 'border-red-500' : ''}`}
                 value={fullName}
                 onChange={(e) => {
                   setFullName(e.target.value);
@@ -117,7 +117,7 @@ function Signup() {
                 type="email"
                 name=""
                 placeholder="Email"
-                className={`bg-[#F2F1F1] p-3 w-[400px] outline-none rounded-sm ${emailEmpty ? 'border-red-500' : ''}`}
+                className={`bg-[#F2F1F1] p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${emailEmpty ? 'border-red-500' : ''}`}
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -136,7 +136,7 @@ function Signup() {
                   type={passwordVisible ? 'text' : 'password'}
                   name=""
                   placeholder="Password"
-                  className={`bg-[#F2F1F1] p-3 w-[400px] outline-none rounded-sm ${passwordEmpty ? 'border-red-500' : ''}`}
+                  className={`bg-[#F2F1F1] p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${passwordEmpty ? 'border-red-500' : ''}`}
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);
@@ -163,7 +163,7 @@ function Signup() {
                   type={passwordVisible ? 'text' : 'password'}
                   name=""
                   placeholder="Confirm Password"
-                  className={`bg-[#F2F1F1] p-3 w-[400px] outline-none rounded-sm ${!passwordMatch ? 'border-red-500' : ''}`}
+                  className={`bg-[#F2F1F1] p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${!passwordMatch ? 'border-red-500' : ''}`}
                   value={password2}
                   onChange={(e) => {
                     setPassword2(e.target.value);
@@ -184,7 +184,7 @@ function Signup() {
             </div>
             {/* Passwords */}
 
-            <div className="w-[400px] flex gap-3 items-baseline my-7">
+            <div className="lg:w-[400px] w-[300px] flex gap-3 items-baseline my-7">
               <input type="checkbox" name="" id="" required />
               <p className="text-[#898A8B] text-xs">
                 By creating an account, you have agreed to the terms of use and our privacy policy
@@ -193,7 +193,7 @@ function Signup() {
             <Link to='/dashboard'><button
               onClick={handleSignUp}
               type="submit"
-              className={`signup text-white font-semibold py-3 bg-[#186BAD] w-[400px]  rounded-lg ${
+              className={`signup text-white font-semibold py-3 bg-[#186BAD] lg:w-[400px] w-[300px]  rounded-lg ${
                 !fullName || !email || !password || !password2 ? 'opacity-50 cursor-not-allowed' : ''
               }`}
               disabled={!fullName || !email || !password || !password2}

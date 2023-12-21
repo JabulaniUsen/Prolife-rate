@@ -4,81 +4,81 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'rec
 const data = [
  {
     name: 'Jan',
-    value1: 28,
+   //  value1: 28,
     value2: 20,
-    value3: 36,
+   //  value3: 36,
  },
  {
     name: 'Feb',
-    value1: 20,
+   //  value1: 20,
     value2: 29,
-    value3: 32,
+   //  value3: 32,
  },
  {
     name: 'Mar',
-    value1: 30,
+   //  value1: 30,
     value2: 82,
-    value3: 24,
+   //  value3: 24,
  },
  {
     name: 'Apr',
-    value1: 100,
+   //  value1: 100,
     value2: 60,
-    value3: 32,
+   //  value3: 32,
  },
  {
     name: 'May',
-    value1: 90,
+   //  value1: 90,
     value2: 80,
-    value3: 20,
+   //  value3: 20,
  },
- {
-    name: 'Jun',
-    value1: 78,
-    value2: 60,
-    value3: 20,
- },
- {
-    name: 'Jul',
-    value1: 90,
-    value2: 60,
-    value3: 37,
- },
- {
-    name: 'Aug',
-    value1: 81,
-    value2: 40,
-    value3: 30,
- },
- {
-    name: 'Sep',
-    value1: 89,
-    value2: 23,
-    value3: 30,
- },
- {
-    name: 'Oct',
-    value1: 90,
-    value2: 23,
-    value3: 32,
- },
- {
-    name: 'Nov',
-    value1: 10,
-    value2: 23,
-    value3: 30,
- },
- {
-    name: 'Dec',
-    value1: 90,
-    value2: 20,
-    value3: 32,
- },
+//  {
+//     name: 'Jun',
+//     value1: 78,
+//     value2: 60,
+//     value3: 20,
+//  },
+//  {
+//     name: 'Jul',
+//     value1: 90,
+//     value2: 60,
+//     value3: 37,
+//  },
+//  {
+//     name: 'Aug',
+//     value1: 81,
+//     value2: 40,
+//     value3: 30,
+//  },
+//  {
+//     name: 'Sep',
+//     value1: 89,
+//     value2: 23,
+//     value3: 30,
+//  },
+//  {
+//     name: 'Oct',
+//     value1: 90,
+//     value2: 23,
+//     value3: 32,
+//  },
+//  {
+//     name: 'Nov',
+//     value1: 10,
+//     value2: 23,
+//     value3: 30,
+//  },
+//  {
+//     name: 'Dec',
+//     value1: 90,
+//     value2: 20,
+//     value3: 32,
+//  },
 ];
 
 const StackedBarChart = () => (
  <BarChart
-    width={600}
+    width={400}
     height={350}
     data={data}
     margin={{

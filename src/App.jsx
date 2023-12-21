@@ -6,9 +6,9 @@ import Contact from './Pages/Contact/Contact'
 import Tutor from './Pages/Tutor/Tutor'
 import PricingPage from './Pages/PricingPage/PricingPage';
 import Program from './Pages/Program/Program';
-import Register from './Modals/Register';
-import Signup from './Modals/Signup';
-import Signin from './Modals/Signin';
+import Register from './SignupAsStudents/Register';
+import Signin from './SignupAsStudents/Signin';
+import Signup from './SignupAsStudents/Signup';
 import TutorDetail from './Pages/TutorDetail/TutorDetail';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import PaymentPage from './Pages/Payment/PaymentPage';
@@ -19,6 +19,10 @@ import store from "./Redux/store"
 import { Provider as ReduxProvider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import TutorDashboard from './Pages/Dashboard2/TutorDashboard';
+import Signup2 from './SignupAsTutor/Signup2';
+import BuildProfile from './SignupAsTutor/BuildProfile';
+
 
 let persistor = persistStore(store);
 
@@ -41,6 +45,9 @@ function App() {
               <Route path='/tutordetail' element={<TutorDetail/>} />
               <Route path='/paymentpage' element={<PaymentPage/>} />
               <Route path='/dashboard' element={<Dashboard/>} />
+              <Route path='/tutordashboard' element={<TutorDashboard/>} />
+              <Route path='/signupastutor' element={<Signup2/>} />
+              <Route path='/buildprofile' element={<BuildProfile/>} />
             </Routes>
           </BrowserRouter>
           </PersistGate>

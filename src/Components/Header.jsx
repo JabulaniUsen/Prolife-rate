@@ -17,7 +17,7 @@ function Header() {
   };
 
   return (
-    <div className='poppins flex justify-between items-center px-10 lg:px-28 py-5 z-30 '>
+    <div className='poppins flex justify-between items-center px-5 lg:px-28 py-5 z-30 '>
       <div className="logo lg:w-[250px] w-[120px]">
         <Link to='/'>
           <img src={logo} alt="Logo" />
@@ -36,7 +36,7 @@ function Header() {
       <div className="lg:hidden">
         <FontAwesomeIcon
           icon={faBars}
-          className="text-2xl cursor-pointer"
+          className="text-xl cursor-pointer"
           onClick={handleMenuToggle}
         />
       </div>

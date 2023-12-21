@@ -19,7 +19,6 @@ function Category() {
         <div className="cat-header text-center">
             <h1 className=' text-[#186BAD] lg:text-5xl text-3xl font-bold'>Browse top category </h1>
             <h3 className='lg:text-2xl font-semibold text-center my-7'>Dive into a World of Knowledge</h3>
-            <a href="#">omor</a>
         </div>
 
         <div className="cats flex flex-wrap justify-center items-center gap-5 px-5">

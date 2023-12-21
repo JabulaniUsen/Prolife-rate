@@ -152,10 +152,10 @@ const Tutors = () => {
 
 
   return (
-    <div className='poppins my-10 flex flex-col px-10 lg:px-28'>
+    <div className='poppins my-10 flex flex-col px-5 lg:px-28'>
     
-    <div className="search px-10 lg:px-28 m-auto">
-        <div className='border-2 flex justify-center pl-7 rounded-xl w-[90%]'>
+    <div className="search px-0 lg:px-28 m-auto">
+        <div className='border-2 flex justify-center lg:pl-7 pl-5 rounded-xl w-[90%]'>
             <select id="dropdown"  className='text-slate-400' value={selectedOption} onChange={handleDropdownChange}>
                 <option value="">Subject</option>
                 <option value="option1">Kindergarten</option>
@@ -194,7 +194,7 @@ const Tutors = () => {
               <Link to='/tutordetail/#'>
                 <ul className='flex flex-row flex-wrap justify-between gap-0'>
                   {currentTutors.map((tutor) => (
-                    <li key={tutor.id} className='w-[270px] hover:shadow-md p-5'>
+                    <li key={tutor.id} className='lg:w-[270px] hover:shadow-md p-5'>
                       <img src={tutor.image} alt="" />
                       <h3 className='text-[#186BAD] mt-2 text-lg'>{tutor.name}</h3>
                       <small>{tutor.course}</small>

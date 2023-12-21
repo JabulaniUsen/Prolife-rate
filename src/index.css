@@ -195,20 +195,16 @@ input {
 }
 
 
-
-/* spin animation */
-
-.loading-spinner {
-  border: 8px solid rgba(0, 0, 0, 0.1);
-  border-top: 8px solid #3498db; /* Change the color as desired */
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin: 20px auto;
+/* For WebKit browsers (Chrome, Safari) */
+.waitingRoom::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.waitingRoom::-webkit-scrollbar-thumb {
+  background-color: #186bad; 
+  border-radius: 4px; 
+}
+
+.waitingRoom::-webkit-scrollbar-track {
+  background-color: #f0f7ff; 
 }

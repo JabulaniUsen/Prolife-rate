@@ -43,6 +43,7 @@ function Hero() {
 
   return (
     <div className="poppins slider-container">
+      <a href="">omor</a>
       <Swiper ref={swiperRef} loop>
         <div className=" px-5 lg:px-28 lg:py-20 pt-10 lg:pt-initial flex  lg:justify-between justify-center flex-col lg:flex-row bg-[#f0f9f8]">
           <div className="slide w-[100%] lg:w-[60%]" style={{ color: "#000" }}>

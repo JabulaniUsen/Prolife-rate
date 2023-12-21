@@ -68,18 +68,18 @@ function Signin() {
   return (
     <div>
       <Header />
-      <div className="px-10 lg:px-28 my-16">
+      <div className="lg:px-28 px-5  my-16">
         <div className="poppins header text-center">
-          <h1 className='text-3xl'>Hi, Welcome back!</h1>
+          <h1 className='lg:text-3xl text-2xl'>Hi, Welcome back!</h1>
         </div>
         <div className="poppins m-auto flex items-center justify-center py-10">
-          <div className='form'>
+          <div className='form lg:w-min w-[350px]'>
             <div className='mb-3'>
               <p className='text-[#186BAD] text-sm mb-1 font-semibold'>Email</p>
               <input
                 type="email"
                 placeholder='Email'
-                className={`bg-[#F2F1F1] p-3 w-[400px] outline-none rounded-sm ${emailEmpty ? 'border-red-500' : ''}`}
+                className={`bg-[#F2F1F1] p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${emailEmpty ? 'border-red-500' : ''}`}
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -94,7 +94,7 @@ function Signin() {
               <input
                 type="password"
                 placeholder='Password'
-                className={`bg-[#F2F1F1] p-3 w-[400px] outline-none rounded-sm ${passwordEmpty ? 'border-red-500' : ''}`}
+                className={`bg-[#F2F1F1] p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${passwordEmpty ? 'border-red-500' : ''}`}
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
@@ -104,14 +104,14 @@ function Signin() {
               />
               {passwordEmpty && <p className='text-red-500 text-xs mt-1'>This must not be empty</p>}
             </div>
-            <div className="w-[400px] flex gap-3 items-baseline my-7" >
+            <div className="lg:w-[400px] w-[300px] flex gap-3 items-baseline my-7" >
               <input type="checkbox" name="" id="" required />
               <p className='text-[#186BAD] font-semibold'>Keep me signed in</p>
             </div>
             <Link to='/dashboard'><button
               onClick={handleLogin}
               type="submit"
-              className={`signup text-white font-semibold py-3 bg-[#186BAD] w-[400px]  rounded-lg ${!email || !password ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`signup text-white font-semibold py-3 bg-[#186BAD] lg:w-[400px] w-full rounded-lg ${!email || !password ? 'opacity-50 cursor-not-allowed' : ''}`}
               disabled={!email || !password}
             >
               Sign in

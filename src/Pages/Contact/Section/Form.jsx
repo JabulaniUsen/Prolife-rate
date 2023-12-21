@@ -26,14 +26,14 @@ function Form() {
   };
 
   return (
-    <div className='flex flex-wrap justify-center poppins px-10 lg:px-28 my-28'>
-      <div className="text w-[50%]">
+    <div className='flex flex-wrap justify-center poppins px-5 lg:px-28 my-28'>
+      <div className="text lg:w-[50%]">
         <div className="header py-6">
           <h3 className='text-[#186BAD]'>Contact Us</h3>
-          <h1 className='text-3xl font-semibold'>Get in Touch with Us</h1>
+          <h1 className='lg:text-3xl text-2xl font-semibold'>Get in Touch with Us</h1>
         </div>
         <div className="texts">
-          <p className='w-[450px] text-justify'>
+          <p className='lg:w-[450px] text-justify'>
             Discover Proliferate.AI – your gateway to innovative education! 
             Our platform offers expert-curated courses for every learner, 
             from beginner to pro. Join a vibrant community of over 20,000 
@@ -52,8 +52,8 @@ function Form() {
           </div>
         </div>
       </div>
-      <div className="shadow-lg p-10">
-        <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+      <div className="shadow-lg p-5">
+        <form onSubmit={handleSubmit} className='flex flex-col gap-4 lg:w-[400px] w-[300px]'>
           <input type="text" id="name" placeholder='Your Name' className='bg-[#F2F1F1] rounded-lg p-3 px-4 outline-none'  required/>
           <input type="email" id="email" placeholder='Your Email' name="" className='bg-[#F2F1F1] rounded-lg p-3 px-4 outline-none'  required/>
           <input type="number" id="phone" placeholder='Your Phone Number' name="" className='bg-[#F2F1F1] rounded-lg p-3 px-4 outline-none'  required/>
