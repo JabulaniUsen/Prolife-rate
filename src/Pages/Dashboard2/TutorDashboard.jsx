@@ -103,7 +103,7 @@ const TutorDashboard = () => {
     <div className="">
       <div className={`flex w-[20%] ${isSidebarVisible ? '' : 'sidebar-hidden'}`}>
         <div
-          className={`sideBar bg-[#2977B5] h-[100%] flex flex-col items-center px-5 ${
+          className={`sideBar bg-[#2977B5] h-[100%] flex flex-col items-center px-2 ${
             isSidebarVisible ? '' : 'hidden'
           }`}
         >

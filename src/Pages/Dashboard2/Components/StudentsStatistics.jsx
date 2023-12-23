@@ -70,7 +70,7 @@ const StudentStatisticsChart = () => {
         </div>
         <div className="">
           <button className='text-[#2E3A59] text-lg mx-5' onClick={() => handleChangeMonth(-1)}><FontAwesomeIcon icon={faAngleLeft} /></button>
-          <span className='text-[#2E3A59] '>{getMonthAbbreviation(selectedMonth)} {selectedYear}</span>
+          <span className='text-[#2E3A59]'>{getMonthAbbreviation(selectedMonth)} {selectedYear}</span>
           <button className='text-[#2E3A59] text-lg mx-5' onClick={() => handleChangeMonth(1)}><FontAwesomeIcon icon={faChevronRight} /></button>
         </div>
       </div>
