@@ -11,14 +11,14 @@ function UpcomingActivities() {
     ];
 
     return (
-        <div className='upcomingActivities w-[400px] h-[430px] my-6 rounded-2xl shadow-xl'>
-            <div className="m-6">
+        <div className='upcomingActivities waitingRoom w-[400px] h-[430px] my-6 rounded-2xl shadow-xl'>
+            <div className="m-6 ">
                 <div className="flex justify-between pt-6">
                     <h2 className='text-lg jost font-semibold'>Upcoming Activities</h2>
                     <h2 className=' jost font-semibold cursor-pointer text-[#186bad]'>See all</h2>
                 </div>
                 {activities.map((item, index) => (
-                    <div className="class flex gap-3 bg-[#f0f7ff] my-3 p-3 rounded-lg" key={index}>
+                    <div className=" class flex gap-3 bg-[#f0f7ff] my-3 p-3 rounded-lg" key={index}>
 
                         <p className="num text-white bg-[#186bad] flex items-center justify-center rounded-xl jost w-[3rem] h-[3rem] text-xl">{item.number}</p>
 

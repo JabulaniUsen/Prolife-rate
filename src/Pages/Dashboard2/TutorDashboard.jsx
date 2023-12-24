@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
-import menu from '../../Assets/menu.png';
-import user from '../../Assets/user.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBell,
-  faCartShopping,
-  faChevronDown,
-  faMagnifyingGlass,
-  faRightFromBracket,
-} from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faAngleRight, faBell, faChevronDown, faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../Assets/logo2.png';
 import home from './Icons/home.png';
 import teacher from './Icons/teacher.png';
@@ -19,6 +11,7 @@ import messages from './Icons/ChatBubble.png';
 import refer from './Icons/refer.png';
 import support from './Icons/support.png';
 import setting from './Icons/settings.png';
+import user from '../Dashboard2/Icons/user.png'
 
 // Import Tab Components
 import Classes from './Tabs/Classes';
@@ -30,6 +23,11 @@ import PaymentInfo from './Tabs/PaymentInfo';
 import Reports from './Tabs/Reports';
 import Footer2 from '../../Components/Footer2';
 import { Link } from 'react-router-dom';
+
+const getMonthAbbreviation2 = (month) => {
+  const monthsAbbreviation2 = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return monthsAbbreviation2[month - 1];
+};
 
 // Tabs Component
 const Tabs = ({ tabs, setActiveTab, activeTab }) => {
@@ -44,7 +42,7 @@ const Tabs = ({ tabs, setActiveTab, activeTab }) => {
               ? 'active hover:bg-[#509cdb]'
               : ' flex gap-2 items-center justify-start text-white bg-[#186bad] w-[170px] py-3 text-sm px-5 hover:bg-[#509cdb] rounded'
           }
-        >
+        > 
           {tab.label}
         </button>
       ))}
@@ -54,13 +52,8 @@ const Tabs = ({ tabs, setActiveTab, activeTab }) => {
 
 const TutorDashboard = () => {
   const [activeTab, setActiveTab] = useState(0);
-  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 
-  const toggleSidebar = () => {
-    setIsSidebarVisible(!isSidebarVisible);
-  };
-
-  const tabs = [
+    const tabs = [
       {
         label: 'Dashboard',
         contentComponent: <Home/>,
@@ -72,44 +65,69 @@ const TutorDashboard = () => {
         img: home
       },
       {
-          label: 'Assignments',
-          contentComponent: <Assignment />,
-          img: teacher
+        label: 'Assignments',
+        contentComponent: <Assignment />,
+        img: teacher
       },
       {
-          label: 'Payment Info',
-          contentComponent: <PaymentInfo />,
-          img: bank
+        label: 'Payment Info',
+        contentComponent: <PaymentInfo />,
+        img: bank
       },
       {
-          label: 'Settings and profile',
-          contentComponent: <Settings />,
-          img: settings
+        label: 'Settings and profile',
+        contentComponent: <Settings />,
+        img: settings
       },
       {
-          label: 'Reports',
-          contentComponent: <Reports />,
-          img: report
+        label: 'Reports',
+        contentComponent: <Reports />,
+        img: report
       },
       {
-          label: 'Messages',
-          contentComponent: <Messages />,
-          img: messages
-      },
-      
+        label: 'Messages',
+        contentComponent: <Messages />,
+        img: messages
+      }, 
     ];
+  
+
+  const [currentMonth2, setCurrentMonth2] = useState(1); // Initial month
+  const [currentYear2, setCurrentYear2] = useState(2023); // Initial year
+
+  const handleNextMonth2 = () => {
+    if (currentMonth2 === 12) {
+      setCurrentMonth2(1);
+      setCurrentYear2((prevYear) => prevYear + 1);
+    } else {
+      setCurrentMonth2((prevMonth) => prevMonth + 1);
+    }
+  };
+
+  const handlePrevMonth2 = () => {
+    if (currentMonth2 === 1) {
+      setCurrentMonth2(12);
+      setCurrentYear2((prevYear) => prevYear - 1);
+    } else {
+      setCurrentMonth2((prevMonth) => prevMonth - 1);
+    }
+  };
+
+  const formatDate = () => {
+    const formattedMonth = currentMonth2 < 10 ? `0${currentMonth2}` : `${currentMonth2}`;
+    return `${getMonthAbbreviation2(currentMonth2)} ${formattedMonth}`;
+  };
+  
 
   return (
     <div className="">
-      <div className={`flex w-[20%] ${isSidebarVisible ? '' : 'sidebar-hidden'}`}>
-        <div
-          className={`sideBar bg-[#2977B5] h-[100%] flex flex-col items-center px-2 ${
-            isSidebarVisible ? '' : 'hidden'
-          }`}
-        >
-          <Link to='/'><div className="logo py-10 px-10">
-            <img src={logo} alt="" />
-          </div></Link>
+      <div className='flex w-[20%] sidebar-hidden'>
+        <div className="sideBar bg-[#2977B5] h-[100%] flex flex-col items-center px-2">
+          <Link to='/'>
+            <div className="logo py-10 px-10">
+              <img src={logo} alt="" />
+            </div>
+          </Link>
           <div className=" flex flex-col gap-2 my-20">
             <Tabs tabs={tabs} setActiveTab={setActiveTab} />
           </div>
@@ -138,39 +156,44 @@ const TutorDashboard = () => {
           </div>
         </div>
 
-        
-
         <div className="body px-[20px]">
-          <div className={`header flex justify-between p-10 w-[1100px] bg-white items-center ${isSidebarVisible ? '' : 'sidebar-hidden'}`}>
-            <div className="menu" onClick={toggleSidebar}>
-              <img src={menu} className="cursor-pointer" alt="" />
+          <div className='header flex justify-end gap-3 pt-10 w-[1100px] bg-white items-center sidebar-hidden'>
+            <div
+              style={{ textAlign: 'right', marginBottom: '10px' }}
+              className='bg-[#57C1F2] p-2 rounded-2xl'
+            >
+              <button onClick={handlePrevMonth2} className='text-[#57C1F2] bg-white rounded-full p-1 px-3 mx-1'>
+                <FontAwesomeIcon icon={faAngleLeft} />
+              </button>
+              <span style={{ margin: '0 10px' }} className='text-white font-semibold'>
+                {`${getMonthAbbreviation2(currentMonth2)} ${currentYear2}`}
+              </span>
+              <button onClick={handleNextMonth2} className='text-[#57C1F2] bg-white rounded-full p-1 px-3 mx-1'>
+                <FontAwesomeIcon icon={faAngleRight} />
+              </button>
             </div>
-            <div className="div w-[400px]">
-              <FontAwesomeIcon icon={faMagnifyingGlass} className="text-slate-400 mx-3" />
-              <input type="text" placeholder="Search anything" />
+
+            <div className="div w-[200px] border-[2px] rounded-2xl flex items-center gap-2 p-2">
+              <FontAwesomeIcon icon={faMagnifyingGlass} className="text-slate-400 text-sm" />
+              <input type="text" placeholder="Search" className='text-sm' />
             </div>
-            <div className="">
-              <button className="bg-[#186bad] py-3 px-6 text-white rounded-lg text-sm">+ Add Student</button>
-            </div>
+
             <div className="relative">
-              <span className="absolute text-white bg-[#186bad] p-[0,5px] px-[5.5px] rounded-full text-[11px] top-[-5px] right-[-6px]">9</span>
-              <FontAwesomeIcon icon={faBell} className="text-2xl text-[#56606D]" />
+              <span className="absolute border-white border-[2px] bg-[#186bad] p-[4.5px] rounded-full top-[-2px] right-[0px]"></span>
+              <FontAwesomeIcon icon={faBell} className="text-2xl text-[#979797]" />
             </div>
-            <FontAwesomeIcon icon={faCartShopping} className="text-2xl text-[#56606D]" />
-            <div className="user flex items-center gap-2">
+
+            <div className="user flex items-center gap-1">
               <img src={user} alt="" />
-              <div className="">
-                <h2>Carl Esquer</h2>
-                <p className="text-[#56606d] text-sm">Level 3</p>
-              </div>
-              <FontAwesomeIcon icon={faChevronDown} />
+              <FontAwesomeIcon icon={faChevronDown} className='text-sm' />
             </div>
+
           </div>
           {tabs[activeTab].contentComponent}
         </div>
 
       </div>
-        <Footer2/>
+      <Footer2 />
     </div>
   );
 };

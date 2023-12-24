@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import StackedBarChart from '../Components/StackedBarChart';
 import UpcomingActivities from '../Components/UpcomingActivities';
 import ClassProgress from '../Components/ClassProgress';
+import LineChart from '../Components/LineGraph';
+import WaitingRoom from '../Components/WaitingRoom';
+import Documents from '../Components/Documents';
 
 
 function Home() {
@@ -21,16 +24,24 @@ function Home() {
       </div>
       <div className="flex">
         <div className="rounded-xl my-7 shadow-xl">
-
-        {/* Student Statistics */}
-        {/* <StudentStatisticsChart data={exampleData} date={currentDate} /> */}
-        <StackedBarChart />
+          <StackedBarChart />
         </div>
         <div className="classProgress">
           <ClassProgress/>
         </div>
         <div className="upcomingActivities">
           <UpcomingActivities/>
+        </div>
+      </div>
+      <div className="flex ">
+        <div className="rounded-xl">
+          <LineChart/>
+        </div>
+        <div className="classProgress">
+          <WaitingRoom/>
+        </div>
+        <div className="upcomingActivities">
+          <Documents/>
         </div>
       </div>
     </div>

@@ -11,8 +11,8 @@ function ClassProgress() {
   ];
 
   return (
-    <div className='classProgress w-[300px] h-[430px] overflow-y-scroll m-6 rounded-2xl shadow-xl'>
-      <div className="m-6">
+    <div className='classProgress waitingRoom w-[300px] h-[430px] overflow-y-scroll m-6 rounded-2xl shadow-xl'>
+      <div className="m-6 ">
         <h2 className='pb-4 jost font-bold'>Class Progress</h2>
         {room.map((item, index) => (
         <div className="class" key={index}>
@@ -21,7 +21,7 @@ function ClassProgress() {
                     <h3 className='font-bold'>{item.class}</h3>
                     <p className='text-[#9e9e9e] text-sm'>{item.desc}</p>
                 </div>
-                <CircularProgressBar />
+                {/* <CircularProgressBar /> */}
             </div>
         </div>
         ))}

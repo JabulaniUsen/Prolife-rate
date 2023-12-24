@@ -140,7 +140,7 @@ function BuildProfile() {
                 accept="image/*"
                 />
                 <div
-                className="lg:w-[400px] w-[300px] h-[150px] border-dashed border-2 border-gray-300 flex items-center justify-center"
+                className="lg:w-[450px] w-[300px] h-[150px] border-dashed border-2 border-gray-300 flex items-center justify-center"
                 // style={{ maxWidth: '400px', maxHeight: '400px' }}
                 >
                 <p className="text-gray-500">Drop image here or click to upload</p>
@@ -153,7 +153,7 @@ function BuildProfile() {
                 type="text"
                 name=""
                 placeholder="Write something about yourself"
-                className={`bg-[#F2F1F1] p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${fullNameEmpty ? 'border-red-500' : ''}`}
+                className={`bg-[#F2F1F1] p-3 lg:w-[450px] w-[300px] outline-none rounded-sm ${fullNameEmpty ? 'border-red-500' : ''}`}
                 value={fullName}
                 required
               />
@@ -164,7 +164,7 @@ function BuildProfile() {
                 <input
                     type="text"
                     name=""
-                    className={`bg-[#F2F1F1] p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${fullNameEmpty ? 'border-red-500' : ''}`}
+                    className={`bg-[#F2F1F1] p-3 lg:w-[450px] w-[300px] outline-none rounded-sm ${fullNameEmpty ? 'border-red-500' : ''}`}
                     value={fullName}
                     onChange={(e) => {
                     setFullName(e.target.value);
@@ -186,7 +186,7 @@ function BuildProfile() {
                 <input
                     type="text"
                     name=""
-                    className={`bg-[#F2F1F1] p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${fullNameEmpty ? 'border-red-500' : ''}`}
+                    className={`bg-[#F2F1F1] p-3 lg:w-[450px] w-[300px] outline-none rounded-sm ${fullNameEmpty ? 'border-red-500' : ''}`}
                     value={fullName}
                     onChange={(e) => {
                     setFullName(e.target.value);
@@ -209,16 +209,16 @@ function BuildProfile() {
                 <input
                   type='number'
                   name=""
-                  className={`bg-[#F2F1F1] p-3 lg:w-[400px] w-[300px] outline-none rounded-sm }`}
+                  className={`bg-[#F2F1F1] p-3 lg:w-[450px] w-[300px] outline-none rounded-sm }`}
                   required
                 />
               </div>
             </div>
 
-            <div className="lg:w-[400px] w-[300px]gap-3 items-baseline my-7 flex flex-col">
+            <div className="lg:w-[450px] w-[300px]gap-3 items-baseline my-7 flex flex-col">
                 <p className="text-[#186BAD] text-lg mb-1 font-semibold">Availability</p>
                 <p className="text-[#186BAD] text-sm mb-1">Available Days</p>
-                <div className="poppins flex gap-3 flex-wrap">
+                <div className="poppins grid grid-cols-3 gap-3">
                     <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Mondays" id="" /> <p className='font-bold text-sm'>Mondays</p></div>
                     <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Tuesdays" id="" /> <p className='font-bold text-sm'>Tuesdays</p></div>
                     <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Wednesdays" id="" /> <p className='font-bold text-sm'>Wednesdays</p></div>
@@ -229,26 +229,35 @@ function BuildProfile() {
                 </div>
             </div>
 
-            <div className="lg:w-[400px] w-[300px]gap-3 items-baseline my-7 flex flex-col">
+            <div className="lg:w-[450px] w-[300px] gap-3 items-baseline my-7 flex flex-col">
                 <p className="text-[#186BAD] text-sm mb-1">Available Time</p>
-                <div className="poppins flex gap-3 flex-wrap">
-                    <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Mondays" id="" /> <p className='font-bold text-sm'>Mondays</p></div>
-                    <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Tuesdays" id="" /> <p className='font-bold text-sm'>Tuesdays</p></div>
-                    <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Wednesdays" id="" /> <p className='font-bold text-sm'>Wednesdays</p></div>
-                    <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Thursdays" id="" /> <p className='font-bold text-sm'>Thursdays</p></div>
-                    <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Fridays" id="" /> <p className='font-bold text-sm'>Fridays</p></div>
-                    <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Saturdays" id="" /> <p className='font-bold text-sm'>Saturdays</p></div>
-                    <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Sundays" id="" /> <p className='font-bold text-sm'>Sundays</p></div>
-                    <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Mondays" id="" /> <p className='font-bold text-sm'>Mondays</p></div>
-                    <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Tuesdays" id="" /> <p className='font-bold text-sm'>Tuesdays</p></div>
-                    <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Wednesdays" id="" /> <p className='font-bold text-sm'>Wednesdays</p></div>
-                    <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Thursdays" id="" /> <p className='font-bold text-sm'>Thursdays</p></div>
-                    <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Fridays" id="" /> <p className='font-bold text-sm'>Fridays</p></div>
-                    <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Saturdays" id="" /> <p className='font-bold text-sm'>Saturdays</p></div>
-                    <div className='bg-[#d9d9d9] p-2 rounded-xl flex gap-3'><input type="checkbox" name="Sundays" id="" /> <p className='font-bold text-sm'>Sundays</p></div>
+                <div className="poppins flex flex-wrap">
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>01:00 to 02:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>02:00 to 03:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>03:00 to 04:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>04:00 to 05:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>05:00 to 06:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>06:00 to 07:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>07:00 to 08:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>08:00 to 09:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>09:00 to 10:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>10:00 to 11:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>11:00 to 12:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>12:00 to 13:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>13:00 to 14:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>14:00 to 15:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>15:00 to 16:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>16:00 to 17:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>17:00 to 18:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>18:00 to 19:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>19:00 to 20:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>20:00 to 21:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>21:00 to 22:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>22:00 to 23:00</p></div>
+                    <div className='p-2 flex gap-x-1'><input type="checkbox" name="" id="" /> <p className='text-base'>23:00 to 00:00</p></div>
                 </div>
             </div>
-            <Link to='/tutordashboard'><p className='text-right poppins cursor-pointer text-lg font-semibold'>Next <FontAwesomeIcon icon={faChevronRight} className='text-xl font-bold ml-5' /></p></Link> 
+            <Link to='/verifyidentify'><p className='text-right poppins cursor-pointer text-lg font-semibold'>Next <FontAwesomeIcon icon={faChevronRight} className='text-xl font-bold ml-5' /></p></Link> 
           </div>
         </div>
       </div>

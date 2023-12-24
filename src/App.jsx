@@ -22,6 +22,8 @@ import "react-toastify/dist/ReactToastify.css";
 import TutorDashboard from './Pages/Dashboard2/TutorDashboard';
 import Signup2 from './SignupAsTutor/Signup2';
 import BuildProfile from './SignupAsTutor/BuildProfile';
+import VerificationAndIdentity from './SignupAsTutor/VerificationAndIdentification';
+import VerifyEmail from './SignupAsTutor/VerifyEmail';
 
 
 let persistor = persistStore(store);
@@ -48,6 +50,8 @@ function App() {
               <Route path='/tutordashboard' element={<TutorDashboard/>} />
               <Route path='/signupastutor' element={<Signup2/>} />
               <Route path='/buildprofile' element={<BuildProfile/>} />
+              <Route path='/verifyidentify' element={<VerificationAndIdentity/>} />
+              <Route path='/verifyemail' element={<VerifyEmail/>} />
             </Routes>
           </BrowserRouter>
           </PersistGate>

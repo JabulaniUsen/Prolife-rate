@@ -64,11 +64,11 @@ const StackedBarChart = () => {
             <h2>Student Statistics</h2>
          </div>
          <div style={{ textAlign: 'right', marginBottom: '10px' }}>
-         <button onClick={handlePrevMonth} className='text-[#2E3A59]  mx-2'><FontAwesomeIcon icon={faAngleLeft} /></button>
-         <span style={{ margin: '0 10px' }} className='text-[#2E3A59]'>
-            {`${getMonthAbbreviation(currentMonth)} ${currentYear}`}
-         </span>
-         <button onClick={handleNextMonth} className='text-[#2E3A59]  mx-2'><FontAwesomeIcon icon={faAngleRight} /></button>
+          <button onClick={handlePrevMonth} className='text-[#2E3A59]  mx-2'><FontAwesomeIcon icon={faAngleLeft} /></button>
+          <span style={{ margin: '0 10px' }} className='text-[#2E3A59]'>
+              {`${getMonthAbbreviation(currentMonth)} ${currentYear}`}
+          </span>
+          <button onClick={handleNextMonth} className='text-[#2E3A59]  mx-2'><FontAwesomeIcon icon={faAngleRight} /></button>
          </div>
       </div>
       <BarChart
