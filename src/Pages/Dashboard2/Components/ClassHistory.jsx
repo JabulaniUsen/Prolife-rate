@@ -77,7 +77,7 @@ function ClassHistory() {
               </p>
             </div>
           </div>
-          <button className={`${item.status === 'Ongoing' ? 'bg-[#0c0c0c]' : 'bg-[#186BAD]'}  w-full p-[0.5rem] rounded text-white transition hover:bg-[#000] font-semibold `}>Join Now</button>
+          <button className={`${item.status === 'Ongoing' ? 'bg-[#0c0c0c]' : 'bg-[#186BAD]'}  w-full p-[0.5rem] rounded text-white transition hover:bg-[#000] font-semibold `}>Attendance</button>
         </div>
       ))}
     </div>
