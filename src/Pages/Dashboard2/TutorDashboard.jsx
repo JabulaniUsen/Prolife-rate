@@ -19,10 +19,10 @@ import Home from './Tabs/Home';
 import Assignment from './Tabs/Assignment';
 import Settings from './Tabs/Settings';
 import Messages from './Tabs/Messages';
-import PaymentInfo from './Tabs/PaymentInfo';
 import Reports from './Tabs/Reports';
 import Footer2 from '../../Components/Footer2';
 import { Link } from 'react-router-dom';
+import Transactions from './Tabs/Transactions';
 
 const getMonthAbbreviation2 = (month) => {
   const monthsAbbreviation2 = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -70,8 +70,8 @@ const TutorDashboard = () => {
         img: teacher
       },
       {
-        label: 'Payment Info',
-        contentComponent: <PaymentInfo />,
+        label: 'Transactions',
+        contentComponent: <Transactions />,
         img: bank
       },
       {
@@ -154,10 +154,21 @@ const TutorDashboard = () => {
               Settings
             </button>
           </div>
+
+          <div className="profile poppins flex items-start justify-center py-5 border-t-[1px] my-5 mx-2 border-white">
+            <div className="w-[50px]">
+              <img src={user} alt="" className='rounded-full' />
+            </div>
+            <div className="">
+              <p className='name text-white text-sm'>Olivia Rhye</p> 
+              <p className="email text-white text-xs w-[140px]">olivia@e-learning.com</p>
+            </div>
+            <button className='text-white'><FontAwesomeIcon icon={faRightFromBracket} /></button>
+          </div>
         </div>
 
         <div className="body px-[20px]">
-          <div className='header flex justify-end gap-3 pt-10 w-[1100px] bg-white items-center sidebar-hidden'>
+          <div className='header flex justify-end gap-3 pt-10 w-[1050px] bg-white items-center sidebar-hidden'>
             <div
               style={{ textAlign: 'right', marginBottom: '10px' }}
               className='bg-[#57C1F2] p-2 rounded-2xl'
