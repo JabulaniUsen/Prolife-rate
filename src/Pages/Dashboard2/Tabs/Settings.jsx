@@ -59,7 +59,7 @@ function Settings() {
   return (
     <div className='poppins flex justify-between mx-20'>
       <div className="side1 w-[500px]">
-        <h1 className='text-[#1669AA] my-3 font-bold text-2xl'>Student Info</h1>
+        <h1 className='text-[#1669AA] my-3 font-bold text-2xl'>Tutor Info</h1>
         <form action="" className='flex flex-col gap-3'>
           <input required type="text" placeholder='Surname' className='bg-[#f2f1f1] p-3'/>
           <input required type="text" placeholder='First Name' className='bg-[#f2f1f1] p-3' />

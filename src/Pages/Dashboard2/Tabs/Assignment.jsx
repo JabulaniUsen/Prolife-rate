@@ -1,93 +1,93 @@
 import React, { useState } from 'react';
+import { faCalendarDays, faEllipsisVertical, faFileExport, faPaperPlane, faPaperclip, faPenToSquare, faPlus, faXmark, faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-function Assignment() {
-const assignment = [
-    {
-      id: 1,
-      subject: 'Algebra',
-      instruction: "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante.",
-      tutor: "Jeremy Ching",
-      date: "21/09/2023"
-    },
-    {
-      id: 2,
-      subject: 'Verb',
-      instruction: "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante.",
-      tutor: "Olatunde Michael",
-      date: "28/09/2023"
-    },
-    {
-      id: 3,
-      subject: 'People and Beliefs',
-      instruction: "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante.",
-      tutor: "Jabulani Usen",
-      date: "21/09/2023"
-    },
-    {
-      id: 4,
-      subject: 'Piano Lessons',
-      instruction: "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante.",
-      tutor: "Bello Victor",
-      date: "02/10/2023"
-    }
-  ]
-  const [dropdownStates, setDropdownStates] = useState(
-    Array.from({ length: assignment.length }, () => false)
-  );
+// const tabs = ['Reports', 'Transactions', 'Debit', 'Upcoming', 'Due'];
 
-  const toggleDropdown = (index) => {
-    const newDropdownStates = [...dropdownStates];
-    newDropdownStates[index] = !newDropdownStates[index];
-    setDropdownStates(newDropdownStates);
+const Assignment = () => {
+  // const [activeTab, setActiveTab] = useState(0);
+
+  // const handleTabClick = (index) => {
+  //   setActiveTab(index);
+  // }; font-semibold
+
+  const Table = ({ tabData }) => {
+    return (
+      <table className="poppins my-8">
+        <thead className=''>
+          <tr className=' grid grid-cols-9 bg-[#f3f6f9] items-center rounded-t-2xl' >
+            <th className='py-5 text-sm '>126</th>
+            <th className='py-5 text-sm text-[#B5B5C3]'>Edit</th>
+            <th className='py-5 text-sm '>Name</th>
+            <th className='py-5 text-sm '>Date</th>
+            <th className='py-5 text-sm '>Title</th>
+            <th className='py-5 text-sm '>Attachment</th>
+            <th className='py-5 text-sm '>Assessment</th>
+            <th className='py-5 text-sm '>Send Message</th>
+          </tr>
+        </thead>
+        <tbody className='flex flex-col'>
+        {tabData.map((row, index) => (
+          <tr 
+            key={index} 
+            className='border-2 border-[#f3f6f9] grid grid-cols-9  place-items-center'
+            >
+            <td className=''>
+              {row.serialNo}
+              <input type="checkbox" name="" id="" className='ml-2' /> 
+            </td>
+            <td className='bg-[#FFAF53] p-1 px-2 rounded-lg text-white'>
+              <button>
+                <FontAwesomeIcon icon={faPenToSquare} />
+              </button>
+            </td>
+            <td className='py-3 '>{row.assignedStudent}</td>
+            <td className=' py-3  text-center text-[#B5B5C3]'>{row.deadline}</td>
+            <td className=' py-3  text-center  text-[#186BAD] font-semibold'>{row.title}</td>
+            <td className='text-[#000] flex items-center gap-2'>
+              {row.attachment}
+              <FontAwesomeIcon icon={faPaperclip} className={` ${row.attachment < 1 ? 'text-[#B5B5C3]' : 'text-[#0FA958]'}`} />
+            </td>
+            <td className=' py-3 '>{row.numberOfClasses}</td>
+            <td className=' bg-[#186BAD] px-2 py-1 rounded-lg text-white'>
+              <button><FontAwesomeIcon icon={faPaperPlane} /></button>
+            </td>
+            <td className=' text-[#F64E60] text-3xl'>
+              <button>< FontAwesomeIcon icon={faXmarkCircle} /></button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+      </table>
+    );
   };
 
+  const tabData = [
+      { serialNo: 1, assignedStudent: 'John Doe', deadline: '5th of Feb. 2024 17:00', title: 'Human Sense Organs', attachment: 1, numberOfClasses: 13, paymentMethod: 'Wire Transfer' },
+      { serialNo: 2, assignedStudent: 'Amaka David', deadline: '5th of Feb. 2024 17:00', title: 'Artifical Intelligence in Schools', attachment: 0, numberOfClasses: 24, paymentMethod: 'Wire Transfer' },
+      { serialNo: 3, assignedStudent: 'David David', deadline: '5th of Feb. 2024 17:00', title: 'Artificial Intelligence and Design System', attachment: 1, numberOfClasses: +12, paymentMethod: 'Wire Transfer', },
+      { serialNo: 4, assignedStudent: 'Henry Ola', deadline: '5th of Feb. 2024 17:00', title: 'Principles of Human Computer Interaction', attachment: 2, numberOfClasses: +14, paymentMethod: 'Wire Transfer', },
+      { serialNo: 5, assignedStudent: 'Mike Sediong', deadline: '5th of Feb. 2024 17:00', title: 'Principles of Human Computer Interaction', attachment: 1, numberOfClasses: +14, paymentMethod: 'Wire Transfer' },
+      { serialNo: 6, assignedStudent: 'Amaka David', deadline: '5th of Feb. 2024 17:00', title: 'Principles of Human Computer Interaction', attachment: 4, numberOfClasses: +55, paymentMethod: 'Wire Transfer' },
+      { serialNo: 7, assignedStudent: 'Victor David', deadline: '5th of Feb. 2024 17:00', title: 'Principles of Human Computer Interaction', attachment: 0, numberOfClasses: +23, paymentMethod: 'Wire Transfer' },
+
+  ];
+
   return (
-    <div className="poppins p-12">
-      <div className="header text-4xl font-semibold">Assignment</div>
-
-      {assignment.map((item, index) => (
-        <div key={item.id} className="body">
-          <div
-            className={`assignment subject relative cursor-pointer rounded-xl ${
-              dropdownStates[index] ? 'active' : ''
-            }`}
-            onClick={() => toggleDropdown(index)}
-          >
-            <h2
-              className={`text-3xl font-semibold w-[100wv] border-[1px] text-black border-black rounded-xl h-[150px] p-8 mt-8 transition-all ${
-                dropdownStates[index] ? 'text-white border-0' : ''
-              }`}
-            >
-              {item.subject}
-            </h2>
-            <p className="view absolute bottom-7 right-12 font-light">View</p>
-          </div>
-
-          {dropdownStates[index] && (
-            <div className="dropDown bg-[#F2F1F1] p-10 rounded-b-xl mt-[-10px] transition-all">
-              <div className="up">
-                <p>{item.instruction}</p>
-                <div className="names flex justify-between items-center pt-10">
-                  <div className="side1 flex flex-col gap-3">
-                    <h2 className="text-xl font-semibold">Tutor: {item.tutor}</h2>
-                    <h3 className="text-xl font-semibold">Date of Submission: {item.date}</h3>
-                  </div>
-                  <div className="side2 flex gap-10 items-center">
-                    <a href="/" className="text-[#186BAD]">
-                      Download Materials
-                    </a>
-                    <button className="bg-[#186BAD] py-3 px-5 rounded-lg text-white">
-                      Upload Assignment
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+    <div className="p-4">
+  
+      <div className="payments flex justify-between items-end mt-8">
+        <div className="poppins ">
+          <p className='text-[#B5B5C3] mb-[-2rem] text-sm'>A Total of 125 Assignment Have Listed.</p>
         </div>
-      ))}
+        <div className="">
+          <button className='mx-3 border-[#696969] border-[1px] bg-[#F6F6F6] hover:bg-[#cacaca] text-[#4F4E4E] transition rounded-xl font-semibold py-[0.3rem] px-8'>Filter Assignment <FontAwesomeIcon icon={faEllipsisVertical} className='ml-3' /></button>
+          <button className='bg-[#186BAD] text-white items-center transition hover:bg-[#0f3f66] rounded-xl font-semibold py-[0.3rem] px-8'>ADD NEW<FontAwesomeIcon icon={faPlus} className='ml-3'/></button>
+        </div>
+      </div>
+      <Table tabData={tabData} />
     </div>
   );
-}
+};
 
 export default Assignment;

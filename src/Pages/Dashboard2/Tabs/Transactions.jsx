@@ -26,7 +26,7 @@ const Transactions = () => {
             <th className='py-5 text-sm '>Status</th>
           </tr>
         </thead>
-        <tbody className=' flex flex-col gap-3'>
+        <tbody className='flex flex-col gap-3'>
         {tabData.map((row, index) => (
           <tr 
             key={index} 
