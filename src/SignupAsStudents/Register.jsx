@@ -18,7 +18,7 @@ function Register() {
             <h1 className='text-[#186BAD] text-3xl font-bold'>Register with us</h1>
         </div>
 
-        <div className=" flex justify-around items-center my-9">
+        <div className=" flex lg:flex-row flex-col gap-2 justify-around items-center my-9">
             <div className="p-4 flex flex-col justify-center items-center gap-4 border-[1px] border-[#646464] rounded-lg w-[300px]">
                 <h3 className='text-lg font-bold'>Students</h3>
                 <img src={student} alt="" />
@@ -38,7 +38,7 @@ function Register() {
         <div className="flex flex-col justify-center items-center gap-7 my-11">
                 <p className='text-[#898A8B]'>Already have an account? <span className='text-[#186BAD] ml-2'>Sign in</span></p>
                 <div className="">
-                    <p className='text-[#898A8B]'><span className='mr-6'>--------------------</span> or sign in with   <span className='ml-6'>--------------------</span></p>
+                    <p className='text-[#898A8B]'><span className='mr-6 lg:block hidden'>--------------------</span> or sign in with   <span className='ml-6 lg:block hidden'>--------------------</span></p>
                 </div>
                 <div className="socials flex gap-5">
                     <img src={google} className='border-[1px] rounded-full p-4 border-[#8888] cursor-pointer' alt="" />
