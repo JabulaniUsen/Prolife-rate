@@ -92,11 +92,13 @@ function TutorDetail() {
     <div>
         <Header/>
 
-        <div className="poppins px-10 lg:px-28 my-10">
-            <div className=" grid grid-cols-2 gap-40">
-                <div className="sideOne p-7 w-[600px] shadow-md ">
+        <div className="poppins px-5 lg:px-28 my-10">
+            <div className=" grid lg:grid-cols-2 grid-cols-1 lg:gap-40">
+                <div className="sideOne lg:p-7 p-4 lg:w-[600px] shadow-md ">
                     <div className="flex gap-4">
-                        <img src={user} className='w-24' alt="" />
+                        <div className="">
+                            <img src={user} className='lg:w-24 w-[4rem]' alt="" />
+                        </div>
                         <div className="">
                             <div className="titles my-2">
                                 <h3 className='text-[#186BAD] font-bold'>BAMIDELE MOSES</h3>
@@ -136,8 +138,8 @@ function TutorDetail() {
                             <h2 className='font-bold text-lg text-[#186BAD]'>Featured Reviews</h2>
                         </div>
                         <div className="review-list my-8 flex flex-col gap-10">
-                            <div className="flex gap-4 items-start justify-center relative pr-7 pb-9">
-                                <img src={user} className='w-24' alt="" />
+                            <div className="flex lg:flex-row flex-col gap-4 items-start justify-center relative pr-7 pb-9">
+                                <img src={user} className='lg:w-24 w-[4rem]' alt="" />
                                 <div className="">
                                     <div className="titles">
                                         <h3 className='font-bold'>BAMIDELE MOSES</h3>
@@ -168,8 +170,8 @@ function TutorDetail() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex gap-4 items-start justify-center relative pr-7 pb-9">
-                                <img src={user} className='w-24' alt="" />
+                            <div className="flex lg:flex-row flex-col gap-4 items-start justify-center relative pr-7 pb-9">
+                                <img src={user} className='lg:w-24 w-[4rem]' alt="" />
                                 <div className="">
                                     <div className="titles">
                                         <h3 className='font-bold'>BAMIDELE MOSES</h3>
@@ -204,7 +206,7 @@ function TutorDetail() {
                             <hr />
                         </div>
                     </div>
-                    <div className="px-7">
+                    <div className="lg:px-7">
                         <h2 className='text-[#186BAD] text-xl font-semibold my-10'>Subjects Offered</h2>
                         <div className="head flex justify-around font-semibold">
                             <h2>Subject</h2>
@@ -240,7 +242,7 @@ function TutorDetail() {
                         </div>
                     </div>
                 </div>
-                <div className="sideTwo p-8">
+                <div className="sideTwo lg:p-8 p-2">
                 <h3 className='text-[#186BAD] font-bold text-lg my-2'>Availability</h3>
                     <Calendar/>
                     <div className="bg-[#f2f1f1] my-6 rounded-xl p-4">
@@ -289,7 +291,7 @@ function TutorDetail() {
                         Tutor has been contacted <FontAwesomeIcon icon={faCircleInfo} />
                         </p>
                     )}
-                    <iframe className='h-[50vh]'
+                    <iframe className='lg:h-[50vh] h-[30vh]'
                         width="100%"
                         src="https://www.youtube.com/embed/vVCakfUchVI?si=7vi8Xd8TkTIb7K_6"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -299,8 +301,8 @@ function TutorDetail() {
             </div>
 
             <div className=" my-20">
-                    <h2 className='text-[#186bad] font-semibold text-3xl'>Similar tutors for this subject</h2>
-                <div className="flex gap-5">
+                    <h2 className='text-[#186bad] font-semibold lg:text-3xl text-xl'>Similar tutors for this subject</h2>
+                <div className="flex lg:gap-5 lg:flex-row flex-col ">
                     { Tutors.map((item, index) => {
                     return (
                         <div className="tutors my-8 flex gap-5" key={index}>
