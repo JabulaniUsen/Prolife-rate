@@ -55,7 +55,7 @@ function Features() {
   return (
     <div className='poppins px-5 lg:px-28 my-28'>
       <div className=''>
-        <div className='header-text'>
+        <div className='header-text lg:text-left text-center'>
           <h1 className='text-[#186BAD] lg:text-4xl text-2xl font-semibold'>
             What sets our program Apart
           </h1>
@@ -67,7 +67,7 @@ function Features() {
           </p>
         </div>
 
-        <div className="flex gap-y-10 flex-row justify-between items-center flex-wrap my-10">
+        <div className="flex gap-y-10 flex-row lg:justify-between justify-center items-center flex-wrap my-10">
             {features.map((item, index) => (
             <div
                 key={item.id}

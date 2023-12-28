@@ -154,16 +154,16 @@ const Tutors = () => {
   return (
     <div className='poppins my-10 flex flex-col px-5 lg:px-28'>
     
-    <div className="search px-0 lg:px-28 m-auto">
-        <div className='border-2 flex justify-center lg:pl-7 pl-5 rounded-xl w-[90%]'>
-            <select id="dropdown"  className='text-slate-400' value={selectedOption} onChange={handleDropdownChange}>
+    <div className="search px-0 lg:px-28 m-auto ">
+        <div className='border-2 flex justify-center lg:pl-7 pl-5 rounded-xl lg:w-[90%] w-[350px]'>
+            <select id="dropdown"  className='text-slate-400 w-[90px] pl-4' value={selectedOption} onChange={handleDropdownChange}>
                 <option value="">Subject</option>
                 <option value="option1">Kindergarten</option>
                 <option value="option2">High School</option>
                 <option value="option3">College</option>
                 <option value="option3">Technology</option>
             </select>
-            <select id="dropdown" className='text-slate-400 px-2' value={selectedOption} onChange={handleDropdownChange}>
+            <select id="dropdown" className='text-slate-400 px-2 hidden lg:block' value={selectedOption} onChange={handleDropdownChange}>
                 <option value="">Grades</option>
                 <option value="option1">100%</option>
                 <option value="option3">90%</option>
@@ -177,11 +177,11 @@ const Tutors = () => {
                 <option value="option3">10%</option>
             </select>
             <input type="text" className='w-[400px]' />
-            <button type="submit" className='bg-[#186BAD] text-white px-10 py-4 rounded-r-lg'>Search</button>
+            <button type="submit" className='bg-[#186BAD] text-white lg:px-10 lg:py-4 px-5 py-2 rounded-r-lg'>Search</button>
         </div>
     </div>
 
-      <div className="tabs flex justify-left items-center gap-20 py-9">
+      <div className="tabs lg:flex hidden justify-left items-center gap-20 py-9 ">
         <h2 onClick={() => handleTabClick('all')} className={activeTab === 'all' ? 'text-white bg-red-600 p-3 px-5 rounded-lg cursor-pointer' : 'cursor-pointer'}>All Mentor</h2>
         <h2 onClick={() => handleTabClick('kindergarten')} className={activeTab === 'kindergarten' ? 'text-white bg-red-600 p-3 px-5 rounded-lg cursor-pointer' : 'cursor-pointer'}>For Kindergarten</h2>
         <h2 onClick={() => handleTabClick('highSchool')} className={activeTab === 'highSchool' ? 'text-white bg-red-600 p-3 px-5 rounded-lg cursor-pointer' : 'cursor-pointer'}>For High School</h2>
@@ -192,9 +192,9 @@ const Tutors = () => {
             {/* All Tutors */}
             {activeTab === 'all' && (
               <Link to='/tutordetail/#'>
-                <ul className='flex flex-row flex-wrap justify-between gap-0'>
+                <ul className='grid lg:grid-cols-4 grid-cols-2 gap-5'>
                   {currentTutors.map((tutor) => (
-                    <li key={tutor.id} className='lg:w-[270px] hover:shadow-md p-5'>
+                    <li key={tutor.id} className='lg:w-[270px] w-[200px] hover:shadow-md p-5'>
                       <img src={tutor.image} alt="" />
                       <h3 className='text-[#186BAD] mt-2 text-lg'>{tutor.name}</h3>
                       <small>{tutor.course}</small>

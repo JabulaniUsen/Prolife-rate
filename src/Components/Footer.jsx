@@ -5,7 +5,8 @@ import { faFacebookF, faInstagram, faTwitter, faLinkedin } from '@fortawesome/fr
 
 function Footer() {
   return (
-    <div className='poppins px-5 lg:px-28 py-20 flex lg:flex-row flex-col justify-between items-start bg-[#204c6c]'>
+    // flex lg:flex-row flex-col justify-between items-start
+    <div className='poppins px-5 lg:px-28 py-20 grid lg:grid-cols-5 grid-cols-2 place-content-stretch gap-20 bg-[#204c6c]'>
       <div className="flex flex-col lg:items-center justify-center lg:gap-4 gap-10">
         <div className="logo lg:w-[300px] w-[170px]">
           <img src={logo} alt="" />
@@ -16,7 +17,7 @@ function Footer() {
           <FontAwesomeIcon icon={faTwitter} className='text-[#186bad] text-lg' />
           <FontAwesomeIcon icon={faLinkedin} className='text-[#186bad] text-lg' />
         </div>
-        <div className="copyright">
+        <div className="copyright lg:block hidden">
           <p className='text-white'>
             © 2023 proliferate.ai <br />
             All Rights Reserved.

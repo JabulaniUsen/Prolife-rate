@@ -27,7 +27,7 @@ function Story() {
         </div>
         <div className="flex gap-5">
             <img src={story1} className='aspect-square' alt="" />
-            <img src={story2} className='aspect-square' alt="" />
+            <img src={story2} className='aspect-square lg:block hidden' alt="" />
         </div>
     </div>
   )

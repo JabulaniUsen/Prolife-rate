@@ -42,7 +42,7 @@ function Header() {
       </div>
 
       <animated.div
-        className="overflow-x-hidden lg:hidden absolute z-10 top-[4.5rem] right-0 h-full w-full m-auto p-10 bg-white"
+        className={` ${ !menuOpen ? 'hidden' : 'block'} lg:hidden absolute z-10 top-[4.5rem] right-0 h-full w-full m-auto p-10 bg-white`}
         style={menuAnimation}
       >
         <ul className='flex flex-col gap-5 justify-center items-center  text-lg font-semibold'>

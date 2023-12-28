@@ -17,7 +17,7 @@ const Counter = ({ value }) => {
         config: { duration: 4000, easing: (t) => t * (2 - t) },
       });
     
-      return <animated.p ref={ref} className='absolute text-[#186BAD] text-2xl top-20 font-semibold'>{count.interpolate((val) => Math.floor(val))}</animated.p>;
+      return <animated.p ref={ref} className='absolute text-[#000000] text-2xl top-20 font-semibold'>{count.interpolate((val) => Math.floor(val))}</animated.p>;
     };
 
 function Breaking() {
@@ -29,29 +29,30 @@ function Breaking() {
           Building Brighter Futures One Session at a Time.
         </h1>
       </div>
-      <div className="flex flex-col items-center lg:flex-row">
-        <div className=" flex flex-col items-center gap-5 p-7 text-center w-[30%] relative ">
+      <div className="lg:flex gap-12 items-center lg:flex-row grid grid-cols-2 place-items-center
+      ">
+        <div className=" flex flex-col items-center justify-center gap-5 p-7 text-center w-[30%] relative ">
           <img src={circle1} className='lg:block hidden' alt="" />
-          <div className=""><Counter value={500} /></div>
-          <p className='text-xl text-[#186BAD] font-semibold'>Total Students Enrolled</p>
+          <div className="absolute lg:top-0 top-10 lg:left-28 left-2"><Counter value={500} /></div>
+          <p className='text-xl text-[#186BAD] font-bold'>Total Students Enrolled</p>
         </div>
 
         <div className="tutor flex flex-col items-center gap-5 p-7 text-center w-[30%] relative">
           <img src={circle2} className='lg:block hidden' alt="" />
-          <div className="absolute lg:top-5 top-2"><Counter value={65} /></div>
-          <p className='text-xl text-[#186BAD] font-semibold'>Expert Tutors</p>
+          <div className="absolute lg:top-5 top-5 lg:left-28 left-3"><Counter value={65} /></div>
+          <p className='text-xl text-[#186BAD] font-bold'>Expert Tutors</p>
         </div>
 
         <div className="learning flex flex-col items-center gap-5 p-7 text-center w-[30%] relative">
           <img src={circle3} className='lg:block hidden' alt="" />
-          <Counter value={200} />
-          <p className='text-xl text-[#186BAD] font-semibold'>Sessions</p>
+          <div className="absolute lg:top-5 top-[-1rem] lg:left-28 left-2"><Counter value={200} /></div>
+          <p className='text-xl text-[#186BAD] font-bold'>Sessions</p>
         </div>
 
         <div className="evaluate flex flex-col items-center gap-5 p-7 text-center w-[30%] relative">
           <img src={circle4} className='lg:block hidden' alt="" />
-          <div className="absolute lg:top-5 top-3"><Counter value={10}/></div>
-          <p className='text-xl text-[#186BAD] font-semibold'>Years of Operations</p>
+          <div className="absolute lg:top-5 top-2 lg:left-28 left-5"><Counter value={10}/></div>
+          <p className='text-xl text-[#186BAD] font-bold'>Years of Operations</p>
         </div>
       </div>
     </div>
