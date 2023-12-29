@@ -28,7 +28,7 @@ function Header() {
         <Link to='/tutor'>Find Tutor</Link>
         <Link to='/about'>About us</Link>
         <Link to='/program'>Our Programs</Link>
-        <Link to='/pricingpage'>Pricing</Link>
+        {/* <Link to='/pricingpage'>Pricing</Link> */}
         <Link>Blog</Link>
         <Link to='/contact'>Contact</Link>
       </div>

@@ -24,6 +24,7 @@ import Signup2 from './SignupAsTutor/Signup2';
 import BuildProfile from './SignupAsTutor/BuildProfile';
 import VerificationAndIdentity from './SignupAsTutor/VerificationAndIdentification';
 import VerifyEmail from './SignupAsTutor/VerifyEmail';
+import Subject from './Pages/Subject/Subject';
 
 
 let persistor = persistStore(store);
@@ -52,6 +53,7 @@ function App() {
               <Route path='/buildprofile' element={<BuildProfile/>} />
               <Route path='/verifyidentify' element={<VerificationAndIdentity/>} />
               <Route path='/verifyemail' element={<VerifyEmail/>} />
+              <Route path='/subjects' element={<Subject/>} />
             </Routes>
           </BrowserRouter>
           </PersistGate>

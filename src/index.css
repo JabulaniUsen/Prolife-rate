@@ -60,6 +60,13 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+.subject-hero {
+  background-image: url('./Assets/subject-hero.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
 input {
     outline: none;
     border: none;
