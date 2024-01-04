@@ -1,5 +1,5 @@
 const KEY_TOKEN = "APP:ADMIN:TOKEN";
-// const SUCCESS_SIGNUPTOKEN = "APP:USER:DATA";
+const SUCCESS_SIGNUPTOKEN = "APP:USER:DATA";
 
 export const setToken = (token) => {
   localStorage.setItem(KEY_TOKEN, token);

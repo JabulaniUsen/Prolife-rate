@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { useState, } from 'react'
 import Header from '../Components/Header'
 import student from '../Assets/student.png'
 import college from '../Assets/college.png'
 import school from '../Assets/school.png'
 import google from '../Assets/Google.jpg'
 import facebook from '../Assets/facebook.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 function Register() {
+    const navigate = useNavigate()
+    const [student, setStudent] = useState(true)
+
+
+    
+
+    const handleNavigate = () => {
+        setStudent("omor")
+        navigate('/signup', {state:{student}});
+    }
+
   return (
     <div className="">
         <Header/>
@@ -22,7 +33,9 @@ function Register() {
             <div className="p-4 flex flex-col justify-center items-center gap-4 border-[1px] border-[#646464] rounded-lg w-[300px]">
                 <h3 className='text-lg font-bold'>Students</h3>
                 <img src={student} alt="" />
-                <button className='bg-[#186BAD] rounded-2xl text-2xl py-3 px-7 text-white font-semibold'><Link to='/signup'>Sign Up</Link></button>
+                <button onClick={handleNavigate} className='bg-[#186BAD] rounded-2xl text-2xl py-3 px-7 text-white font-semibold'>
+                    <span>Sign Up</span>
+                </button>
             </div>
             <div className="p-4 flex flex-col justify-center items-center gap-4 border-[1px] border-[#646464] rounded-lg w-[300px]">
                 <h3 className='text-lg font-bold'>Tutor</h3>

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useLocation } from 'react-router-dom';
 import { faAngleLeft, faAngleRight, faBell, faChevronDown, faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../Assets/logo2.png';
 import home from './Icons/home.png';
@@ -52,6 +53,19 @@ const Tabs = ({ tabs, setActiveTab, activeTab }) => {
 
 const TutorDashboard = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('')
+
+  const location = useLocation();
+
+  useEffect(() => {
+    // Check if the location state contains fullName and email and update the state
+    if (location.state) {
+      setFullName(location.state.fullName || '');
+      setEmail(location.state.email || '');
+    }
+  }, [location.state]);
+  
 
     const tabs = [
       {
@@ -160,8 +174,8 @@ const TutorDashboard = () => {
               <img src={user} alt="" className='rounded-full' />
             </div>
             <div className="">
-              <p className='name text-white text-sm'>Olivia Rhye</p> 
-              <p className="email text-white text-xs w-[140px]">olivia@e-learning.com</p>
+              <p className='name text-white text-sm'>{fullName}</p> 
+              <p className="email text-white text-xs w-[140px]">{email}</p>
             </div>
             <button className='text-white'><FontAwesomeIcon icon={faRightFromBracket} /></button>
           </div>

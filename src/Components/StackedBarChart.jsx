@@ -4,75 +4,75 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'rec
 const data = [
  {
     name: 'Jan',
-    value1: 28,
-    value2: 20,
-    value3: 36,
+    value1: 0,
+    value2: 0,
+    value3: 0,
  },
  {
     name: 'Feb',
-    value1: 20,
-    value2: 29,
-    value3: 32,
+    value1: 0,
+    value2: 0,
+    value3: 0,
  },
  {
     name: 'Mar',
-    value1: 30,
-    value2: 82,
-    value3: 24,
+    value1: 0,
+    value2: 0,
+    value3: 0,
  },
  {
     name: 'Apr',
-    value1: 100,
-    value2: 60,
-    value3: 32,
+    value1: 0,
+    value2: 0,
+    value3: 0,
  },
  {
     name: 'May',
-    value1: 90,
-    value2: 80,
-    value3: 20,
+    value1: 0,
+    value2: 0,
+    value3: 0,
  },
  {
     name: 'Jun',
-    value1: 78,
-    value2: 60,
-    value3: 20,
+    value1: 0,
+    value2: 0,
+    value3: 0,
  },
  {
     name: 'Jul',
-    value1: 90,
-    value2: 60,
-    value3: 37,
+    value1: 0,
+    value2: 0,
+    value3: 0,
  },
  {
     name: 'Aug',
-    value1: 81,
-    value2: 40,
-    value3: 30,
+    value1: 0,
+    value2: 0,
+    value3: 0,
  },
  {
     name: 'Sep',
-    value1: 89,
-    value2: 23,
-    value3: 30,
+    value1: 0,
+    value2: 0,
+    value3: 0,
  },
  {
     name: 'Oct',
-    value1: 90,
-    value2: 23,
-    value3: 32,
+    value1: 0,
+    value2: 0,
+    value3: 0,
  },
  {
     name: 'Nov',
-    value1: 10,
-    value2: 23,
-    value3: 30,
+    value1: 0,
+    value2: 0,
+    value3: 0,
  },
  {
     name: 'Dec',
-    value1: 90,
-    value2: 20,
-    value3: 32,
+    value1: 0,
+    value2: 0,
+    value3: 0,
  },
 ];
 
@@ -88,7 +88,7 @@ const StackedBarChart = () => (
       bottom: 5,
     }}
  >
-    <CartesianGrid strokeDasharray="3 3" />
+    <CartesianGrid strokeDashoffset="3 3"  />
     {/* <XAxis dataKey="name" /> */}
     <YAxis />
     <Tooltip />

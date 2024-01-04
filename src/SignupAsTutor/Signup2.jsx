@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { clearSignUpStatus } from '../Redux/reducers/authReducer';
 
 function Signup2() {
-  const [fullName, setFullName] = useState('');
+  const [full_name, setFull_name] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
@@ -17,74 +17,86 @@ function Signup2() {
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isloading, setIsloading] = useState(false);
-  const [fullNameEmpty, setFullNameEmpty] = useState(false);
+  const [full_nameEmpty, setFull_nameEmpty] = useState(false);
   const [emailEmpty, setEmailEmpty] = useState(false); // Added state for emailEmpty
   const [showModal, setShowModal] = useState(false);
-  // New state for redirecting text
-  const [redirectingText, setRedirectingText] = useState(false);
+    // New state for redirecting text
+    const [redirectingText, setRedirectingText] = useState(false);
+    const [is_tutor, setIs_tutor] = useState(null)
+  
+    const navigate = useNavigate();
+  
+    const dispatch = useDispatch();
+    const authSelector = useSelector((state) => state.authenticationSlice);
+  
+    // useEffect(() => {
+    //   if (authSelector.signUpActionStatus === 'loading') {
+    //     setIsloading(true);
+    //     return;
+    //   }
+    // }, [authSelector.signUpActionStatus]);
+  
+    useEffect(() => {
+      if (authSelector.signUpActionStatus === 'failed') {
+        toast.error(`${authSelector.signUpActionError}`);
+        setIsloading(false);
+        dispatch (clearSignUpStatus())
+        return;
+      }
+    }, [authSelector.signUpActionStatus]);
+  
+    useEffect(() => {
+      if (authSelector.signUpActionStatus === 'completed') {
+        // Show toast message
+        toast.success('Account created', {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 3000, // 3 seconds
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        setRedirectingText(true);
+        setTimeout(() => {
+          setRedirectingText(false);
+          navigate('/tutordashboard', { state: { full_name: full_name, email: email } });
+        }, 3000);
+        dispatch (clearSignUpStatus())
+      } 
+    }, [authSelector.signUpActionStatus, navigate]);
 
-  const navigate = useNavigate();
-
-  const dispatch = useDispatch();
-  const authSelector = useSelector((state) => state.authenticationSlice);
-
-  useEffect(() => {
-    if (authSelector.signingUpStatus === 'loading') {
-      setIsloading(true);
-      return;
-    }
-  }, [authSelector.signingUpStatus]);
-
-  useEffect(() => {
-    if (authSelector.signingUpStatus === 'failed') {
-      toast.error(`${authSelector.signingUpError}`);
-      setIsloading(false);
-      return;
-    }
-    dispatch(clearSignUpStatus());
-  }, [authSelector.signingUpStatus]);
-
-  useEffect(() => {
-    if (authSelector.signingInStatus === 'completed') {
-      // Show the popup modal
-      setShowModal(true);
-      setRedirectingText(true); // Set redirecting text to true
-      // Set a timer to hide the popup and navigate to the dashboard after 3 seconds
-      setTimeout(() => {
-        setShowModal(false);
-        setRedirectingText(false); // Set redirecting text back to false
-        // Use navigate instead of history
-        navigate('/dashboard');
-      }, 3000);
-    }
-  }, [authSelector.signingInStatus, navigate]);
-
-  const handleSignUp = () => {
-    // Check for empty fields
-    if (!fullName || !email || !password || !password2) {
-      setFullNameEmpty(!fullName);
-      setEmailEmpty(!email);
-      setPasswordEmpty(!password);
-      return;
-    }
-
-    // Check for password match
-    if (password !== password2) {
-      setPasswordMatch(false);
-      return;
-    }
-
-    // Dispatch the signup action
-    dispatch(
-      signUpAction({
-        // fullName: fullName,
-        email: email,
-        password: password,
-        password2: password2
-      })
-    );
-    // setIsloading(true);
-  };
+    const handleSignUp = () => {
+      // Check for empty fields
+      // if (!firstName || !lastName || !username || !email || !password || !password2) {
+      //   setFirstNameEmpty(!firstName);
+      //   setLastNameEmpty(!lastName);
+      //   setEmailEmpty(!email);
+      //   setPasswordEmpty(!password);
+      //   setFirstNameEmpty(!firstName)
+      //   return;
+      // }
+  
+      // Check for password match
+      // if (password !== password2) {
+      //   setPasswordMatch(false);
+      //   return;
+      // }
+  
+      // Dispatch the signup action
+      dispatch(
+        signUpAction({
+          // firstName: firstName,
+          // lastName: lastName,
+          full_name: full_name,
+          email: email,
+          password: password,
+          password2: password2,
+          is_tutor:is_tutor || true
+        })
+  
+      );
+      // setIsloading(true);
+    };
 
   return (
     <div>
@@ -101,15 +113,15 @@ function Signup2() {
                 type="text"
                 name=""
                 placeholder="Full Name"
-                className={`bg-[#F2F1F1] p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${fullNameEmpty ? 'border-red-500' : ''}`}
-                value={fullName}
+                className={`bg-[#F2F1F1] p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${full_nameEmpty ? 'border-red-500' : ''}`}
+                value={full_name}
                 onChange={(e) => {
-                  setFullName(e.target.value);
-                  setFullNameEmpty(false);
+                  setFull_name(e.target.value);
+                  setFull_nameEmpty(false);
                 }}
                 required
               />
-              {fullNameEmpty && <p className="text-red-500 text-xs mt-1">This must not be empty</p>}
+              {full_nameEmpty && <p className="text-red-500 text-xs mt-1">This must not be empty</p>}
             </div>
             <div className="mb-3">
               <p className="text-[#186BAD] text-sm mb-1 font-semibold">Email</p>
@@ -190,14 +202,17 @@ function Signup2() {
                 By creating an account, you have agreed to the terms of use and our privacy policy
               </p> */}
             </div>
-            <Link to='/buildprofile'><p className='text-right poppins cursor-pointer text-lg font-semibold'>Next <FontAwesomeIcon icon={faChevronRight} className='text-xl font-bold ml-5' /></p></Link>
+            <button className='text-right poppins cursor-pointer text-lg font-semibold'
+            onClick={handleSignUp}>
+              Next <FontAwesomeIcon icon={faChevronRight} className='text-xl font-bold ml-5' />
+            </button>
             {/* <Link to='/dashboard'><button
               onClick={handleSignUp}
               type="submit"
               className={`signup text-white font-semibold py-3 bg-[#186BAD] lg:w-[400px] w-[300px]  rounded-lg ${
-                !fullName || !email || !password || !password2 ? 'opacity-50 cursor-not-allowed' : ''
+                !full_name || !email || !password || !password2 ? 'opacity-50 cursor-not-allowed' : ''
               }`}
-              disabled={!fullName || !email || !password || !password2}
+              disabled={!full_name || !email || !password || !password2}
             >
               Sign up
             </button></Link>

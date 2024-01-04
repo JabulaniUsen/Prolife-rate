@@ -87,7 +87,7 @@ function Signin() {
                 }}
                 required
               />
-              {emailEmpty && <p className='text-red-500 text-xs mt-1'>This must not be empty</p>}
+              {/* {emailEmpty && <p className='text-red-500 text-xs mt-1'>This must not be empty</p>} */}
             </div>
             <div className='mb-3'>
               <p className='text-[#186BAD] text-sm mb-1 font-semibold'>Password</p>
@@ -108,14 +108,14 @@ function Signin() {
               <input type="checkbox" name="" id="" required />
               <p className='text-[#186BAD] font-semibold'>Keep me signed in</p>
             </div>
-            <Link to='/dashboard'><button
+            <button
               onClick={handleLogin}
               type="submit"
               className={`signup text-white font-semibold py-3 bg-[#186BAD] lg:w-[400px] w-full rounded-lg ${!email || !password ? 'opacity-50 cursor-not-allowed' : ''}`}
               disabled={!email || !password}
             >
               Sign in
-            </button></Link>
+            </button>
             <p className='text-[#898A8B] text-center py-5'>Don't have an account? <span className='text-[#186BAD] ml-2'><Link to='/signup'>Sign Up</Link></span></p>
           </div>
         </div>

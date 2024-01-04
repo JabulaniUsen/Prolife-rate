@@ -3,7 +3,7 @@ import axiosClient from "../../api/axios";
 import { setToken } from "../storage";
 
 const SIGN_IN = "authentication:SIGN_IN";
-const SIGN_UP = "authentication:SIGN_UP";
+const SIGN_UP_AS_TUTOR = "authentication:SIGN_UP_AS_TUTOR";
 
 export const signInAction = createAsyncThunk(
   SIGN_IN,
@@ -11,18 +11,18 @@ export const signInAction = createAsyncThunk(
     try {
       const response = await axiosClient().post("users/login/", args);
 
-      console.log(response.data, "kkkkk");
+      console.log(response.data, "User found!");
       setToken(response.data.token_key); // Set token upon successful sign-in
       return response.data;
     } catch (error) {
       console.log(error, "error");
-      return rejectWithValue('User not found');
+      return rejectWithValue(error.response.data.non_field_errors);
     }
   }
 );
 
 export const signUpAction = createAsyncThunk(
-  SIGN_UP,
+  SIGN_UP_AS_TUTOR,
   async (args, { rejectWithValue }) => {
     try {
       const response = await axiosClient().post("users/register/", args);
@@ -32,7 +32,7 @@ export const signUpAction = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.log(error, "error");
-      return rejectWithValue("Omor");
+      return rejectWithValue(error.response.data.email);
     }
   }
 );

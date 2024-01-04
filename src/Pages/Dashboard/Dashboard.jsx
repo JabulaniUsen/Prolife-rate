@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import menu from '../../Assets/menu.png';
 import user from '../../Assets/user.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -55,7 +56,16 @@ const Tabs = ({ tabs, setActiveTab, activeTab }) => {
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+  const [fullName, setFullName] = useState('');
 
+  const location = useLocation();
+
+  useEffect(() => {
+    // Check if the location state contains fullName and update the state
+    if (location.state && location.state.fullName) {
+      setFullName(location.state.fullName);
+    }
+  }, [location.state]);
   const toggleSidebar = () => {
     setIsSidebarVisible(!isSidebarVisible);
   };
@@ -107,9 +117,11 @@ const Dashboard = () => {
             isSidebarVisible ? '' : 'hidden'
           }`}
         >
-          <Link to='/'><div className="logo py-10 px-10">
-            <img src={logo} alt="" />
-          </div></Link>
+          <Link to='/'>
+            <div className="logo py-10 px-10">
+              <img src={logo} alt="" />
+            </div>
+          </Link>
           <div className=" flex flex-col gap-2 my-20">
             <Tabs tabs={tabs} setActiveTab={setActiveTab} />
           </div>
@@ -138,8 +150,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        
-
         <div className="body px-[20px]">
           <div className={`header flex justify-between p-10 w-[1100px] bg-white items-center ${isSidebarVisible ? '' : 'sidebar-hidden'}`}>
             <div className="menu" onClick={toggleSidebar}>
@@ -158,10 +168,11 @@ const Dashboard = () => {
             </div>
             <FontAwesomeIcon icon={faCartShopping} className="text-2xl text-[#56606D]" />
             <div className="user flex items-center gap-2">
-              <img src={user} alt="" />
+              <div className="border rounded-full border-[#dadada] p-5">
+                <img src="" alt="" />
+              </div>
               <div className="">
-                <h2>Carl Esquer</h2>
-                <p className="text-[#56606d] text-sm">Level 3</p>
+                <h2 className='studentName'>{fullName}</h2>
               </div>
               <FontAwesomeIcon icon={faChevronDown} />
             </div>

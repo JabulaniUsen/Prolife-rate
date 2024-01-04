@@ -21,7 +21,7 @@ const Calendar2 = () => {
   return (
     <div className="flex p-4">
       <div className="w-2/5 ">
-        <div className="bg-[#f99393] text-white p-4 px-6">
+        <div className="bg-[#f99393] text-white p-4 px-6 h-[450px]">
             <div className="top flex gap-3 items-center">
                 <div className='text-white text-7xl bg-[#57c1f2] p-3 px-7 rounded-full'>{moment().format('D')}</div>
                 <div className="">
@@ -38,7 +38,10 @@ const Calendar2 = () => {
 
                 <div className="">
                     <h2 className='text-xl font-semibold'>SCHEDULE</h2>
-                    <div className="bg-[#fcc9c9] border my-2 border-white flex justify-between p-1 text-black">
+                    <div className="">
+                      <p className='text-[#727272]'>No schedule yet</p>
+                    </div>
+                    {/* <div className="bg-[#fcc9c9] border my-2 border-white flex justify-between p-1 text-black">
                         <p className='text-lg font-bold'>10:00 - 01:10</p>
                         <p className='text-white text-lg px-1 font-bold'>Biology</p>
                     </div>
@@ -53,7 +56,7 @@ const Calendar2 = () => {
                     <div className="bg-[#fcc9c9] border my-2 border-white flex justify-between p-1 text-black">
                         <p className='text-lg font-bold'>10:00 - 12:30</p>
                         <p className='text-white text-lg px-1 font-bold'>Statistics</p>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

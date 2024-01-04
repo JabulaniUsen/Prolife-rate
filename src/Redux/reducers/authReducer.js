@@ -12,6 +12,7 @@ const initialState = {
   signingUpSuccess: "",
   signingUpError: "",
   adminData: null,
+  student:null
 };
 
 const authenticationSlice = createSlice({
@@ -19,6 +20,12 @@ const authenticationSlice = createSlice({
   initialState,
   reducers: {
     clearLoginStatus(state) {
+      state.signingInStatus = "idle";
+      state.signingInSuccess = "";
+      state.signingInError = "";
+    },
+
+    setStudent(state) {
       state.signingInStatus = "idle";
       state.signingInSuccess = "";
       state.signingInError = "";
@@ -39,6 +46,8 @@ const authenticationSlice = createSlice({
     clearUserData(state) {
       state.adminData = null;
     },
+
+
   },
 
   extraReducers: (builder) => {
