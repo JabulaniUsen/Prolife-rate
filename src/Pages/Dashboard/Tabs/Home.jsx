@@ -9,7 +9,7 @@ import StackedBarChart from '../../../Components/StackedBarChart';
 function Home() {
   return (
     <div className='px-20 py-6'>
-      <div className="header mb-7">
+      {/* <div className="header mb-7">
         <h1 className='text-2xl font-semibold mb-1'>Subjects</h1>
         <p className='text-[#BCC1CD]'>Upcoming Classes/Events</p>
       </div>
@@ -43,7 +43,7 @@ function Home() {
           <p className='text-[#0997D9] font-semibold text-lg'>See all</p>
           <FontAwesomeIcon icon={faChevronRight} className='text-3xl' />
         </div>
-      </div>
+      </div> */}
 
       <div className="calender my-10">
         <Calender2/>

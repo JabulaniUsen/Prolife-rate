@@ -3,15 +3,20 @@ import CircularProgressBar from './CircularProgressBar';
 
 function ClassProgress() {
   const room = [
-    { class: "Class A", desc: "78 Registered", progress: 45 },
-    { class: "Class B", desc: "78 Registered", progress: 60 },
-    { class: "Class C", desc: "78 Registered", progress: 30 },
-    { class: "Class D", desc: "78 Registered", progress: 75 },
-    { class: "Class E", desc: "78 Registered", progress: 90 },
+    // { class: "Class A", desc: "38 Registered", progress: 45 },
+    // { class: "Class B", desc: "43 Registered", progress: 60 },
+    // { class: "Class C", desc: "21 Registered", progress: 30 },
+    // { class: "Class D", desc: "45 Registered", progress: 75 },
+    // { class: "Class E", desc: "61 Registered", progress: 90 },
   ];
 
   return (
-    <div className='classProgress waitingRoom w-[300px] h-[430px] overflow-y-scroll m-6 rounded-2xl shadow-xl'>
+    <div className='classProgress relative waitingRoom w-[300px] h-[430px] overflow-y-scroll m-6 rounded-2xl shadow-xl'>
+      {room.length === 0 && (
+        <div className="absolute top-[7rem] right-[5.5rem]">
+          <p className='jost text-[#9e9e9e]'>No progress yet</p>
+        </div>
+      )}
       <div className="m-6 ">
         <h2 className='pb-4 jost font-bold'>Class Progress</h2>
         {room.map((item, index) => (

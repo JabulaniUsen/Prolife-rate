@@ -11,14 +11,14 @@ import Documents from '../Components/Documents';
 
 
 function Home() {
-  const exampleData = [20, 45, 30, 80, 60];
-  const currentDate = new Date().toLocaleDateString();
   return (
     <div className=' py-6'>
       <div className="head bg-[#186BAD] rounded-xl flex justify-between items-center">
         <div className="texts text-white justify-center mx-7 poppins">
-          <h1 className='text-3xl '>Welcome back, <span className='font-semibold'>Jabulani</span></h1>
-          <p className=' my-5'>You have 27 new student added to your domain. Please reach out to the Head Teacher if you want them excluded from your domain.</p>
+          <h1 className='text-3xl '>Welcome back!
+            {/* <span className='font-semibold'>Jabulani</span> */}
+          </h1>
+          {/* <p className=' my-5'>You have 27 new student added to your domain. Please reach out to the Head Teacher if you want them excluded from your domain.</p> */}
         </div>
         <img src={studentAndTeacher} alt="" />
       </div>

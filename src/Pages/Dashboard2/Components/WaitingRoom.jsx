@@ -3,18 +3,23 @@ import React from 'react';
 function WaitingRoom() {
     
     const activities = [
-        { initials: 'AA', name: 'Adepoju Ademola', message: 'Hello, Mr John, I am yet to get your class b result. What is going on? I am loosing patience', time: '03:23am'},
-        { initials: 'JU', name: 'Jabulani Usen', message: 'Please schedule your class test', time: '10:25am', },
-        { initials: 'OA', name: 'Odumayo Akindele', message: 'Please resend last session', time: '12:25am', },
-        { initials: 'GM', name: 'Goodness Mbakara', message: 'Send Document via email', time: '04:30am', },
-        { initials: 'BP', name: 'Badiru Pomile', message: 'Hello, Mr John, I am yet to get your class b result. What is going on? I am loosing patience', time: '01:14pm'},
-        { initials: 'EJ', name: 'Emmanuel John', message: 'Please schedule your class test', time: '10:25am', },
-        { initials: 'AO', name: 'Akindele Odumayo', message: 'Please resend last session', time: '12:25am', },
-        { initials: 'GE', name: 'Goodness Emmanuel', message: 'Send Document via email', time: '04:30am', },
+        // { initials: 'AA', name: 'Adepoju Ademola', message: 'Hello, Mr John, I am yet to get your class b result. What is going on? I am loosing patience', time: '03:23am'},
+        // { initials: 'JU', name: 'Jabulani Usen', message: 'Please schedule your class test', time: '10:25am', },
+        // { initials: 'OA', name: 'Odumayo Akindele', message: 'Please resend last session', time: '12:25am', },
+        // { initials: 'GM', name: 'Goodness Mbakara', message: 'Send Document via email', time: '04:30am', },
+        // { initials: 'BP', name: 'Badiru Pomile', message: 'Hello, Mr John, I am yet to get your class b result. What is going on? I am loosing patience', time: '01:14pm'},
+        // { initials: 'EJ', name: 'Emmanuel John', message: 'Please schedule your class test', time: '10:25am', },
+        // { initials: 'AO', name: 'Akindele Odumayo', message: 'Please resend last session', time: '12:25am', },
+        // { initials: 'GE', name: 'Goodness Emmanuel', message: 'Send Document via email', time: '04:30am', },
     ];
 
     return (
-        <div className='waitingRoom overflow-y-scroll w-[350px] h-[330px] my-6 mx-2'>
+        <div className='waitingRoom overflow-y-scroll relative w-[350px] h-[330px] my-6 mx-2'>
+            {activities.length === 0 && (
+            <div className="absolute top-[7rem] right-[8rem]">
+                <p className='jost text-[#9e9e9e]'>No progress yet</p>
+            </div>
+            )}
             <div className="m-3">
                 <div className="flex justify-between pb-6">
                     <h2 className='text-lg jost font-semibold'>Upcoming Activities</h2>

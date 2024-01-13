@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays, faClock, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import noClass from '../../../Assets/no-class.png'
 
 function ScheduledClasses() {
   const [classdata, setClassdata] = useState([
-    { id: 1, subject: "Algebra", studentName: "Canny James", time: "12:40 PM", date: "03 Jan 2023", status: "Ongoing" },
-    { id: 2, subject: "Matrix", studentName: "Jabulani Usen", time: "12:40 PM", date: "03 Jan 2023", status: "Starting in 60 Minutes" },
-    { id: 3, subject: "Equations", studentName: "Goodness James", time: "12:40 PM", date: "03 Jan 2023", status: "Starting in 60 Minutes" },
-    { id: 4, subject: "Geometry", studentName: "Edima Mike", time: "12:40 PM", date: "03 Jan 2023", status: "Starting in 60 Minutes" },
-    { id: 5, subject: "Angles", studentName: "James Abraham", time: "12:40 PM", date: "03 Jan 2023", status: "Not started" },
-    { id: 6, subject: "Numerations", studentName: "Amayen Joseph", time: "12:40 PM", date: "03 Jan 2023", status: "Not started" },
-    { id: 7, subject: "Binary Operations", studentName: "Sediong Ibanga", time: "12:40 PM", date: "03 Jan 2023", status: "Not started" },
-    { id: 8, subject: "Trigonometry", studentName: "Etini Ibanga", time: "12:40 PM", date: "03 Jan 2023", status: "Not started" },
-    { id: 9, subject: "Quadratic", studentName: "Gold Etokakpan", time: "12:40 PM", date: "03 Jan 2023", status: "Not started" },
+    // { id: 1, subject: "Algebra", studentName: "Canny James", time: "12:40 PM", date: "03 Jan 2023", status: "Ongoing" },
+    // { id: 2, subject: "Matrix", studentName: "Jabulani Usen", time: "12:40 PM", date: "03 Jan 2023", status: "Starting in 60 Minutes" },
+    // { id: 3, subject: "Equations", studentName: "Goodness James", time: "12:40 PM", date: "03 Jan 2023", status: "Starting in 60 Minutes" },
+    // { id: 4, subject: "Geometry", studentName: "Edima Mike", time: "12:40 PM", date: "03 Jan 2023", status: "Starting in 60 Minutes" },
+    // { id: 5, subject: "Angles", studentName: "James Abraham", time: "12:40 PM", date: "03 Jan 2023", status: "Not started" },
+    // { id: 6, subject: "Numerations", studentName: "Amayen Joseph", time: "12:40 PM", date: "03 Jan 2023", status: "Not started" },
+    // { id: 7, subject: "Binary Operations", studentName: "Sediong Ibanga", time: "12:40 PM", date: "03 Jan 2023", status: "Not started" },
+    // { id: 8, subject: "Trigonometry", studentName: "Etini Ibanga", time: "12:40 PM", date: "03 Jan 2023", status: "Not started" },
+    // { id: 9, subject: "Quadratic", studentName: "Gold Etokakpan", time: "12:40 PM", date: "03 Jan 2023", status: "Not started" },
   ]);
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -33,20 +34,35 @@ function ScheduledClasses() {
   return (
     <div className="grid grid-cols-3 gap-3 inter">
       {filteredClasses.length === 0 && (
-        <p className=" poppins inset-0 flex items-center justify-center text-xl font-semibold my-12 text-[#808080]">
-          Sorry, no result for your search
-        </p>
+        <div className="flex flex-col gap-3 absolute top-[20rem] rounded-xl border-[1px] border-[#000000] right-[30rem] w-[250px] h-[250px] justify-center items-center">
+          <div className="">
+            <img src={noClass} alt="" />
+          </div>
+          <div className="flex flex-col gap-2 justify-center items-center">
+            <p className='text-[#898A8B]'>No Classes</p>
+            <button className='bg-[#2977B5] text-white py-2 px-8 rounded-full'>Add Class</button>
+          </div>
+        </div>
       )}
-      <div className="search-bar absolute right-20 top-[160px] poppins bg-[#F1F1F1] rounded p-2 px-4 lg:w-[400px] w-[300px]">
-        <FontAwesomeIcon icon={faMagnifyingGlass} className='text-[#979797] mr-2'/>
-        <input
-          type="text"
-          placeholder="Search by student name, subject, or status"
-          value={searchQuery}
-          onChange={handleSearchChange}
-          className="w-[90%] bg-transparent"
-        />
-      </div>
+
+      {filteredClasses.length > 0 && (
+        <>
+          <div className="addClassBtn absolute right-20 top-[130px]">
+            <button className='bg-[#2977B5] hover:bg-[#405c74] text-white py-2 px-8 rounded-lg'>+ Add Class</button>
+          </div>
+          
+          <div className="search-bar absolute right-20 top-[190px] poppins bg-[#F1F1F1] rounded p-2 px-4 lg:w-[400px] w-[300px]">
+            <FontAwesomeIcon icon={faMagnifyingGlass} className='text-[#979797] mr-2'/>
+            <input
+              type="text"
+              placeholder="Search by student name, subject, or status"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className="w-[90%] bg-transparent"
+            />
+          </div>
+        </>
+      )}
       {filteredClasses.map((item, index) => (
         <div
           className={`classBox p-3 h-[240px] border-[1px] border-[#000] rounded-xl flex flex-col justify-between items-start ${

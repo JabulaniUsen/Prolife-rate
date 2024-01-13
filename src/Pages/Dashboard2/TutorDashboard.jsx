@@ -25,11 +25,6 @@ import Footer2 from '../../Components/Footer2';
 import { Link } from 'react-router-dom';
 import Transactions from './Tabs/Transactions';
 
-const getMonthAbbreviation2 = (month) => {
-  const monthsAbbreviation2 = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  return monthsAbbreviation2[month - 1];
-};
-
 // Tabs Component
 const Tabs = ({ tabs, setActiveTab, activeTab }) => {
   return (
@@ -105,35 +100,7 @@ const TutorDashboard = () => {
       }, 
     ];
   
-
-  const [currentMonth2, setCurrentMonth2] = useState(1); // Initial month
-  const [currentYear2, setCurrentYear2] = useState(2023); // Initial year
-
-  const handleNextMonth2 = () => {
-    if (currentMonth2 === 12) {
-      setCurrentMonth2(1);
-      setCurrentYear2((prevYear) => prevYear + 1);
-    } else {
-      setCurrentMonth2((prevMonth) => prevMonth + 1);
-    }
-  };
-
-  const handlePrevMonth2 = () => {
-    if (currentMonth2 === 1) {
-      setCurrentMonth2(12);
-      setCurrentYear2((prevYear) => prevYear - 1);
-    } else {
-      setCurrentMonth2((prevMonth) => prevMonth - 1);
-    }
-  };
-
-  const formatDate = () => {
-    const formattedMonth = currentMonth2 < 10 ? `0${currentMonth2}` : `${currentMonth2}`;
-    return `${getMonthAbbreviation2(currentMonth2)} ${formattedMonth}`;
-  };
-  
-
-  return (
+    return (
     <div className="">
       <div className='flex w-[20%] sidebar-hidden'>
         <div className="sideBar bg-[#2977B5] h-[100%] flex flex-col items-center px-2">
@@ -183,21 +150,6 @@ const TutorDashboard = () => {
 
         <div className="body px-[20px]">
           <div className='header flex justify-end gap-3 pt-10 w-[1050px] bg-white items-center sidebar-hidden'>
-            <div
-              style={{ textAlign: 'right', marginBottom: '10px' }}
-              className='bg-[#57C1F2] p-2 rounded-2xl'
-            >
-              <button onClick={handlePrevMonth2} className='text-[#57C1F2] bg-white rounded-full p-1 px-3 mx-1'>
-                <FontAwesomeIcon icon={faAngleLeft} />
-              </button>
-              <span style={{ margin: '0 10px' }} className='text-white font-semibold'>
-                {`${getMonthAbbreviation2(currentMonth2)} ${currentYear2}`}
-              </span>
-              <button onClick={handleNextMonth2} className='text-[#57C1F2] bg-white rounded-full p-1 px-3 mx-1'>
-                <FontAwesomeIcon icon={faAngleRight} />
-              </button>
-            </div>
-
             <div className="div w-[200px] border-[2px] rounded-2xl flex items-center gap-2 p-2">
               <FontAwesomeIcon icon={faMagnifyingGlass} className="text-slate-400 text-sm" />
               <input type="text" placeholder="Search" className='text-sm' />

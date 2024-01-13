@@ -19,6 +19,14 @@ const Reports = () => {
   };
 
   const Table = ({ tabData }) => {
+    if (tabData.length === 0) {
+      // Display fallback content if tabData is empty
+      return (
+        <div className="flex flex-col gap-3 absolute top-[27rem] right-[30rem] w-[250px] justify-center items-center">
+            <p className='text-[#898A8B] text-xl'>No Transaction Yet</p>
+        </div>
+      );
+    }
     const filteredData = tabData.filter(
       (row) =>
         row.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -74,40 +82,40 @@ const Reports = () => {
   const tabData = [
     
     [
-      { img: user, name: 'John Doe', subject: 'Mathematics', status: '100% Completed', summary: 'Input Summary', reports: 'Generate',},
-      { img: user2, name: 'Andikan Ime', subject: 'Mathematics', status: '40% Completed', summary: 'Input Summary', reports: 'Generate'},
-      { img: user, name: 'Paul Jackson', subject: 'Mathematics', status: '20% Completed', summary: 'Input Summary', reports: 'Generate',},
-      { img: user2, name: 'Sema Johnson', subject: 'Mathematics', status: '80% Completed', summary: 'Input Summary', reports: 'Generate',},
-      { img: user, name: 'Sedion Ibanga', subject: 'Mathematics', status: '90% Completed', summary: 'Input Summary', reports: 'Generate',},
-      { img: user2, name: 'Edima Tiese', subject: 'Mathematics', status: '20% Completed', summary: 'Input Summary', reports: 'Generate',},
-      { img: user, name: 'Etini Asikpo', subject: 'Mathematics', status: '10% Completed', summary: 'Input Summary', reports: 'Generate',},
-      { img: user2, name: 'Edidiong John', subject: 'Mathematics', status: '80% Completed', summary: 'Input Summary', reports: 'Generate',},
-      { img: user, name: 'John Doe', subject: 'Mathematics', status: '90% Completed', summary: 'Input Summary', reports: 'Generate',},
-      { img: user, name: 'John Doe', subject: 'Mathematics', status: '20% Completed', summary: 'Input Summary', reports: 'Generate',},
-      { img: user, name: 'John Doe', subject: 'Mathematics', status: '10% Completed', summary: 'Input Summary', reports: 'Generate',},
-      { img: user, name: 'John Doe', subject: 'Mathematics', status: '80% Completed', summary: 'Input Summary', reports: 'Generate',},
-      { img: user, name: 'John Doe', subject: 'Mathematics', status: '90% Completed', summary: 'Input Summary', reports: 'Generate',},
-      { img: user, name: 'John Doe', subject: 'Mathematics', status: '20% Completed', summary: 'Input Summary', reports: 'Generate',},
-      { img: user, name: 'John Doe', subject: 'Mathematics', status: '10% Completed', summary: 'Input Summary', reports: 'Generate',},
+      // { img: user, name: 'John Doe', subject: 'Mathematics', status: '100% Completed', summary: 'Input Summary', reports: 'Generate',},
+      // { img: user2, name: 'Andikan Ime', subject: 'Mathematics', status: '40% Completed', summary: 'Input Summary', reports: 'Generate'},
+      // { img: user, name: 'Paul Jackson', subject: 'Mathematics', status: '20% Completed', summary: 'Input Summary', reports: 'Generate',},
+      // { img: user2, name: 'Sema Johnson', subject: 'Mathematics', status: '80% Completed', summary: 'Input Summary', reports: 'Generate',},
+      // { img: user, name: 'Sedion Ibanga', subject: 'Mathematics', status: '90% Completed', summary: 'Input Summary', reports: 'Generate',},
+      // { img: user2, name: 'Edima Tiese', subject: 'Mathematics', status: '20% Completed', summary: 'Input Summary', reports: 'Generate',},
+      // { img: user, name: 'Etini Asikpo', subject: 'Mathematics', status: '10% Completed', summary: 'Input Summary', reports: 'Generate',},
+      // { img: user2, name: 'Edidiong John', subject: 'Mathematics', status: '80% Completed', summary: 'Input Summary', reports: 'Generate',},
+      // { img: user, name: 'John Doe', subject: 'Mathematics', status: '90% Completed', summary: 'Input Summary', reports: 'Generate',},
+      // { img: user, name: 'John Doe', subject: 'Mathematics', status: '20% Completed', summary: 'Input Summary', reports: 'Generate',},
+      // { img: user, name: 'John Doe', subject: 'Mathematics', status: '10% Completed', summary: 'Input Summary', reports: 'Generate',},
+      // { img: user, name: 'John Doe', subject: 'Mathematics', status: '80% Completed', summary: 'Input Summary', reports: 'Generate',},
+      // { img: user, name: 'John Doe', subject: 'Mathematics', status: '90% Completed', summary: 'Input Summary', reports: 'Generate',},
+      // { img: user, name: 'John Doe', subject: 'Mathematics', status: '20% Completed', summary: 'Input Summary', reports: 'Generate',},
+      // { img: user, name: 'John Doe', subject: 'Mathematics', status: '10% Completed', summary: 'Input Summary', reports: 'Generate',},
     ],
     
     [
-      { img: user, name: 'Rite Doe', subject: 'Mathematics', status: '100% Completed', summary: 'Input Summary', reports: 'Generate', },
+      // { img: user, name: 'Rite Doe', subject: 'Mathematics', status: '100% Completed', summary: 'Input Summary', reports: 'Generate', },
     ],
     [
-      { img: user, name: 'John Adam', subject: 'Mathematics', status: '100% Completed', summary: 'Input Summary', reports: 'Generate', },
+      // { img: user, name: 'John Adam', subject: 'Mathematics', status: '100% Completed', summary: 'Input Summary', reports: 'Generate', },
     ],
     [
-      { img: user, name: 'Andrew Iman', subject: 'Mathematics', status: '100% Completed', summary: 'Input Summary', reports: 'Generate', },
+      // { img: user, name: 'Andrew Iman', subject: 'Mathematics', status: '100% Completed', summary: 'Input Summary', reports: 'Generate', },
     ],
     [
-      { img: user, name: 'Joan Amos', subject: 'Mathematics', status: '100% Completed', summary: 'Input Summary', reports: 'Generate', },
+      // { img: user, name: 'Joan Amos', subject: 'Mathematics', status: '100% Completed', summary: 'Input Summary', reports: 'Generate', },
     ],
     [
-      { img: user, name: 'King King', subject: 'Mathematics', status: '100% Completed', summary: 'Input Summary', reports: 'Generate', },
+      // { img: user, name: 'King King', subject: 'Mathematics', status: '100% Completed', summary: 'Input Summary', reports: 'Generate', },
     ],
     [
-      { img: user, name: 'Bamidele Andrew', subject: 'Mathematics', status: '100% Completed', summary: 'Input Summary', reports: 'Generate', },
+      // { img: user, name: 'Bamidele Andrew', subject: 'Mathematics', status: '100% Completed', summary: 'Input Summary', reports: 'Generate', },
     ],
   ];
 

@@ -20,8 +20,6 @@ function BuildProfile() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isloading, setIsloading] = useState(false);
   const [fullNameEmpty, setFullNameEmpty] = useState(false);
-  const [emailEmpty, setEmailEmpty] = useState(false); // Added state for emailEmpty
-  const [showModal, setShowModal] = useState(false);
   // New state for redirecting text
   const [redirectingText, setRedirectingText] = useState(false);
 
@@ -108,19 +106,6 @@ function BuildProfile() {
     // You can perform additional validations or processing here if needed
     setImage(URL.createObjectURL(droppedImage));
   };
-
-  const [tags, setTags] = useState([]);
-
-  const handleDelete = (i) => {
-    const newTags = [...tags];
-    newTags.splice(i, 1);
-    setTags(newTags);
-  };
-
-  const handleAddition = (tag) => {
-    setTags([...tags, tag]);
-  };
-
 
   return (
     <div>

@@ -31,6 +31,7 @@ import PaymentInfo from './Tabs/PaymentInfo';
 import Reports from './Tabs/Reports';
 import Footer2 from '../../Components/Footer2';
 import { Link } from 'react-router-dom';
+import Notifications from './Components/Notification';
 
 // Tabs Component
 const Tabs = ({ tabs, setActiveTab, activeTab }) => {
@@ -68,6 +69,11 @@ const Dashboard = () => {
   }, [location.state]);
   const toggleSidebar = () => {
     setIsSidebarVisible(!isSidebarVisible);
+  };
+
+  const navigateToAddStudent = () => {
+    // Set the active tab index to the index of the Settings tab
+    setActiveTab(tabs.findIndex(tab => tab.label === 'Settings and profile'));
   };
 
   const tabs = [
@@ -160,12 +166,9 @@ const Dashboard = () => {
               <input type="text" placeholder="Search anything" />
             </div>
             <div className="">
-              <button className="bg-[#186bad] py-3 px-6 text-white rounded-lg text-sm">+ Add Student</button>
+            <button onClick={navigateToAddStudent} className="bg-[#186bad] py-3 px-6 text-white rounded-lg text-sm">+ Add Student</button>
             </div>
-            <div className="relative">
-              <span className="absolute text-white bg-[#186bad] p-[0,5px] px-[5.5px] rounded-full text-[11px] top-[-5px] right-[-6px]">9</span>
-              <FontAwesomeIcon icon={faBell} className="text-2xl text-[#56606D]" />
-            </div>
+            <Notifications/>
             <FontAwesomeIcon icon={faCartShopping} className="text-2xl text-[#56606D]" />
             <div className="user flex items-center gap-2">
               <div className="border rounded-full border-[#dadada] p-5">

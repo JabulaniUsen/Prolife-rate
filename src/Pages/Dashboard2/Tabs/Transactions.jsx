@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { faCalendarDays, faFileExport } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import noPayment from '../../../Assets/noPayment.png'
 
 const tabs = ['Reports', 'Transactions', 'Debit', 'Upcoming', 'Due'];
 
@@ -12,6 +13,19 @@ const Transactions = () => {
   };
 
   const Table = ({ tabData }) => {
+    if (tabData.length === 0) {
+      // Display fallback content if tabData is empty
+      return (
+        <div className="flex flex-col gap-3 absolute top-[22rem] rounded-xl right-[30rem] w-[250px] h-[250px] justify-center items-center">
+          <div className="">
+            <img src={noPayment} alt="" />
+          </div>
+          <div className="flex flex-col gap-2 justify-center items-center">
+            <p className='text-[#898A8B]'>No Payment</p>
+          </div>
+        </div>
+      );
+    }
     return (
       <table className="poppins my-8">
         <thead className=''>
@@ -50,32 +64,32 @@ const Transactions = () => {
   const tabData = [
     
     [
-      { serialNo: 1, name: 'John Doe', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: 13, paymentMethod: 'Wire Transfer', status: 'Success' },
-      { serialNo: 2, name: 'Amaka David', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: 24, paymentMethod: 'Wire Transfer', status: 'Success' },
-      { serialNo: 3, name: 'David David', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +12, paymentMethod: 'Wire Transfer', status: 'Success', },
-      { serialNo: 4, name: 'Henry Ola', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +14, paymentMethod: 'Wire Transfer', status: 'Success', specialStyle: { color: 'red' }  },
-      { serialNo: 5, name: 'Mike Sediong', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +14, paymentMethod: 'Wire Transfer', status: 'Success' },
-      { serialNo: 6, name: 'Amaka David', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +55, paymentMethod: 'Wire Transfer', status: 'Success' },
-      { serialNo: 7, name: 'Victor David', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Success' },
+      // { serialNo: 1, name: 'John Doe', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: 13, paymentMethod: 'Wire Transfer', status: 'Success' },
+      // { serialNo: 2, name: 'Amaka David', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: 24, paymentMethod: 'Wire Transfer', status: 'Success' },
+      // { serialNo: 3, name: 'David David', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +12, paymentMethod: 'Wire Transfer', status: 'Success', },
+      // { serialNo: 4, name: 'Henry Ola', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +14, paymentMethod: 'Wire Transfer', status: 'Success', specialStyle: { color: 'red' }  },
+      // { serialNo: 5, name: 'Mike Sediong', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +14, paymentMethod: 'Wire Transfer', status: 'Success' },
+      // { serialNo: 6, name: 'Amaka David', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +55, paymentMethod: 'Wire Transfer', status: 'Success' },
+      // { serialNo: 7, name: 'Victor David', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Success' },
     ],
     
     [
-      { serialNo: 1, name: 'Amaka David',  date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Success' },
+      // { serialNo: 1, name: 'Amaka David',  date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Success' },
     ],
     [
-      { serialNo: 1, name: 'David David',  date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Success' },
+      // { serialNo: 1, name: 'David David',  date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Success' },
     ],
     [
-      { serialNo: 1, name: 'Henry Ola',  date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Success' },
+      // { serialNo: 1, name: 'Henry Ola',  date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Success' },
     ],
     [
-      { serialNo: 1, name: 'Mike Sediong',  date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Success' },
+      // { serialNo: 1, name: 'Mike Sediong',  date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Success' },
     ],
     [
-      { serialNo: 1, name: 'Amaka David',  date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Success' },
+      // { serialNo: 1, name: 'Amaka David',  date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Success' },
     ],
     [
-      { serialNo: 1, name: 'Victor David',  date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Success' },
+      // { serialNo: 1, name: 'Victor David',  date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Success' },
     ],
   ];
 

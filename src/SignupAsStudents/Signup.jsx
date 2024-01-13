@@ -28,7 +28,6 @@ function Signup() {
   const [emailEmpty, setEmailEmpty] = useState(false);
   const [showModal, setShowModal] = useState(false);
   // New state for redirecting text
-  const [redirectingText, setRedirectingText] = useState(false);
   const [is_student, setIs_student] = useState(null)
 
   const navigate = useNavigate();
@@ -55,18 +54,17 @@ function Signup() {
   useEffect(() => {
     if (authSelector.signUpActionStatus === 'completed') {
       // Show toast message
-      toast.success('Account created', {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000, // 3 seconds
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      // toast.success('Account created', {
+      //   position: toast.POSITION.TOP_CENTER,
+      //   autoClose: 3000,
+      //   hideProgressBar: true,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      // });
       setRedirectingText(true);
       setTimeout(() => {
-        setRedirectingText(false);
-        navigate('/dashboard', { state: { fullName: full_name } });
+        navigate('/buildprofile', { state: { fullName: full_name } });
       }, 3000);
       dispatch (clearSignUpStatus())
     } 
@@ -74,20 +72,20 @@ function Signup() {
 
   const handleSignUp = () => {
     // Check for empty fields
-    // if (!firstName || !lastName || !username || !email || !password || !password2) {
-    //   setFirstNameEmpty(!firstName);
-    //   setLastNameEmpty(!lastName);
-    //   setEmailEmpty(!email);
-    //   setPasswordEmpty(!password);
-    //   setFirstNameEmpty(!firstName)
-    //   return;
-    // }
+    if (!firstName || !lastName || !username || !email || !password || !password2) {
+      setFirstNameEmpty(!firstName);
+      setLastNameEmpty(!lastName);
+      setEmailEmpty(!email);
+      setPasswordEmpty(!password);
+      setFirstNameEmpty(!firstName)
+      return;
+    }
 
     // Check for password match
-    // if (password !== password2) {
-    //   setPasswordMatch(false);
-    //   return;
-    // }
+    if (password !== password2) {
+      setPasswordMatch(false);
+      return;
+    }
 
     // Dispatch the signup action
     dispatch(

@@ -4,14 +4,19 @@ import React from 'react';
 
 function UpcomingActivities() {
     const activities = [
-        { number: '31', name: 'Meeting with the VC', link: 'Meeting link//www.zoom.com', time: '10am - 11am', status: 'Due soon' },
-        { number: '04', name: 'Meeting with the Jabulani', link: 'Meeting link//www.zoom.com', time: '10am - 11am', status: 'Upcoming' },
-        { number: '12', name: 'Send B middle session', link: 'Physical science lab', time: '10am - 11am', status: 'Upcoming' },
-        { number: '16', name: 'Send Mr Ayo class', link: 'Send Document via email', time: '10am - 11am', status: 'Upcoming' },
+        // { number: '31', name: 'Meeting with the VC', link: 'Meeting link//www.zoom.com', time: '10am - 11am', status: 'Due soon' },
+        // { number: '04', name: 'Meeting with the Jabulani', link: 'Meeting link//www.zoom.com', time: '10am - 11am', status: 'Upcoming' },
+        // { number: '12', name: 'Send B middle session', link: 'Physical science lab', time: '10am - 11am', status: 'Upcoming' },
+        // { number: '16', name: 'Send Mr Ayo class', link: 'Send Document via email', time: '10am - 11am', status: 'Upcoming' },
     ];
 
     return (
-        <div className='upcomingActivities waitingRoom w-[400px] h-[430px] my-6 rounded-2xl shadow-xl'>
+        <div className='upcomingActivities relative waitingRoom w-[400px] h-[430px] my-6 rounded-2xl shadow-xl'>
+            {activities.length === 0 && (
+                <div className="absolute top-[7rem] right-[9rem]">
+                <p className='jost text-[#9e9e9e]'>No progress yet</p>
+                </div>
+            )}
             <div className="m-6 ">
                 <div className="flex justify-between pt-6">
                     <h2 className='text-lg jost font-semibold'>Upcoming Activities</h2>
