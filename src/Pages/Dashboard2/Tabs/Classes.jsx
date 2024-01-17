@@ -3,9 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import ScheduledClasses from '../Components/ScheduledClasses';
 import ClassHistory from '../Components/ClassHistory';
-import StartClass from '../Components/StartClass';
 
-const tabs = ['Scheduled Classes', 'Class History', 'Start Class'];
+const tabs = ['Scheduled Classes', 'Class History'];
 
 const Classes = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -20,8 +19,6 @@ const Classes = () => {
         return <ScheduledClasses />;
       case 1:
         return <ClassHistory />;
-      case 2: 
-      return <StartClass/>
       default:
         return null;
     }

@@ -26,6 +26,7 @@ import VerificationAndIdentity from './SignupAsTutor/VerificationAndIdentificati
 import VerifyEmail from './SignupAsTutor/VerifyEmail';
 import Subject from './Pages/Subject/Subject';
 import EducationalInfomation from './SignupAsStudents/EducationalInfomation';
+import Room from './Pages/Dashboard2/Components/Room';
 
 
 let persistor = persistStore(store);
@@ -56,6 +57,7 @@ function App() {
               <Route path='/verifyemail' element={<VerifyEmail/>} />
               <Route path='/subjects' element={<Subject/>} />
               <Route path='/educational_information' element={<EducationalInfomation/>} />
+              <Route path='/room/:roomId' element={<Room/>}></Route>
             </Routes>
           </BrowserRouter>
           </PersistGate>

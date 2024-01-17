@@ -39,15 +39,12 @@ function ClassHistory() {
             <img src={noClass} alt="" />
           </div>
           <div className="flex flex-col gap-2 justify-center items-center">
-            <p className='text-[#898A8B]'>No Classes</p>
-            <button className='bg-[#2977B5] text-white py-2 px-8 rounded-full'>Add Class</button>
+            <p className='text-[#898A8B]'>No History</p>
           </div>
         </div>
       ) : (
         <>
-          <div className="absolute right-20 top-[130px]">
-            <button className='bg-[#2977B5] hover:bg-[#405c74] text-white py-2 px-8 rounded-lg'>+ Add Class</button>
-          </div>
+          
           <div className="search-bar absolute right-20 top-[190px] poppins bg-[#F1F1F1] rounded p-2 px-4 lg:w-[400px] w-[300px]">
             <FontAwesomeIcon icon={faMagnifyingGlass} className='text-[#979797] mr-2'/>
             <input
