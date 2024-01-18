@@ -3,7 +3,7 @@ import { faCalendarDays, faFileExport } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import noPayment from '../../../Assets/noPayment.png'
 
-const tabs = ['Reports', 'Transactions', 'Debit', 'Upcoming', 'Due'];
+const tabs = ['Reports', 'Transactions', 'Upcoming'];
 
 const Transactions = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -137,10 +137,10 @@ const Transactions = () => {
             <p>12-12-2024</p>
           </div>
         </div>
-        <div className="">
-        <button className='border-[1px] mx-3 border-[#B63A3A] text-[#B63A3A] hover:bg-[#B63A3A] hover:text-white transition rounded font-semibold py-2 px-6'>Make Payment</button>
+        {/* <div className="">
+          <button className='border-[1px] mx-3 border-[#B63A3A] text-[#B63A3A] hover:bg-[#B63A3A] hover:text-white transition rounded font-semibold py-2 px-6'>Make Payment</button>
           <button className='border-[1px] border-[#3AB690] text-[#3AB690] hover:bg-[#3AB690] hover:text-white transition rounded font-semibold py-2 px-6'>Request Payment</button>
-        </div>
+        </div> */}
       </div>
       <Table tabData={tabData[activeTab]} />
     </div>
