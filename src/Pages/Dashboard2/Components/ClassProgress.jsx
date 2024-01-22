@@ -1,5 +1,4 @@
 import React from 'react';
-import CircularProgressBar from './CircularProgressBar';
 
 function ClassProgress() {
   const room = [
@@ -11,9 +10,9 @@ function ClassProgress() {
   ];
 
   return (
-    <div className='classProgress relative waitingRoom w-[300px] h-[430px] overflow-y-scroll m-6 rounded-2xl shadow-xl'>
+    <div className='classProgress relative waitingRoom lg:w-[300px] w-[400px] h-[430px] overflow-y-scroll lg:m-6 rounded-2xl shadow-xl'>
       {room.length === 0 && (
-        <div className="absolute top-[7rem] right-[5.5rem]">
+        <div className="absolute top-[50%] right-[35%]">
           <p className='jost text-[#9e9e9e]'>No progress yet</p>
         </div>
       )}
@@ -26,7 +25,6 @@ function ClassProgress() {
                     <h3 className='font-bold'>{item.class}</h3>
                     <p className='text-[#9e9e9e] text-sm'>{item.desc}</p>
                 </div>
-                {/* <CircularProgressBar /> */}
             </div>
         </div>
         ))}

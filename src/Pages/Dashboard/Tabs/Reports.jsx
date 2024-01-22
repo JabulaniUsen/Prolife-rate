@@ -15,9 +15,8 @@ const Reports = () => {
   const Table = ({ tabData }) => {
 
     if (tabData.length === 0) {
-      // Display fallback content if tabData is empty
       return (
-        <div className="flex flex-col gap-3 absolute top-[27rem] right-[30rem] w-[250px] justify-center items-center">
+        <div className="flex flex-col gap-3 m-auto mt-28 lg:absolute top-[27rem] right-[30rem] w-[250px] justify-center items-center">
             <p className='text-[#898A8B] text-xl'>No Transaction Yet</p>
         </div>
       );
@@ -77,14 +76,14 @@ const Reports = () => {
   return (
     <div className="pt-16 px-12 " >
       <div className="header">
-        <h1 className='text-4xl font-semibold text-center'>Report</h1>
+        <h1 className='text-4xl font-semibold text-center lg:m-0 mb-10'>Report</h1>
       </div>
       <div className="">
-        <div className="border-[1px] border-[#979797] rounded-3xl p-3 w-[300px] lg:float-right ">
+        <div className="border-[1px] border-[#979797] rounded-3xl p-3 w-[300px] lg:float-right m-auto">
           <input type="text" placeholder='What do you want to to search' className='w-[90%]' />
           <FontAwesomeIcon icon={faMagnifyingGlass} className='text-[#979797]'/>
         </div>
-        <div className="flex justfly-between gap-20  my-[4rem] ">
+        <div className="flex justfly-between gap-20  lg:my-[4rem] my-[2rem] ">
           {tabs.map((tab, index) => (
             <div
               key={index}

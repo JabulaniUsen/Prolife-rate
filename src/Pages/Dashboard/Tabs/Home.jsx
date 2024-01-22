@@ -1,56 +1,36 @@
 import React from 'react'
-import sub1 from '../Icons/sub1.png'
-import sub2 from '../Icons/sub2.png'
-import { faBookmark, faChevronRight, faEarthAmericas, faEllipsisVertical, faSquareRootVariable } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Calender2 from '../../../Components/Calender2';
-import StackedBarChart from '../../../Components/StackedBarChart';
+import studentAndTeacher from '../../Dashboard2/Icons/Teacher and student.png'
+import UpcomingClasses from '../Components/UpcomingClasses';
+import PendingAssignments from '../Components/PendingAssignments';
+import WaitingRoom from '../Components/WaitingRoom';
+import Documents from '../Components/Documents';
+
 
 function Home() {
   return (
-    <div className='px-20 py-6'>
-      {/* <div className="header mb-7">
-        <h1 className='text-2xl font-semibold mb-1'>Subjects</h1>
-        <p className='text-[#BCC1CD]'>Upcoming Classes/Events</p>
+    <div className='lg:mt-0 mt-5 lg:py-0 py-6 '>
+      <div className="head bg-[#186BAD] lg:py-0 pt-10 rounded-xl lg:flex lg:justify-between items-center lg:mx-0 mx-5">
+        <div className="texts text-white justify-center mx-7 poppins">
+          <h1 className='text-3xl '>Welcome back!
+            {/* <span className='font-semibold'>Jabulani</span> */}
+          </h1>
+          {/* <p className=' my-5'>You have 27 new student added to your domain. Please reach out to the Head Teacher if you want them excluded from your domain.</p> */}
+        </div>
+        <img src={studentAndTeacher} className='lg:w-[410px] w-[70%] ml-28' alt="" />
       </div>
-      <div className="subjects flex gap-10">
-        <div className="sub-boxes relative w-[140px] h-[110px] rounded-2xl">
-          <img src={sub1} className=' sub-head absolute right-0 top-0 ' alt="" />
-          <FontAwesomeIcon icon={faEllipsisVertical} className='text-white text-2xl absolute top-4 right-6' />
-          <FontAwesomeIcon icon={faSquareRootVariable} className='text-lg absolute top-5 left-5' />
-          <h3 className='absolute bottom-4 left-4 font-semibold'>Statistics</h3>
+      <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1  gap-10 mt-7 place-items-center mx-10">
+        <div className="PendingAssignments">
+          <UpcomingClasses/>
         </div>
-        <div className="sub-boxes relative w-[140px] h-[110px] rounded-2xl">
-          <img src={sub2} className=' sub-head absolute right-0 top-0 ' alt="" />
-          <FontAwesomeIcon icon={faEllipsisVertical} className='text-white text-2xl absolute top-4 right-6' />
-          <FontAwesomeIcon icon={faEarthAmericas} className='text-lg absolute top-5 left-5' />
-          <h3 className='absolute bottom-4 left-4 font-semibold'>Geography</h3>
+        <div className="upcomingClasses">
+          <PendingAssignments/>
         </div>
-        <div className="sub-boxes relative w-[140px] h-[110px] rounded-2xl">
-          <img src={sub1} className=' sub-head absolute right-0 top-0 ' alt="" />
-          <FontAwesomeIcon icon={faEllipsisVertical} className='text-white text-2xl absolute top-4 right-6' />
-          <FontAwesomeIcon icon={faBookmark} className='text-lg absolute top-5 left-5' />
-          <h3 className='absolute bottom-4 left-4 font-semibold'>Vocabulary</h3>
+        <div className="PendingAssignments">
+          <WaitingRoom/>
         </div>
-        <div className="sub-boxes relative w-[140px] h-[110px] rounded-2xl">
-          <img src={sub2} className=' sub-head absolute right-0 top-0 ' alt="" />
-          <FontAwesomeIcon icon={faEllipsisVertical} className='text-white text-2xl absolute top-4 right-6' />
-          <FontAwesomeIcon icon={faEarthAmericas} className='text-lg absolute top-5 left-5' />
-          <h3 className='absolute bottom-4 left-4 font-semibold'>Biology</h3>
+        <div className="docs">
+          {/* <Documents/> */}
         </div>
-
-        <div className="flex items-center gap-4 cursor-pointer">
-          <p className='text-[#0997D9] font-semibold text-lg'>See all</p>
-          <FontAwesomeIcon icon={faChevronRight} className='text-3xl' />
-        </div>
-      </div> */}
-
-      <div className="calender my-10">
-        <Calender2/>
-      </div>
-
-      <div className="">
-        <StackedBarChart/>
       </div>
     </div>
   )

@@ -1,3 +1,5 @@
+import { faEdit, faSave } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 
 function Bio() {
@@ -19,17 +21,17 @@ function Bio() {
       <textarea
         name="bio"
         id="bio"
-        className={`mt-5 inter w-full outline-none h-[200px] max-h-[250px] ${editMode ? 'border' : 'border-none'}`}
+        className={`mt-5 inter w-full outline-none lg:h-[200px] h-[120px] lg:max-h-[250px] ${editMode ? 'border' : 'border-none'}`}
         placeholder='Add bio e.g "My name is Tunde Adeyemi with 6 years of teaching experience as an English teacher at..."'
         value={bio}
         onChange={(e) => setBio(e.target.value)}
         readOnly={!editMode}
       />
       <button
-        className="inter bg-blue-500 hover:transition-all text-white px-4 py-2 rounded-md hover:bg-blue-600"
+        className={`inter hover:transition-all px-4 py-2 mt-3 text-blue-600 rounded-md  ${editMode ? 'bg-[#c5c5c5]' : 'bg-[#e2e2e2]'}`}
         onClick={handleEditSaveClick}
       >
-        {editMode ? 'Save' : 'Edit'}
+        {editMode ? <FontAwesomeIcon icon={faSave}/> : <FontAwesomeIcon icon={faEdit}/>}
       </button>
     </div>
   );

@@ -22,11 +22,11 @@ function Settings() {
   };
 
   return (
-    <div className="">
-      <div className="bg-white p-9 rounded-lg shadow-md flex items-center justify-between">
+    <div className="mt-10">
+      <div className="bg-white lg:p-9 p-4 rounded-lg shadow-md flex items-center justify-between">
         <div className="">
           <div className="flex items-center relative">
-            <div className="w-[200px] h-[200px] bg-gray-200 rounded-full overflow-hidden relative">
+            <div className="lg:w-[200px] lg:h-[200px] w-[120px] h-[120px] bg-gray-200 rounded-full overflow-hidden relative">
               <div
                 className="w-full h-full bg-cover bg-center"
                 style={{
@@ -42,29 +42,28 @@ function Settings() {
                       accept="image/*"
                       onChange={handleImageChange}
                     />
-                    <FontAwesomeIcon icon={faEdit} className="text-white p-2 bg-blue-500 rounded-full" />
                   </label>
                 )}
               </div>
             </div>
             <div className="name ml-5 ">
               <div className="">
-                <p className='inter text-[32px]'>Jabulani</p>
+                <p className='inter lg:text-[32px] text-2xl'>Jabulani</p>
                 <div className=""></div>
               </div>
               <div className="">
-                <p className='inter text-[16px] text-[#6E7485]'>Etokakpan, Usenobong Usen</p>
+                <p className='inter lg:text-[16px] text-[16px] text-[#6E7485]'>Etokakpan, Usenobong</p>
               </div>
-              <div className="text-[16px] mt-3 flex gap-[20px]">
+              <div className="text-[16px] mt-3 flex lg:flex-row flex-col lg:gap-[20px]">
                 <p>
-                  <FontAwesomeIcon icon={faStar} className='text-[#FD8E1F]' /> 0.0 <span className='text-[#6E7485]'>(no reviews yet)</span>
+                  <FontAwesomeIcon icon={faStar} className='text-[#FD8E1F] lg:text-base' /> 0.0 <span className='text-[#6E7485] lg:text-base text-sm'>(no reviews yet)</span>
                 </p>
                 <p>
-                  <FontAwesomeIcon icon={faUsers} className='text-[#564FFD]' /> 0 <span className='text-sm text-[#6E7485]'>Students</span>
+                  <FontAwesomeIcon icon={faUsers} className='text-[#564FFD] lg:text-base' /> 0 <span className='text-sm text-[#6E7485]'>Students</span>
                 </p>
               </div>
             </div>
-            <div className="absolute left-[10rem] bottom-4">
+            <div className="absolute lg:left-[10rem] left-[6rem] lg:bottom-4 bottom-[-0.1rem]">
               <label className="text-blue-500 cursor-pointer ">
                 <FontAwesomeIcon icon={faEdit} className="text-xl bg-white p-2 rounded-full" />
                 <input
@@ -78,11 +77,11 @@ function Settings() {
           </div>
         </div>
       </div>
-      <div className="flex justify-between gap-5 w-full mt-10">
-        <div className="bio w-[60%]">
+      <div className="flex justify-between lg:flex-row flex-col gap-5 w-full mt-10">
+        <div className="bio lg:w-[60%]">
           <Bio />
         </div>
-        <div className="subjectsTaught w-[50%]">
+        <div className="subjectsTaught lg:w-[50%]">
           <SubjectsTaught/>
         </div>
       </div>

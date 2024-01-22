@@ -27,10 +27,6 @@ const Classes = () => {
   return (
     <div className=" px-12">
       <div className="">
-        {/* <div className=" poppins bg-[#F1F1F1] rounded p-2 px-4 lg:w-[400px] w-[300px] lg:float-right ">
-          <FontAwesomeIcon icon={faMagnifyingGlass} className='text-[#979797] mr-2'/>
-          <input type="text" placeholder='Search...' className='w-[90%] bg-transparent' />
-        </div> */}
         <div className="flex gap-10 my-[4rem] ">
           {tabs.map((tab, index) => (
             <div

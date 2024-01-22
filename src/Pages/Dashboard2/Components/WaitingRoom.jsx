@@ -14,7 +14,7 @@ function WaitingRoom() {
     ];
 
     return (
-        <div className='waitingRoom overflow-y-scroll relative w-[350px] h-[330px] my-6 mx-2'>
+        <div className='waitingRoom overflow-y-scroll relative lg:w-[350px] w-[400px] lg:h-[330px] h-[400px] my-6 mx-2 shadow-xl rounded-2xl p-5 lg:p-0'>
             {activities.length === 0 && (
             <div className="absolute top-[7rem] right-[8rem]">
                 <p className='jost text-[#9e9e9e]'>No progress yet</p>
@@ -22,7 +22,7 @@ function WaitingRoom() {
             )}
             <div className="m-3">
                 <div className="flex justify-between pb-6">
-                    <h2 className='text-lg jost font-semibold'>Upcoming Activities</h2>
+                    <h2 className='text-lg jost font-semibold'>Waiting Room</h2>
                     <h2 className=' jost font-semibold cursor-pointer text-[#186bad]'>See all</h2>
                 </div>
                 {activities.map((item, index) => (

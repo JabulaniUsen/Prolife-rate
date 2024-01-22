@@ -133,7 +133,7 @@ const Dashboard = () => {
           </div>
 
           <div className="logout">
-            <button className="flex gap-2 items-center justify-start text-white bg-[#186bad] w-[200px] py-3 text-sm px-5 hover:bg-[#509cdb] rounded">
+            <button className="flex gap-2 items-center justify-start text-white bg-[#186bad] w-[200px] py-3 text-sm px-5 hover: rounded">
               <FontAwesomeIcon icon={faRightFromBracket} />
               Logout
             </button>
@@ -156,35 +156,35 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="body px-[20px]">
-          <div className={`header flex justify-between p-10 w-[1100px] bg-white items-center ${isSidebarVisible ? '' : 'sidebar-hidden'}`}>
+        <div className="body lg:px-[20px]">
+          <div className={`header flex justify-between p-10 lg:p-5 lg:w-[1100px] bg-white items-center ${isSidebarVisible ? '' : 'sidebar-hidden'}`}>
             <div className="menu" onClick={toggleSidebar}>
-              <img src={menu} className="cursor-pointer" alt="" />
+              <img src={menu} className="cursor-pointer lg:hidden" alt="" />
             </div>
-            <div className="div w-[400px]">
-              <FontAwesomeIcon icon={faMagnifyingGlass} className="text-slate-400 mx-3" />
+            <div className="div lg:w-[400px] w-[300px] lg:ml-[400px] ml-2 border rounded-xl flex">
+              <FontAwesomeIcon icon={faMagnifyingGlass} className="text-slate-400 mx-3 lg:py-2" />
               <input type="text" placeholder="Search anything" />
             </div>
-            <div className="">
+            {/* <div className="">
             <button onClick={navigateToAddStudent} className="bg-[#186bad] py-3 px-6 text-white rounded-lg text-sm">+ Add Student</button>
-            </div>
+            </div> */}
             <Notifications/>
-            <FontAwesomeIcon icon={faCartShopping} className="text-2xl text-[#56606D]" />
-            <div className="user flex items-center gap-2">
+            {/* <FontAwesomeIcon icon={faCartShopping} className="text-2xl text-[#56606D]" /> */}
+            <div className="user flex items-center gap-2 mx-2">
               <div className="border rounded-full border-[#dadada] p-5">
                 <img src="" alt="" />
               </div>
               <div className="">
                 <h2 className='studentName'>{fullName}</h2>
               </div>
-              <FontAwesomeIcon icon={faChevronDown} />
+              {/* <FontAwesomeIcon icon={faChevronDown} /> */}
             </div>
           </div>
           {tabs[activeTab].contentComponent}
         </div>
 
       </div>
-        <Footer2/>
+        {/* <Footer2/> */}
     </div>
   );
 };

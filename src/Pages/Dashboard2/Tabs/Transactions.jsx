@@ -29,13 +29,13 @@ const Transactions = () => {
     return (
       <table className="poppins my-8">
         <thead className=''>
-          <tr className=' grid grid-cols-8' >
+          <tr className=' lg:grid flex justify-between lg:grid-cols-8' >
             <th className='py-5 text-sm '>S.No.</th>
             <th className='py-5 text-sm '>Name</th>
             <th className='py-5 text-sm '>Date</th>
-            <th className='py-5 text-sm '>Transaction ID</th>
-            <th className='py-5 text-sm '>Amount</th>
-            <th className='py-5 text-sm '>No. Of Classes</th>
+            <th className='py-5 text-sm hidden lg:block'>Trans. ID</th>
+            <th className='py-5 text-sm hidden lg:block'>Amount</th>
+            {/* <th className='py-5 text-sm '>No. Of Classes</th> */}
             <th className='py-5 text-sm '>Payment Method</th>
             <th className='py-5 text-sm '>Status</th>
           </tr>
@@ -44,16 +44,16 @@ const Transactions = () => {
         {tabData.map((row, index) => (
           <tr 
             key={index} 
-            className='border-2 border-[#cdcdcd] border-separate grid grid-cols-8 gap-5 place-items-center'
+            className='border-2 border-[#cdcdcd] border-separate lg:grid flex justify-around lg:grid-cols-8 lg:gap-5 gap-4 w-[100%] lg:place-items-center'
             >
             <td className='mx-4 py-3'>{row.serialNo}</td>
             <td className='py-3'>{row.name}</td>
             <td className=' py-3'>{row.date}</td>
-            <td className=' py-3'>{row.transactionId}</td>
-            <td className={` py-3 text-[#2E8760] ${row.specialStyle ? 'text-red-500' : ''}`}>{row.amount}</td>
-            <td className=' py-3'>{row.numberOfClasses}</td>
+            <td className=' py-3 hidden lg:block'>{row.transactionId}</td>
+            <td className={` py-3 hidden lg:block text-[#2E8760] ${row.specialStyle ? 'text-red-500' : ''}`}>{row.amount}</td>
+            {/* <td className=' py-3'>{row.numberOfClasses}</td> */}
             <td className=' py-3 '>{row.paymentMethod}</td>
-            <td className=' py-3 text-[#2E8760]'>{row.status}</td>
+            <td className=' py-3 pr-5 text-[#2E8760]'>{row.status}</td>
           </tr>
         ))}
       </tbody>
@@ -64,13 +64,13 @@ const Transactions = () => {
   const tabData = [
     
     [
-      // { serialNo: 1, name: 'John Doe', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: 13, paymentMethod: 'Wire Transfer', status: 'Success' },
-      // { serialNo: 2, name: 'Amaka David', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: 24, paymentMethod: 'Wire Transfer', status: 'Success' },
-      // { serialNo: 3, name: 'David David', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +12, paymentMethod: 'Wire Transfer', status: 'Success', },
-      // { serialNo: 4, name: 'Henry Ola', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +14, paymentMethod: 'Wire Transfer', status: 'Success', specialStyle: { color: 'red' }  },
-      // { serialNo: 5, name: 'Mike Sediong', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +14, paymentMethod: 'Wire Transfer', status: 'Success' },
-      // { serialNo: 6, name: 'Amaka David', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +55, paymentMethod: 'Wire Transfer', status: 'Success' },
-      // { serialNo: 7, name: 'Victor David', date: '02 Apr 2024', transactionId: '123456', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Success' },
+      { serialNo: 1, name: 'John Doe', date: '02 Apr 2024', transactionId: '16', amount: '$80,000', numberOfClasses: 13, paymentMethod: 'Wire Transfer', status: 'S' },
+      { serialNo: 2, name: 'Amaka David', date: '02 Apr 2024', transactionId: '36', amount: '$80,000', numberOfClasses: 24, paymentMethod: 'Wire Transfer', status: 'S' },
+      { serialNo: 3, name: 'David David', date: '02 Apr 2024', transactionId: '24', amount: '$80,000', numberOfClasses: +12, paymentMethod: 'Wire Transfer', status: 'S', },
+      { serialNo: 4, name: 'Henry Ola', date: '02 Apr 2024', transactionId: '66', amount: '$80,000', numberOfClasses: +14, paymentMethod: 'Wire Transfer', status: 'S', specialStyle: { color: 'red' }  },
+      { serialNo: 5, name: 'Mike Sediong', date: '02 Apr 2024', transactionId: '25', amount: '$80,000', numberOfClasses: +14, paymentMethod: 'Wire Transfer', status: 'S' },
+      { serialNo: 6, name: 'Amaka David', date: '02 Apr 2024', transactionId: '45', amount: '$80,000', numberOfClasses: +55, paymentMethod: 'Wire Transfer', status: 'S' },
+      { serialNo: 7, name: 'Victor David', date: '02 Apr 2024', transactionId: '67', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'S' },
     ],
     
     [
@@ -94,7 +94,7 @@ const Transactions = () => {
   ];
 
   return (
-    <div className="p-4">
+    <div className="lg:p-4">
       <div className="flex justify-between items-center">
 
           <div className="flex justfly-between gap-5 mt-[3rem]">
@@ -111,7 +111,7 @@ const Transactions = () => {
             ))}
           </div>
 
-          <div className="flex items-center gap-3">
+          {/* <div className="flex items-center gap-3">
             <div className="">
               <button className='text-[#186BAD] py-2 px-6 bg-[#F4EEFF] rounded font-semibold transition hover:bg-[#d9d2e7]'>Expenses</button>
             </div>
@@ -121,7 +121,7 @@ const Transactions = () => {
             <div className="">
               <button className='bg-[#186BAD] py-2 px-6 text-white rounded font-semibold flex gap-1 items-center transition hover:bg-[#0f3f66]'><FontAwesomeIcon icon={faFileExport} />Export Data</button>
             </div>
-          </div>
+          </div> */}
           
       </div>
       <div className="payments flex justify-between items-center mt-8">

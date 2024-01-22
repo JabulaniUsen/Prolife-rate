@@ -13,6 +13,7 @@ import refer from './Icons/refer.png';
 import support from './Icons/support.png';
 import setting from './Icons/settings.png';
 import user from '../Dashboard2/Icons/user.png'
+import menu from '../../Assets/menu.png'
 
 // Import Tab Components
 import Classes from './Tabs/Classes';
@@ -35,7 +36,7 @@ const Tabs = ({ tabs, setActiveTab, activeTab }) => {
           onClick={() => setActiveTab(index)}
           className={
             index === activeTab
-              ? 'active hover:bg-[#509cdb]'
+              ? 'active bg-[#509cdb]'
               : ' flex gap-2 items-center justify-start text-white bg-[#186bad] w-[170px] py-3 text-sm px-5 hover:bg-[#509cdb] rounded'
           }
         > 
@@ -49,6 +50,7 @@ const Tabs = ({ tabs, setActiveTab, activeTab }) => {
 const TutorDashboard = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [fullName, setFullName] = useState('');
+  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
   const [email, setEmail] = useState('')
 
   const location = useLocation();
@@ -60,6 +62,9 @@ const TutorDashboard = () => {
       setEmail(location.state.email || '');
     }
   }, [location.state]);
+  const toggleSidebar = () => {
+    setIsSidebarVisible(!isSidebarVisible)
+  }
   
 
     const tabs = [
@@ -102,8 +107,8 @@ const TutorDashboard = () => {
   
     return (
     <div className="">
-      <div className='flex w-[20%] sidebar-hidden'>
-        <div className="sideBar bg-[#2977B5] h-[100%] flex flex-col items-center px-2">
+      <div className={`flex lg:w-[20%] ${isSidebarVisible ? '' : 'sidebar-hidden'} `}>
+        <div className={`sideBar bg-[#2977B5] h-[100%] flex flex-col items-center px-2 ${isSidebarVisible ? 'flex' : 'hidden'}`}>
           <Link to='/'>
             <div className="logo py-10 px-10">
               <img src={logo} alt="" />
@@ -127,7 +132,8 @@ const TutorDashboard = () => {
 
           <div className="">
             <button className="flex gap-2 items-center justify-start bg-[#ffffff] w-[200px] py-3 text-sm px-5 rounded-lg my-2 text-[#344054]">
-              <img src={support} alt="" />
+              <img src={support} alt="" />npm run dev
+              
               Support
             </button>
             <button className="flex gap-2 items-center justify-start bg-[#ffffff] w-[200px] py-3 text-sm px-5 rounded-lg my-2 text-[#344054]">
@@ -135,6 +141,7 @@ const TutorDashboard = () => {
               Settings
             </button>
           </div>
+          <a href="">hello world</a>
 
           <div className="profile poppins flex items-start justify-center py-5 border-t-[1px] my-5 mx-2 border-white">
             <div className="w-[50px]">
@@ -148,29 +155,36 @@ const TutorDashboard = () => {
           </div>
         </div>
 
-        <div className="body px-[20px]">
-          <div className='header flex justify-end gap-3 pt-10 w-[1050px] bg-white items-center sidebar-hidden'>
-            <div className="div w-[200px] border-[2px] rounded-2xl flex items-center gap-2 p-2">
-              <FontAwesomeIcon icon={faMagnifyingGlass} className="text-slate-400 text-sm" />
-              <input type="text" placeholder="Search" className='text-sm' />
+        <div className="body px-[30px] relative">
+          <div className={`header flex lg:justify-end justify-between pt-10 px-5 lg:w-[1050px] bg-white items-center ${isSidebarVisible ? '' : 'sidebar-hidden'}`}>
+            <div className="menu lg:absolute lg:left-7 w-[50px]" onClick={toggleSidebar}>
+              <img src={menu} className="cursor-pointer" alt="" />
             </div>
+            <div className="flex items-center gap-5">
+              <div className="div lg:w-[200px] border-[2px] rounded-2xl flex items-center gap-2 p-2">
+                <FontAwesomeIcon icon={faMagnifyingGlass} className="text-slate-400 text-sm" />
+                <input type="text" placeholder="Search" className='text-sm' />
+              </div>
 
-            <div className="relative">
-              <span className="absolute border-white border-[2px] bg-[#186bad] p-[4.5px] rounded-full top-[-2px] right-[0px]"></span>
-              <FontAwesomeIcon icon={faBell} className="text-2xl text-[#979797]" />
-            </div>
+              <div className="relative">
+                <span className="absolute border-white border-[2px] bg-[#186bad] p-[4.5px] rounded-full top-[-2px] right-[0px]"></span>
+                <FontAwesomeIcon icon={faBell} className="text-2xl text-[#979797]" />
+              </div>
 
-            <div className="user flex items-center gap-1">
-              <img src={user} alt="" />
-              <FontAwesomeIcon icon={faChevronDown} className='text-sm' />
+              <div className="user flex items-center gap-1">
+                <img src={user} alt="" />
+                <FontAwesomeIcon icon={faChevronDown} className='text-sm' />
+              </div>
             </div>
 
           </div>
-          {tabs[activeTab].contentComponent}
+          <div className="m-auto">
+            {tabs[activeTab].contentComponent}
+          </div>
         </div>
 
       </div>
-      <Footer2 />
+      {/* <Footer2 /> */}
     </div>
   );
 };

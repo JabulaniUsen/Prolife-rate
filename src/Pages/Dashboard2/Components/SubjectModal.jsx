@@ -56,7 +56,7 @@ const SubjectFormModal = ({ isOpen, onClose, onSave, selectedSubject }) => {
             </label>
             <input
               required
-              type="text"
+              type="number"
               id="price"
               name="price"
               value={formData.price}

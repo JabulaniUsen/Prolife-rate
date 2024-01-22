@@ -32,32 +32,19 @@ function ClassHistory() {
   });
 
   return (
-    <div className="grid grid-cols-3 gap-3 inter">
+    <div className="flex flex-wrap justify-between gap-3 inter">
       {filteredClasses.length === 0 ? (
-        <div className="flex flex-col gap-3 absolute top-[20rem] rounded-xl border-[1px] border-[#000000] right-[30rem] w-[250px] h-[250px] justify-center items-center">
+        <div className="flex flex-col gap-3 lg:absolute top-[20rem] m-auto rounded-xl border-[1px] border-[#cccccc] right-[30rem] w-[250px] h-[250px] justify-center items-center">
           <div className="">
             <img src={noClass} alt="" />
           </div>
           <div className="flex flex-col gap-2 justify-center items-center">
             <p className='text-[#898A8B]'>No Classes</p>
-            <button className='bg-[#2977B5] text-white py-2 px-8 rounded-full'>Add Class</button>
           </div>
         </div>
       ) : (
         <>
-          <div className="absolute right-20 top-[130px]">
-            <button className='bg-[#2977B5] hover:bg-[#405c74] text-white py-2 px-8 rounded-lg'>+ Add Class</button>
-          </div>
-          <div className="search-bar absolute right-20 top-[190px] poppins bg-[#F1F1F1] rounded p-2 px-4 lg:w-[400px] w-[300px]">
-            <FontAwesomeIcon icon={faMagnifyingGlass} className='text-[#979797] mr-2'/>
-            <input
-              type="text"
-              placeholder="Search by student name, subject, or status"
-              value={searchQuery}
-              onChange={handleSearchChange}
-              className="w-[90%] bg-transparent"
-            />
-          </div>
+          
           {filteredClasses.map((item, index) => (
             <div
               className={`classBox p-3 h-[240px] border-[1px] border-[#000] rounded-xl flex flex-col justify-between items-start ${

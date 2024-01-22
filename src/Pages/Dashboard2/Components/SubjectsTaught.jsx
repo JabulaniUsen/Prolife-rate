@@ -40,7 +40,7 @@ const SubjectsTaught = () => {
   };
 
   return (
-    <div className='p-6 shadow-xl h-[370px] overflow-y-scroll`'>
+    <div className='p-6 shadow-xl lg:h-[370px] h-[430px] overflow-y-scroll waitingRoom`'>
       <h3 className='poppins font-semibold text-2xl '>Subjects I teach</h3>
 
       {/* Display Subjects */}

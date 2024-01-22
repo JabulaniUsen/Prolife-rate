@@ -132,9 +132,9 @@ function ScheduledClasses() {
     };
   }, []);
   return (
-    <div className="grid grid-cols-3 gap-3 inter">
+    <div className="flex flex-wrap justify-between gap-3 inter">
       {filteredClasses.length === 0 && (
-        <div className="flex flex-col gap-3 absolute top-[20rem] rounded-xl border-[1px] border-[#000000] right-[30rem] w-[250px] h-[250px] justify-center items-center">
+        <div className="flex flex-col gap-3 lg:absolute top-[20rem] m-auto rounded-xl border-[1px] border-[#000000] right-[30rem] w-[250px] h-[250px] justify-center items-center">
           <div className="">
             <img src={noClass} alt="" />
           </div>
@@ -147,14 +147,14 @@ function ScheduledClasses() {
 
       {filteredClasses.length > 0 && (
         <>
-          <div className="addClassBtn absolute right-20 top-[130px]">
+          <div className="addClassBtn absolute lg:right-20 right-2 lg:top-[130px] top-[90px]">
             <button className='bg-[#2977B5] hover:bg-[#405c74] text-white py-2 px-8 rounded-lg' onClick={openModal}>+ Add Class</button>
           </div>
         </>
       )}
       {filteredClasses.map((item, index) => (
         <div
-          className={`classBox p-3 h-[240px] border-[1px] border-[#000] rounded-xl flex flex-col justify-between items-start relative ${
+          className={`classBox p-3 border-[1px] border-[#000] rounded-xl flex flex-col justify-between items-start relative ${
             item.status === 'Ongoing'
               ? 'bg-[#ffecec]'
               : item.status === 'Starting in 60 Minutes'
@@ -181,17 +181,17 @@ function ScheduledClasses() {
               </motion.div>
             )}
           </div>
-          <div className="flex flex-col justify-between gap-10">
+          <div className="flex flex-col justify-center lg:w-[300px] sm:w-[180px] w-[300px] gap-5">
             <div className="head">
               <h2 className="font-semibold text-xl">
                 {item.subject}
               </h2>
             </div>
             <div className="body">
-              <p className="text-[#989898] my-2 rounded">
+              <p className="text-[#989898] rounded">
                 {item.studentName}
               </p>
-              <div className="timeAndDate flex gap-4">
+              <div className="timeAndDate flex gap-4 my-1">
                 <p className='text-[#989898] flex gap-x-1 items-center'><FontAwesomeIcon icon={faClock} />{item.time}</p>
                 <p className='text-[#989898] flex gap-x-1 items-center'><FontAwesomeIcon icon={faCalendarDays} />{item.date}</p>
               </div>
@@ -206,7 +206,7 @@ function ScheduledClasses() {
           </div>
           <button
             onClick={handleJoinNow}
-            className="bg-[#0c0c0c] w-full p-[0.5rem] rounded text-white transition hover:bg-[#000] font-semibold"
+            className="bg-[#0c0c0c] w-full p-[0.5rem] mt-1 rounded text-white transition hover:bg-[#000] font-semibold"
           >
             Join Now
           </button>

@@ -3,14 +3,14 @@ import React from 'react';
 function Documents() {
     
     const activities = [
-        // { name: 'Class A 1st semester result', message: 'Hello, Mr John, I am yet to get your class b result. What is going on? I am loosing patience', time: '03:23am'},
-        // { name: 'Kelvin college application', message: 'Please schedule your class test', time: '10:25am', },
-        // { name: 'Class E attendance sheet', message: 'Please resend last session', time: '12:25am', },
-        // { name: 'Kelvin college application', message: 'Send Document via email', time: '04:30am', },
-        // { name: 'Class B 1st semester result', message: 'Hello, Mr John, I am yet to get your class b result. What is going on? I am loosing patience', time: '01:14pm'},
-        // { name: 'Kelvin college application', message: 'Please schedule your class test', time: '10:25am', },
-        // { name: 'Akindele Odumayo', message: 'Please resend last session', time: '12:25am', },
-        // { name: 'Goodness Emmanuel', message: 'Send Document via email', time: '04:30am', },
+        { name: 'Class A 1st semester result', message: 'Hello, Mr John, I am yet to get your class b result. What is going on? I am loosing patience', time: '03:23am'},
+        { name: 'Kelvin college application', message: 'Please schedule your class test', time: '10:25am', },
+        { name: 'Class E attendance sheet', message: 'Please resend last session', time: '12:25am', },
+        { name: 'Kelvin college application', message: 'Send Document via email', time: '04:30am', },
+        { name: 'Class B 1st semester result', message: 'Hello, Mr John, I am yet to get your class b result. What is going on? I am loosing patience', time: '01:14pm'},
+        { name: 'Kelvin college application', message: 'Please schedule your class test', time: '10:25am', },
+        { name: 'Akindele Odumayo', message: 'Please resend last session', time: '12:25am', },
+        { name: 'Goodness Emmanuel', message: 'Send Document via email', time: '04:30am', },
     ];
 
     return (
