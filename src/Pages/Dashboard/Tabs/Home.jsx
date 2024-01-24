@@ -18,7 +18,7 @@ function Home() {
         </div>
         <img src={studentAndTeacher} className='lg:w-[410px] w-[70%] ml-28' alt="" />
       </div>
-      <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1  gap-10 mt-7 place-items-center mx-10">
+      <div className="grid lg:grid-cols-2 sm:grid-cols-2 grid-cols-1  mt-7 place-items-center mx-10">
         <div className="PendingAssignments">
           <UpcomingClasses/>
         </div>
@@ -29,7 +29,7 @@ function Home() {
           <WaitingRoom/>
         </div>
         <div className="docs">
-          {/* <Documents/> */}
+          <Documents/>
         </div>
       </div>
     </div>

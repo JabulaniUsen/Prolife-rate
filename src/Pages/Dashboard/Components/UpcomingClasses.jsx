@@ -15,7 +15,7 @@ function UpcomingClasses() {
     ];
 
     return (
-        <div className='upcomingActivities relative w-[400px] my-6  rounded-2xl shadow-lg border'>
+        <div className='upcomingActivities relative lg:w-[450px] w-[400px] my-6  rounded-2xl shadow-lg border'>
             {activities.length === 0 && (
                 <div className="absolute top-[7rem] right-[9rem]">
                     <p className='jost text-[#9e9e9e]'>No upcoming classes yet</p>

@@ -44,7 +44,7 @@ const assignment = [
 
   return ( 
     <div className="poppins lg:p-12 py-12 p-5 relative">
-      <div className="header text-4xl font-semibold">Assignments</div>
+      <div className="header text-4xl font-semibold">Home Work</div>
 
       {assignment.length === 0 ? (
         <div className="flex flex-col gap-3 absolute top-[15rem] rounded-xl border-[1px] border-[#000000] left-[20rem] w-[250px] h-[250px] justify-center items-center">
@@ -52,7 +52,7 @@ const assignment = [
             <img src={noAssignment} alt="" />
           </div>
           <div className="flex flex-col gap-2 justify-center items-center">
-            <p className='text-[#898A8B]'>No Assignments</p>
+            <p className='text-[#898A8B]'>No Home work</p>
           </div>
         </div>
       ) : (

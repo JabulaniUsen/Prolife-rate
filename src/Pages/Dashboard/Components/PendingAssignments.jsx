@@ -14,7 +14,7 @@ function PendingAssignments() {
   ];
 
   return (
-    <div className='classProgress relative lg:w-[300px] w-[400px] h-[430px] lg:m-6 rounded-2xl shadow-lg border'>
+    <div className='classProgress relative lg:w-[450px] w-[400px] h-[430px] lg:m-6 rounded-2xl shadow-lg border'>
       {room.length === 0 && (
         <div className="absolute top-[50%] right-[35%]">
           <p className='jost text-[#9e9e9e]'>No Assignment yet</p>
@@ -28,10 +28,13 @@ function PendingAssignments() {
         <div className="waitingRoom overflow-y-scroll h-[335px] pr-3">
           {room.map((item, index) => (
           <div className="class cursor-pointer" key={index}>
-              <div className="jost bg-[#f0f7ff] rounded-lg px-5 py-3 my-2 flex items-center justify-between">
+              <div className="jost bg-[#f0f7ff] rounded-lg px-5 py-4 my-2 flex items-center justify-between">
                   <div className="">
-                      <h3 className='font-bold'>{item.assignment}</h3>
+                      <h3 className='font-bold text-lg'>{item.assignment}</h3>
                       <p className='text-[#9e9e9e] text-sm'>{item.desc}</p>
+                  </div>
+                  <div className="">
+                    <button className='bg-[#186bad] px-4 py-1 rounded text-white'>View</button>
                   </div>
               </div>
           </div>

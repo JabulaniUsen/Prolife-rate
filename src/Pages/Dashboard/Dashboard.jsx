@@ -88,7 +88,7 @@ const Dashboard = () => {
         img: home
       },
       {
-          label: 'Assignments',
+          label: 'Home Work',
           contentComponent: <Assignment />,
           img: teacher
       },
@@ -119,7 +119,7 @@ const Dashboard = () => {
     <div className="">
       <div className={`flex w-[20%] ${isSidebarVisible ? '' : 'sidebar-hidden'}`}>
         <div
-          className={`sideBar bg-[#2977B5] h-[100%] flex flex-col items-center px-5 ${
+          className={`sideBar bg-[#2977B5] flex flex-col items-center px-5 ${
             isSidebarVisible ? '' : 'hidden'
           }`}
         >
