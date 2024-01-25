@@ -5,7 +5,7 @@ function College() {
   return (
     <div className='college2 poppins lg:mx-28 my-5 lg:h-[100vh] py-10 flex items-center bg-[#ede9f2] rounded-3xl'>
         <div className="slide w-[100%] px-5 lg:w-[50%] lg:p-10">
-            <h2 className='text-[#186bad] font-bold my-8 bg-[#e4e2f4] p-2 rounded-lg w-[125px]'>College Level</h2>
+            {/* <h2 className='text-[#186bad] font-bold my-8 bg-[#e4e2f4] p-2 rounded-lg w-[125px]'>College Level</h2> */}
             <h1 className='font-bold lg:text-4xl text-2xl leading-snug my-2 text-[#186bad]'>Learn Anywhere, Anytime
                 with our Expert Tutors 
                 at Your Fingertips

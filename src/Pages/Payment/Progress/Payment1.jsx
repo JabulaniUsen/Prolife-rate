@@ -23,30 +23,6 @@ function Payment1() {
                 <p className='text-[#FF6636] mt-2 text-xl'>$13.00</p>
               </div>
             </div>
-            <div className="flex gap-2 items-center my-5">
-              <img src={courseImg} alt="" />
-              <div className="">
-                <p className='text-[#A1A5B3] text-sm mb-1'>
-                  Subject by: <span className='text-[#4E5566]'>Marvin McKinney</span>
-                </p>
-                <p className='text-lg'>
-                  Social Science - People
-                </p>
-                <p className='text-[#FF6636] mt-2 text-xl'>$89.00</p>
-              </div>
-            </div>
-            <div className="flex gap-2 items-center my-5">
-              <img src={courseImg} alt="" />
-              <div className="">
-                <p className='text-[#A1A5B3] text-sm mb-1'>
-                  Subject by: <span className='text-[#4E5566]'>Jacob Jones</span>
-                </p>
-                <p className='text-lg'>
-                  Instagram Marketing 2021: Complete Guide To Instagram
-                </p>
-                <p className='text-[#FF6636] mt-2 text-xl'>$32.00</p>
-              </div>
-            </div>
             
           </div>
           <div className="checkout mt-20">

@@ -36,28 +36,23 @@ function Register() {
         </div>
 
         <div className=" flex lg:flex-row flex-col gap-2 justify-around items-center my-9">
-            <div className="p-4 flex flex-col justify-center items-center gap-4 border-[1px] border-[#646464] rounded-lg w-[300px]">
+            <div className="p-4 flex flex-col justify-center items-center gap-4 border-[1px] border-[#646464] rounded-lg lg:w-[400px] w-[300px]">
                 <h3 className='text-lg font-bold'>Students</h3>
                 <img src={studentImg} alt="" />
                 <button onClick={handleNavigateStudent} className='bg-[#186BAD] rounded-2xl text-2xl py-3 px-7 text-white font-semibold'>
                     <span>Sign Up</span>
                 </button>
             </div>
-            <div className="p-4 flex flex-col justify-center items-center gap-4 border-[1px] border-[#646464] rounded-lg w-[300px]">
+            <div className="p-4 flex flex-col justify-center items-center gap-4 border-[1px] border-[#646464] rounded-lg lg:w-[400px] w-[300px]">
                 <h3 className='text-lg font-bold'>Tutor</h3>
                 <img src={college} alt="" />
                 <button className='bg-[#186BAD] rounded-2xl text-2xl py-3 px-7 text-white font-semibold'><Link to='/signupastutor'>Sign Up</Link></button>
-            </div>
-            <div className="p-4 flex flex-col justify-center items-center gap-4 border-[1px] border-[#646464] rounded-lg w-[300px]">
-                <h3 className='text-lg font-bold'>School</h3>
-                <img src={school} className='w-[165px]' alt="" />
-                <button className='bg-[#186BAD] rounded-2xl text-2xl py-3 px-7 text-white font-semibold'><Link to='/signup'>Sign Up</Link></button>
             </div>
         </div>
         <div className="flex flex-col justify-center items-center gap-7 my-11">
                 <p className='text-[#898A8B]'>Already have an account? <span className='text-[#186BAD] ml-2'>Sign in</span></p>
                 <div className="">
-                    <p className='text-[#898A8B]'><span className='mr-6 lg:block hidden'>--------------------</span> or sign in with   <span className='ml-6 lg:block hidden'>--------------------</span></p>
+                    <p className='text-[#898A8B] flex'><span className='mr-6 lg:block hidden'>--------------------</span> or sign in with   <span className='ml-6 lg:block hidden'>--------------------</span></p>
                 </div>
                 <div className="socials flex gap-5">
                     <img src={google} className='border-[1px] rounded-full p-4 border-[#8888] cursor-pointer' alt="" />

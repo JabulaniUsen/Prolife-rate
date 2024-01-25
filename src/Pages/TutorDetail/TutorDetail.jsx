@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Calendar from '../../Components/Calendar';
 import call from '../../Assets/call.png'
 import Footer from '../../Components/Footer';
+import { Link } from 'react-router-dom';
 
 function TutorDetail() {
     const [time, setTime] = useState('');
@@ -52,6 +53,10 @@ function TutorDetail() {
         setTimeout(() => {
           setShowMessage(false);
         }, 3000);
+      };
+
+      const showLess = () => {
+        setShowFullText(false);
       };
     
     const Tutors = [
@@ -119,20 +124,129 @@ function TutorDetail() {
                     </div>
 
                     <div className="about-me my-10 ">
-                        <h3 className='text-[#186BAD] font-bold text-lg my-5'>About me</h3>
-                        <p>{truncatedText}</p>
+                        <h3 className="text-[#186BAD] font-bold text-lg my-5">About me</h3>
+                        <p>{showFullText ? initialText : truncatedText}</p>
+                        {showFullText && (
+                        <p
+                            className="text-[#186BAD] cursor-pointer text-sm my-5"
+                            onClick={showLess}
+                        >
+                            Show Less
+                        </p>
+                        )}
                         {!showFullText && (
-                            <p
-                            className='text-[#186BAD] cursor-pointer text-sm my-5'
+                        <p
+                            className="text-[#186BAD] cursor-pointer text-sm my-5"
                             onClick={() => setShowFullText(true)}
-                            >
-                            View more
-                            </p>
+                        >
+                            Show More
+                        </p>
                         )}
                     </div>
+                                <iframe className='lg:h-[50vh] h-[30vh]'
+                                    width="100%"
+                                    src="https://www.youtube.com/embed/vVCakfUchVI?si=7vi8Xd8TkTIb7K_6"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                ></iframe>
 
                     <hr />
 
+                    
+                    <div className="">
+                        <h2 className='text-[#186BAD] text-xl font-semibold my-10'>Subjects Offered</h2>
+                        <div className="flex flex-wrap justify-between items-center">
+                            <div className="p-5 rounded-lg shadow-md border">
+                                <h3 className='text-xl font-bold'>Mathematics</h3>
+                                <div className="flex justify-between flex-col gap-5 lg:w-[225px]">
+                                    <p className='font-semibold'>Grade: <span className='font-normal'>7<span className='text-xs'>th</span></span></p>
+                                    <div className="">
+                                        <h4 className='text-lg font-semibold'>The class schedule:</h4>
+                                        <ul className='list-disc ml-5 leading-relaxed'>
+                                            <li>Every <span className='font-semibold'>Mondays</span> by <span className='font-semibold'>20:00(UTC)</span> for <span className='font-semibold'>2hours</span></li>
+                                            <li>Every <span className='font-semibold'>Wednesdays</span> by <span className='font-semibold'>20:00(UTC)</span> for <span className='font-semibold'>2hours</span></li>
+                                        </ul>
+                                    </div>
+                                    <div className="flex">
+                                        <p className="price text-xl font-semibold bg-slate-100 p-2 rounded-lg px-4">$300/month</p>
+                                    </div>
+                                    <Link to='/paymentpage'>
+                                        <button className='bg-[#186BAD] hover:bg-[#08508b] text-white py-2 rounded'>Enroll Now</button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="p-5 rounded-lg shadow-md border">
+                            <h3 className='text-xl font-bold'>Physics</h3>
+                            <div className="flex justify-between flex-col gap-5 lg:w-[225px]">
+                                <p className='font-semibold'>Grade: <span className='font-normal'>4<span className='text-xs'>th</span></span></p>
+                                <div className="">
+                                    <h4 className='text-lg font-semibold'>The class schedule:</h4>
+                                    <ul className='list-disc ml-5 leading-relaxed'>
+                                        <li>Every <span className='font-semibold'>Fridays</span> by <span className='font-semibold'>19:30(UTC)</span> for <span className='font-semibold'>2hours</span></li>
+                                        <li>Every <span className='font-semibold'>Saturdays</span> by <span className='font-semibold'>19:00(UTC)</span> for <span className='font-semibold'>2hours</span></li>
+                                    </ul>
+                                </div>
+                                <div className="flex">
+                                    <p className="price text-xl font-semibold bg-slate-100 p-2 rounded-lg px-4">$150/month</p>
+                                </div>
+                                <Link to='/paymentpage'>
+                                    <button className='bg-[#186BAD] hover:bg-[#08508b] text-white py-2 rounded'>Enroll Now</button>
+                                </Link>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div className="sideTwo lg:p-8 p-2">
+                <h3 className='text-[#186BAD] font-bold text-lg my-2'>Availability</h3>
+                    {/* <Calendar/> */}
+                    {/* <div className="bg-[#f2f1f1] my-6 rounded-xl p-4">
+                        <input
+                            type="time"
+                            className="w-full px-3 py-[0.1rem] rounded border-2 bg-transparent"
+                            value={time}
+                            onChange={handleChange}
+                            placeholder="Select Time"
+                        />
+                    </div> */}
+                    {/* <button className='bg-[#186bad] p-3 rounded-lg w-[100%] text-white'>Schedule a Call</button> */}
+                    <div className="my-8">
+                        <div className="headers">
+                            <h3 className='text-[#186bad] text-xl font-semibold'>Send a message to Bamidele</h3>
+                            <p className='text-xs w-full my-1'>Wish to have a free meeting? send  a free message to Bamidele</p>
+                        </div>
+                        {/* <div className="my-5">
+                            <label className="block text-sm font-medium text-[#186bad]">Subject and Level</label>
+                            <select
+                                value={selectedOption}
+                                onChange={handleInputChange}
+                                className="mt-1 block w-full text-[#898A8B] py-2 px-3 pr-7 bg-[#f2f1f1] rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            >
+                                <option value="" className='text-[#898A8B]'>Select Subject and Level</option>
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                            </select>
+                        </div> */}
+                        <div className="my-5">
+                            <label className="block text-sm font-medium text-[#186bad]">Your Message:</label>
+                            <textarea
+                                value={message}
+                                onChange={handleMessageChange}
+                                className="mt-1 block w-full h-40 py-2 px-3 border bg-[#f2f1f1] rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            />
+                        </div>
+                        <button onClick={show} className='bg-[#186bad] p-3 rounded-lg w-[100%] text-white'>
+                            Send Message
+                        </button>
+                        
+                    </div>
+                    {showMessage && (
+                        <p className='p-2 shadow rounded-lg w-[230px] text float-right text-sm flex items-center gap-2 mb-5'>
+                        Tutor has been contacted <FontAwesomeIcon icon={faCircleInfo} />
+                        </p>
+                    )}
                     <div className="reviews my-8">
                         <div className="header">
                             <h2 className='font-bold text-lg text-[#186BAD]'>Featured Reviews</h2>
@@ -153,43 +267,6 @@ function TutorDetail() {
                                             <FontAwesomeIcon icon={faStarHalfStroke} className='text-[#FBBC05]'/>
                                         </div>
                                         <p className='text-[#898A8B] text-xs'>1 Year ago</p>
-                                        <FontAwesomeIcon
-                                            icon={faHeart}
-                                            onClick={handleHeartClick}
-                                            className={`cursor-pointer p-2 bg-[#f2f1f1] rounded-full absolute bottom-0 right-5 ${isClicked ? 'text-red-500' : 'text-black'}`}
-                                        />
-                                    </div>
-                                    <div className="review-text">
-                                        <p className='text-sm text-[#898A8B]'>
-                                            The digital magician of the web! This versatile programming language 
-                                            breathes life into static websites, creating interactive experiences. 
-                                            From sleek animations to complex web apps, JavaScript's power knows no 
-                                            bounds. Unlock the potential of the virtual realm and shape the future 
-                                            of the internet with JavaScript wizardry!"
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="flex lg:flex-row flex-col gap-4 items-start justify-center relative pr-7 pb-9">
-                                <img src={user} className='lg:w-24 w-[4rem]' alt="" />
-                                <div className="">
-                                    <div className="titles">
-                                        <h3 className='font-bold'>BAMIDELE MOSES</h3>
-                                    </div>
-                                    <div className="rating flex items-center gap-3 my-[5px]">
-                                        <div className="rates flex gap-1 my-1">
-                                            <FontAwesomeIcon icon={faStar} className='text-[#FBBC05]' />
-                                            <FontAwesomeIcon icon={faStar} className='text-[#FBBC05]' />
-                                            <FontAwesomeIcon icon={faStar} className='text-[#FBBC05]' />
-                                            <FontAwesomeIcon icon={faStar} className='text-[#FBBC05]' />
-                                            <FontAwesomeIcon icon={faStarHalfStroke} className='text-[#FBBC05]'/>
-                                        </div>
-                                        <p className='text-[#898A8B] text-xs'>1 Year ago</p>
-                                        <FontAwesomeIcon
-                                            icon={faHeart}
-                                            onClick={handleHeartClick2}
-                                            className={`cursor-pointer p-2 bg-[#f2f1f1] rounded-full absolute bottom-0 right-5 ${isClicked2 ? 'text-red-500' : 'text-black'}`}
-                                        />
                                     </div>
                                     <div className="review-text">
                                         <p className='text-sm text-[#898A8B]'>
@@ -206,97 +283,6 @@ function TutorDetail() {
                             <hr />
                         </div>
                     </div>
-                    <div className="lg:px-7">
-                        <h2 className='text-[#186BAD] text-xl font-semibold my-10'>Subjects Offered</h2>
-                        <div className="head flex justify-around font-semibold">
-                            <h2>Subject</h2>
-                            <h2>Level</h2>
-                            <h2>Price</h2>
-                        </div>
-                        <div className="bodyy my-4">
-                            <div className="flex py-3 my-2 justify-around font-semibold bg-[#f2f1f1] rounded-lg">
-                                <h2>Maths</h2>
-                                <h2>K-3</h2>
-                                <h2>$15/hr</h2>
-                            </div>
-                            <div className="flex py-3 my-2 justify-around font-semibold bg-[#f2f1f1] rounded-lg">
-                                <h2>English</h2>
-                                <h2>K-6</h2>
-                                <h2>$15/hr</h2>
-                            </div>
-                            <div className="flex py-3 my-2 justify-around font-semibold bg-[#f2f1f1] rounded-lg">
-                                <h2>Physics</h2>
-                                <h2>K-10</h2>
-                                <h2>$15/hr</h2>
-                            </div>
-                            <div className="flex py-3 my-2 justify-around font-semibold bg-[#f2f1f1] rounded-lg">
-                                <h2>Maths</h2>
-                                <h2>K-3</h2>
-                                <h2>$15/hr</h2>
-                            </div>
-                            <div className="flex py-3 my-2 justify-around font-semibold bg-[#f2f1f1] rounded-lg">
-                                <h2>Maths</h2>
-                                <h2>K-3</h2>
-                                <h2>$15/hr</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="sideTwo lg:p-8 p-2">
-                <h3 className='text-[#186BAD] font-bold text-lg my-2'>Availability</h3>
-                    <Calendar/>
-                    <div className="bg-[#f2f1f1] my-6 rounded-xl p-4">
-                        <input
-                            type="time"
-                            className="w-full px-3 py-[0.1rem] rounded border-2 bg-transparent"
-                            value={time}
-                            onChange={handleChange}
-                            placeholder="Select Time"
-                        />
-                    </div>
-                    <button className='bg-[#186bad] p-3 rounded-lg w-[100%] text-white'>Schedule a Call</button>
-                    <div className="my-8">
-                        <div className="headers">
-                            <h3 className='text-[#186bad] text-xl font-semibold'>Send a message to Bamidele</h3>
-                            <p className='text-xs w-full my-1'>Wish to have a free meeting? send  a free message to Bamidele</p>
-                        </div>
-                        <div className="my-5">
-                            <label className="block text-sm font-medium text-[#186bad]">Subject and Level</label>
-                            <select
-                                value={selectedOption}
-                                onChange={handleInputChange}
-                                className="mt-1 block w-full text-[#898A8B] py-2 px-3 pr-7 bg-[#f2f1f1] rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                            >
-                                <option value="" className='text-[#898A8B]'>Select Subject and Level</option>
-                                <option value="option1">Option 1</option>
-                                <option value="option2">Option 2</option>
-                                <option value="option3">Option 3</option>
-                            </select>
-                        </div>
-                        <div className="my-5">
-                            <label className="block text-sm font-medium text-[#186bad]">Your Message:</label>
-                            <textarea
-                                value={message}
-                                onChange={handleMessageChange}
-                                className="mt-1 block w-full h-40 py-2 px-3 border bg-[#f2f1f1] rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                            />
-                        </div>
-                        <button onClick={show} className='bg-[#186bad] p-3 rounded-lg w-[100%] text-white'>
-                            Send Message
-                        </button>
-                        
-                    </div>
-                    {showMessage && (
-                        <p className='p-2 shadow rounded-lg w-[230px] text float-right text-sm flex items-center gap-2 mb-5'>
-                        Tutor has been contacted <FontAwesomeIcon icon={faCircleInfo} />
-                        </p>
-                    )}
-                    <iframe className='lg:h-[50vh] h-[30vh]'
-                        width="100%"
-                        src="https://www.youtube.com/embed/vVCakfUchVI?si=7vi8Xd8TkTIb7K_6"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    ></iframe>
                 </div>
             </div>
 

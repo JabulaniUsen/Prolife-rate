@@ -5,6 +5,7 @@ import resources from '../../../Assets/resourses.png';
 import cloud from '../../../Assets/Cloudstorage.png';
 
 import signup from '../../../Assets/signup-bg.png'
+import { Link } from 'react-router-dom';
 
 function Features() {
   const features = [
@@ -88,7 +89,9 @@ function Features() {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe>
-        <button className='text-white bg-[#186bad] lg:py-3 py-1 lg:px-12 px-5 rounded-full font-semibold absolute lg:right-[5rem] right-4 lg:bottom-10 bottom-3'>Sign Up</button>
+        <Link to='/register'>
+          <button className='text-white bg-[#186bad] lg:py-3 py-1 lg:px-12 px-5 rounded-full font-semibold absolute lg:right-[5rem] right-4 lg:bottom-10 bottom-3'>Sign Up</button>
+        </Link>
       </div>
     </div>
   );
