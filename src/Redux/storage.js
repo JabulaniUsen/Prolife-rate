@@ -9,3 +9,4 @@ export const getToken = () => {
   let token = localStorage.getItem(KEY_TOKEN);
   return token;
 };
+

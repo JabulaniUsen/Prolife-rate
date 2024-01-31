@@ -5,16 +5,14 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faChevronRight, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { signUpAction } from '../Redux/actions/Auth';
+import { registerStudentAction } from '../Redux/actions/Auth';
 import { toast } from 'react-toastify';
 import { clearSignUpStatus } from '../Redux/reducers/authReducer';
 
 function Signup() {
-  console.log(location.state);
   const [username, setUsername] = useState('')
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [full_name, setfull_name] = useState('');
+  const [first_name, setfirst_name] = useState('');
+  const [last_name, setlast_name] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
@@ -23,8 +21,8 @@ function Signup() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isloading, setIsloading] = useState(false);
   const [usernameEmpty, setUsernameEmpty] = useState(false);
-  const [firstNameEmpty, setFirstNameEmpty] = useState(false);
-  const [lastNameEmpty, setLastNameEmpty] = useState(false);
+  const [first_nameEmpty, setFirst_nameEmpty] = useState(false);
+  const [last_nameEmpty, setlast_nameEmpty] = useState(false);
   const [emailEmpty, setEmailEmpty] = useState(false);
   const [showModal, setShowModal] = useState(false);
   // New state for redirecting text
@@ -36,52 +34,48 @@ function Signup() {
   const authSelector = useSelector((state) => state.authenticationSlice);
 
   // useEffect(() => {
-  //   if (authSelector.signUpActionStatus === 'loading') {
+  //   if (authSelector.registerStudentActionStatus === 'loading') {
   //     setIsloading(true);
   //     return;
   //   }
-  // }, [authSelector.signUpActionStatus]);
+  // }, [authSelector.registerStudentActionStatus]);
 
   useEffect(() => {
-    if (authSelector.signUpActionStatus === 'failed') {
-      toast.error(`${authSelector.signUpActionError}`);
-      setIsloading(false);
+    if (authSelector.registerStudentActionStatus === 'failed') {
+      toast.error(`${authSelector.registerStudentActionError}`);
       dispatch (clearSignUpStatus())
       return;
     }
-  }, [authSelector.signUpActionStatus]);
+  }, [authSelector.registerStudentActionStatus]);
 
   useEffect(() => {
-    if (authSelector.signUpActionStatus === 'completed') {
-      // Show toast message
-      // toast.success('Account created', {
-      //   position: toast.POSITION.TOP_CENTER,
-      //   autoClose: 3000,
-      //   hideProgressBar: true,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      // });
-      setRedirectingText(true);
+    if (authSelector.registerStudentActionStatus === 'completed') {
+      toast.success('Account created', {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
       setTimeout(() => {
-        navigate('/buildprofile', { state: { fullName: full_name } });
+        navigate('/dashboard', { state: { fullName: first_name } });
       }, 3000);
       dispatch (clearSignUpStatus())
     } 
-  }, [authSelector.signUpActionStatus, navigate]);
+  }, [authSelector.registerStudentActionStatus, navigate]);
 
   const handleSignUp = () => {
-    // Check for empty fields
-    if (!firstName || !lastName || !username || !email || !password || !password2) {
-      setFirstNameEmpty(!firstName);
-      setLastNameEmpty(!lastName);
+    console.log("Clicked");
+    if (!first_name || !last_name || !username || !email || !password || !password2) {
+      setFirst_nameEmpty(!first_name);
+      setlast_nameEmpty(!last_name);
       setEmailEmpty(!email);
       setPasswordEmpty(!password);
-      setFirstNameEmpty(!firstName)
+      setUsername(!username)
       return;
     }
-
-    // Check for password match
+    
     if (password !== password2) {
       setPasswordMatch(false);
       return;
@@ -89,18 +83,16 @@ function Signup() {
 
     // Dispatch the signup action
     dispatch(
-      signUpAction({
-        // firstName: firstName,
-        // lastName: lastName,
-        full_name: full_name,
+      registerStudentAction({
+        username: username,
+        first_name: first_name,
+        last_name: last_name,
         email: email,
         password: password,
         password2: password2,
-        is_student:is_student || true
       })
 
     );
-    // setIsloading(true);
   };
 
   return (
@@ -114,21 +106,21 @@ function Signup() {
         <div className="poppins m-auto flex items-center justify-center py-10">
           <div className="form inter">
           <p className=" text-sm mb-1 font-semibold">Full Name</p>
-            <div className="full_name flex flex-col lg:flex-row lg:justify-end lg:items-end gap-5">
+            <div className="first_name flex flex-col lg:flex-row lg:justify-end lg:items-end gap-5">
             <div className="mb-3 border border-[#e9eaf0]">
               <input
                 type="text"
                 name=""
                 placeholder="First Name..."
-                className={`p-3 lg:w-[250px]  outline-none rounded-sm ${firstNameEmpty ? 'border-red-500' : ''}`}
-                value={full_name}
+                className={`p-3 lg:w-[250px]  outline-none rounded-sm ${first_nameEmpty ? 'border-red-500' : ''}`}
+                value={first_name}
                 onChange={(e) => {
-                  setfull_name(e.target.value);
-                  // setFirstNameEmpty(false);
+                  setfirst_name(e.target.value);
+                  // setFirst_nameEmpty(false);
                 }}
                 required
               />
-              {/* {firstNameEmpty && <p className="text-red-500 text-xs mt-1">This must not be empty</p>} */}
+              {first_nameEmpty && <p className="text-red-500 text-xs mt-1">This must not be empty</p>}
             </div>
             <div className="mb-3 border border-[#e9eaf0]">
   
@@ -136,15 +128,15 @@ function Signup() {
                 type="text"
                 name=""
                 placeholder="Last Name..."
-                className={`p-3 lg:w-[250px]  outline-none rounded-sm ${lastNameEmpty ? 'border-red-500' : ''}`}
-                value={lastName}
+                className={`p-3 lg:w-[250px]  outline-none rounded-sm ${last_nameEmpty ? 'border-red-500' : ''}`}
+                value={last_name}
                 onChange={(e) => {
-                  setLastName(e.target.value);
-                  setLastNameEmpty(false);
+                  setlast_name(e.target.value);
+                  setlast_nameEmpty(false);
                 }}
                 required
               />
-              {lastNameEmpty && <p className="text-red-500 text-xs mt-1">This must not be empty</p>}
+              {last_nameEmpty && <p className="text-red-500 text-xs mt-1">This must not be empty</p>}
             </div>
             </div>
 

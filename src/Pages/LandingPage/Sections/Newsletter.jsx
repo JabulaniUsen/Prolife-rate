@@ -1,25 +1,51 @@
 import { faSquareCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { newsletterAction } from '../../../Redux/actions/Auth';
+import { clearNewsletterAction } from '../../../Redux/reducers/authReducer';
+
 
 const Newsletter = () => {
   const [email, setEmail] = useState('');
 
+  const dispatch = useDispatch();
+  const authSelector = useSelector((state) => state.authenticationSlice);
+
+  useEffect(() => {
+    if (authSelector.newsletterActionStatus === 'failed') {
+      toast.error(`${authSelector.newsletterActionError}`);
+      dispatch (clearNewsletterAction())
+      return;
+    }
+  }, [authSelector.newsletterActionStatus]);
+
+  useEffect(() => {
+    if (authSelector.newsletterActionStatus === 'completed') {
+      toast.success('Your email has been submitted!', {
+        position: 'top-right', // Set the position to 'top-right' or 'top-left'
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      dispatch (clearNewsletterAction())
+    } 
+  }, [authSelector.newsletterActionStatus]);
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    toast.success('Your email has been submitted!', {
-      position: 'top-right', // Set the position to 'top-right' or 'top-left'
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-
+    dispatch(
+      newsletterAction({
+        email: email
+      })
+    );
     // Reset the email input
     setEmail('');
   };
@@ -44,7 +70,7 @@ const Newsletter = () => {
             />
             <button
               type="submit"
-              className='bg-[#186bad] lg:px-10 lg:py-4 px-5 py-2 border-none rounded-lg text-white lg:ml-[4.8rem] ml-[-0.9rem]'
+              className='bg-[#186bad] lg:px-10 lg:py-4 px-5 py-2 border-none rounded-lg text-white lg:ml-[2.8rem] ml-[-0.9rem]'
             >
               Subscribe
             </button>
@@ -52,11 +78,8 @@ const Newsletter = () => {
         </form>
       </div>
       <div className="side3"></div>
-
-      {/* Toast Container */}
       <ToastContainer />
 
-      {/* FontAwesomeIcon is used just for the check icon */}
       <FontAwesomeIcon icon={faSquareCheck} className='hidden' />
     </div>
   );

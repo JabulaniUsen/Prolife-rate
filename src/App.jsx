@@ -21,12 +21,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TutorDashboard from './Pages/Dashboard2/TutorDashboard';
 import Signup2 from './SignupAsTutor/Signup2';
-import BuildProfile from './SignupAsTutor/BuildProfile';
 import VerificationAndIdentity from './SignupAsTutor/VerificationAndIdentification';
 import VerifyEmail from './SignupAsTutor/VerifyEmail';
 import Subject from './Pages/Subject/Subject';
 import EducationalInfomation from './SignupAsStudents/EducationalInfomation';
 import Room from './Pages/Dashboard2/Components/Room';
+import AdminDashboard from './Pages/AdminDashboard/AdminDashboard';
 
 
 let persistor = persistStore(store);
@@ -52,12 +52,12 @@ function App() {
               <Route path='/dashboard' element={<Dashboard/>} />
               <Route path='/tutordashboard' element={<TutorDashboard/>} />
               <Route path='/signupastutor' element={<Signup2/>} />
-              <Route path='/buildprofile' element={<BuildProfile/>} />
               <Route path='/verifyidentify' element={<VerificationAndIdentity/>} />
               <Route path='/verifyemail' element={<VerifyEmail/>} />
               <Route path='/subjects' element={<Subject/>} />
               <Route path='/educational_information' element={<EducationalInfomation/>} />
               <Route path='/room/:roomId' element={<Room/>}></Route>
+              <Route path='/admin' element={<AdminDashboard/>} />
             </Routes>
           </BrowserRouter>
           </PersistGate>

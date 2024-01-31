@@ -4,12 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { signUpAction } from '../Redux/actions/Auth';
+import { registerTutorAction } from '../Redux/actions/Auth';
 import { toast } from 'react-toastify';
 import { clearSignUpStatus } from '../Redux/reducers/authReducer';
 
 function Signup2() {
-  const [full_name, setFull_name] = useState('');
+  const [username, setusername] = useState('')
+  const [first_name, setfirst_name] = useState('');
+  const [last_name, setlast_name] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
@@ -17,7 +19,9 @@ function Signup2() {
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [passwordWeak, setPasswordWeak] = useState(true);
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [full_nameEmpty, setFull_nameEmpty] = useState(false);
+  const [first_nameEmpty, setfirst_nameEmpty] = useState(false);
+  const [usernameEmpty, setusernameEmpty] = useState('')
+  const [last_nameEmpty, setlast_nameEmpty] = useState(false);
   const [emailEmpty, setEmailEmpty] = useState(false);
   // New state for redirecting text
   const [redirectingText, setRedirectingText] = useState(false);
@@ -29,14 +33,14 @@ function Signup2() {
   const authSelector = useSelector((state) => state.authenticationSlice);
 
   useEffect(() => {
-    if (authSelector.signUpActionStatus === 'failed') {
-      toast.error(`${authSelector.signUpActionError}`);
+    if (authSelector.registerTutorActionStatus === 'failed') {
+      toast.error(`${authSelector.registerTutorActionError}`);
       dispatch(clearSignUpStatus());
     }
-  }, [authSelector.signUpActionStatus, dispatch]);
+  }, [authSelector.registerTutorActionStatus, dispatch]);
 
   useEffect(() => {
-    if (authSelector.signUpActionStatus === 'completed') {
+    if (authSelector.registerTutorActionStatus === 'completed') {
       // Show toast message
       // toast.success('Account created', {
       //   position: toast.POSITION.TOP_CENTER,
@@ -49,16 +53,18 @@ function Signup2() {
       setRedirectingText(true);
       setTimeout(() => {
         setRedirectingText(false);
-        navigate('/signupastutor', { state: { full_name: full_name, email: email } });
+        navigate('/tutordashboard', { state: { first_name: first_name, email: email } });
         dispatch(clearSignUpStatus());
       }, 3000);
     }
-  }, [authSelector.signUpActionStatus, full_name, email, navigate, dispatch]);
+  }, [authSelector.registerTutorActionStatus, first_name, email, navigate, dispatch]);
 
   const handleSignUp = () => {
     // Check for empty fields
-    if (!full_name || !email || !password || !password2) {
-      setFull_nameEmpty(!full_name);
+    if (!first_name || last_name || !email || !password || !password2 || !username) {
+      setfirst_nameEmpty(!first_name);
+      setlast_nameEmpty(!last_name)
+      setusernameEmpty(!username)
       setEmailEmpty(!email);
       setPasswordEmpty(!password);
       return;
@@ -83,12 +89,13 @@ function Signup2() {
 
     // Dispatch the signup action
     dispatch(
-      signUpAction({
-        full_name: full_name,
+      registerTutorAction({
         email: email,
         password: password,
         password2: password2,
-        is_tutor: is_tutor || true,
+        first_name: first_name,
+        username: username,
+        last_name: last_name,
       })
     );
   };
@@ -102,22 +109,54 @@ function Signup2() {
         </div>
         <div className="poppins m-auto flex items-center justify-center py-10">
           <div className="form">
-              <p className="text-[#186BAD] text-sm mb-1 font-semibold">Name</p>
+            <p className="text-[#186BAD] text-sm mb-1 font-semibold">Username</p>
             <div className=" border border-[#e9eaf0]">
               <input
                 type="text"
                 name=""
-                placeholder="Full Name"
-                className={`bg-transparent p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${full_nameEmpty ? 'border-red-500' : ''}`}
-                value={full_name}
+                placeholder="Username"
+                className={`bg-transparent p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${usernameEmpty ? 'border-red-500' : ''}`}
+                value={username}
                 onChange={(e) => {
-                  setFull_name(e.target.value);
-                  setFull_nameEmpty(false);
+                  setusername(e.target.value);
+                  setusernameEmpty(false);
                 }}
                 required
               />
             </div>
-            {full_nameEmpty && <p className="text-red-500 text-xs mt-1 mb-4">This must not be empty</p>}
+            {usernameEmpty && <p className="text-red-500 text-xs mt-1 mb-4">This must not be empty</p>}
+            <p className="text-[#186BAD] text-sm my-1 font-semibold">First Name</p>
+            <div className=" border border-[#e9eaf0]">
+              <input
+                type="text"
+                name=""
+                placeholder="First Name"
+                className={`bg-transparent p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${first_nameEmpty ? 'border-red-500' : ''}`}
+                value={first_name}
+                onChange={(e) => {
+                  setfirst_name(e.target.value);
+                  setfirst_nameEmpty(false);
+                }}
+                required
+              />
+            </div>
+            {first_nameEmpty && <p className="text-red-500 text-xs mt-1 mb-4">This must not be empty</p>}
+            <p className="text-[#186BAD] text-sm my-1 font-semibold">last Name</p>
+            <div className=" border border-[#e9eaf0]">
+              <input
+                type="text"
+                name=""
+                placeholder="Last Name"
+                className={`bg-transparent p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${last_nameEmpty ? 'border-red-500' : ''}`}
+                value={last_name}
+                onChange={(e) => {
+                  setlast_name(e.target.value);
+                  setlast_nameEmpty(false);
+                }}
+                required
+              />
+            </div>
+            {last_nameEmpty && <p className="text-red-500 text-xs mt-1 mb-4">This must not be empty</p>}
               <p className="text-[#186BAD] text-sm mb-1 font-semibold">Email</p>
             <div className="mb-3 border border-[#e9eaf0]">
               <input

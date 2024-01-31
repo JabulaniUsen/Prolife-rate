@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { signInAction } from '../Redux/actions/Auth';
+// import { signInAction } from '../Redux/actions/Auth';
 import { toast } from 'react-toastify';
 import { clearLoginStatus } from '../Redux/reducers/authReducer';
 import Header from '../Components/Header';
