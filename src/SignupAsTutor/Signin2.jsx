@@ -40,8 +40,6 @@ function Signin() {
       // Set a timer to hide the popup and navigate to the dashboard after 3 seconds
       setTimeout(() => {
         setShowModal(false);
-        // Use navigate instead of history
-        navigate('/dashboard');
       }, 3000);
     }
   }, [authSelector.signingInStatus, navigate]);

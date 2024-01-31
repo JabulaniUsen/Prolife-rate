@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { 
-    // signInAction,
+    signInAction,
     registerStudentAction,
     registerTutorAction,
     contactFormAction,
@@ -66,21 +66,21 @@ const authenticationSlice = createSlice({
 
   extraReducers: (builder) => {
     // ======SIGNING STATUS ACTION=======//
-    // builder
-    //   .addCase(signInAction.pending, (state) => {
-    //     state.signingInStatus = "loading";
-    //   })
-    //   .addCase(signInAction.fulfilled, (state, { payload }) => {
-    //     state.signingInStatus = "completed";
-    //     // update redux state
-    //     state.adminData = payload;
-    //     console.log(payload, "gggggggg");
-    //   })
-    //   .addCase(signInAction.rejected, (state, { payload }) => {
-    //     state.signingInStatus = "failed";
-    //     // console.log(payload, "error message");
-    //     state.signingInError = payload;
-    //   });
+    builder
+      .addCase(signInAction.pending, (state) => {
+        state.signingInStatus = "loading";
+      })
+      .addCase(signInAction.fulfilled, (state, { payload }) => {
+        state.signingInStatus = "completed";
+        // update redux state
+        state.adminData = payload;
+        console.log(payload, "gggggggg");
+      })
+      .addCase(signInAction.rejected, (state, { payload }) => {
+        state.signingInStatus = "failed";
+        // console.log(payload, "error message");
+        state.signingInError = payload;
+      });
 
     
     builder

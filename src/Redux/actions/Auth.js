@@ -7,21 +7,21 @@ const SIGN_UP_AS_STUDENT = "authentication:SIGN_UP_AS_STUDENT";
 const SIGN_UP_AS_TUTOR = "authentication:SIGN_UP_AS_TUTOR";
 const CONTACT_FORM = "authentication:CONTACT_FORM"
 const NEWSLETTER = "authentication:NEWSLETTER"
-// export const signInAction = createAsyncThunk(
-//   SIGN_IN,
-//   async (args, { rejectWithValue }) => {
-//     try {
-//       const response = await axiosClient().post("users/login/", args);
+export const signInAction = createAsyncThunk(
+  SIGN_IN,
+  async (args, { rejectWithValue }) => {
+    try {
+      const response = await axiosClient().post("users/login/", args);
 
-//       console.log(response.data, "User found!");
-//       setToken(response.data.token_key); // Set token upon successful sign-in
-//       return response.data;
-//     } catch (error) {
-//       console.log(error, "error");
-//       return rejectWithValue(error.response.data.non_field_errors);
-//     }
-//   }
-// );
+      console.log(response.data, "User found!");
+      setToken(response.data.token_key); // Set token upon successful sign-in
+      return response.data;
+    } catch (error) {
+      console.log(error, "error");
+      return rejectWithValue(error.response.data.detail);
+    }
+  }
+);
 
 
 // Register as Student

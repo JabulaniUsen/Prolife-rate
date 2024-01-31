@@ -42,17 +42,15 @@ function Signup2() {
   useEffect(() => {
     if (authSelector.registerTutorActionStatus === 'completed') {
       // Show toast message
-      // toast.success('Account created', {
-      //   position: toast.POSITION.TOP_CENTER,
-      //   autoClose: 3000, // 3 seconds
-      //   hideProgressBar: true,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      // });
-      setRedirectingText(true);
+      toast.success('Account created', {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000, // 3 seconds
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
       setTimeout(() => {
-        setRedirectingText(false);
         navigate('/tutordashboard', { state: { first_name: first_name, email: email } });
         dispatch(clearSignUpStatus());
       }, 3000);
@@ -60,8 +58,7 @@ function Signup2() {
   }, [authSelector.registerTutorActionStatus, first_name, email, navigate, dispatch]);
 
   const handleSignUp = () => {
-    // Check for empty fields
-    if (!first_name || last_name || !email || !password || !password2 || !username) {
+    if (!first_name || !last_name || !email || !password || !password2 || !username) {
       setfirst_nameEmpty(!first_name);
       setlast_nameEmpty(!last_name)
       setusernameEmpty(!username)
@@ -69,6 +66,7 @@ function Signup2() {
       setPasswordEmpty(!password);
       return;
     }
+    
 
     // Check for password match
     if (password !== password2) {
@@ -240,7 +238,9 @@ function Signup2() {
             </div>
             {/* Passwords */}
 
-            <button className=' poppins cursor-pointer text-lg font-semibold' onClick={handleSignUp}>
+            <button 
+            className=' poppins cursor-pointer text-lg font-semibold bg-[#186BAD] text-white px-5 py-2 rounded-lg' 
+            onClick={handleSignUp}>
               Next <FontAwesomeIcon icon={faChevronRight} className='text-xl font-bold ml-5' />
             </button>
           </div>
