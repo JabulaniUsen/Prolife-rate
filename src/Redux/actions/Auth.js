@@ -7,6 +7,8 @@ const SIGN_UP_AS_STUDENT = "authentication:SIGN_UP_AS_STUDENT";
 const SIGN_UP_AS_TUTOR = "authentication:SIGN_UP_AS_TUTOR";
 const CONTACT_FORM = "authentication:CONTACT_FORM"
 const NEWSLETTER = "authentication:NEWSLETTER"
+const CREATE_CLASS = "authentication:CREATE_CLASS"
+
 export const signInAction = createAsyncThunk(
   SIGN_IN,
   async (args, { rejectWithValue }) => {
@@ -78,6 +80,7 @@ export const contactFormAction = createAsyncThunk(
   }
 );
 
+//Newsletters
 export const newsletterAction = createAsyncThunk(
   NEWSLETTER,
   async (args, { rejectWithValue }) => {
@@ -89,7 +92,24 @@ export const newsletterAction = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.log(error, "error");
-      return rejectWithValue(error.response.data.detail);
+      return rejectWithValue(error.response.data.email);
+    }
+  }
+);
+
+//Create classes
+export const createClassAction = createAsyncThunk(
+  CREATE_CLASS,
+  async (args, { rejectWithValue }) => {
+    try {
+      const response = await axiosClient().post("classes/", args);
+
+      console.log(response.data, "kkkkk");
+      setToken(response.data.token_key); // Set token upon successful sign-up
+      return response.data;
+    } catch (error) {
+      console.log(error, "error");
+      return rejectWithValue(error.response.data.email);
     }
   }
 );

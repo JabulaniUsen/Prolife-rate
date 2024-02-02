@@ -3,14 +3,14 @@ import React from 'react';
 function WaitingRoom() {
     
     const activities = [
-        // { initials: 'AA', name: 'Adepoju Ademola', message: 'Hello, Mr John, I am yet to get your class b result. What is going on? I am loosing patience', time: '03:23am'},
-        // { initials: 'JU', name: 'Jabulani Usen', message: 'Please schedule your class test', time: '10:25am', },
-        // { initials: 'OA', name: 'Odumayo Akindele', message: 'Please resend last session', time: '12:25am', },
-        // { initials: 'GM', name: 'Goodness Mbakara', message: 'Send Document via email', time: '04:30am', },
-        // { initials: 'BP', name: 'Badiru Pomile', message: 'Hello, Mr John, I am yet to get your class b result. What is going on? I am loosing patience', time: '01:14pm'},
-        // { initials: 'EJ', name: 'Emmanuel John', message: 'Please schedule your class test', time: '10:25am', },
-        // { initials: 'AO', name: 'Akindele Odumayo', message: 'Please resend last session', time: '12:25am', },
-        // { initials: 'GE', name: 'Goodness Emmanuel', message: 'Send Document via email', time: '04:30am', },
+        { initials: 'AA', name: 'Adepoju Ademola', message: 'Hello, Mr John, I am yet to get your class b result. What is going on? I am loosing patience', time: '03:23am'},
+        { initials: 'JU', name: 'Jabulani Usen', message: 'Please schedule your class test', time: '10:25am', },
+        { initials: 'OA', name: 'Odumayo Akindele', message: 'Please resend last session', time: '12:25am', },
+        { initials: 'GM', name: 'Goodness Mbakara', message: 'Send Document via email', time: '04:30am', },
+        { initials: 'BP', name: 'Badiru Pomile', message: 'Hello, Mr John, I am yet to get your class b result. What is going on? I am loosing patience', time: '01:14pm'},
+        { initials: 'EJ', name: 'Emmanuel John', message: 'Please schedule your class test', time: '10:25am', },
+        { initials: 'AO', name: 'Akindele Odumayo', message: 'Please resend last session', time: '12:25am', },
+        { initials: 'GE', name: 'Goodness Emmanuel', message: 'Send Document via email', time: '04:30am', },
     ];
 
     return (

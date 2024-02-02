@@ -7,23 +7,23 @@ const generateDummyData = (month, year) => {
   return [
     {
       class: 'Class A',
-      value: Math.floor(Math.random() * 0),
+      value: Math.floor(Math.random() * 10),
     },
     {
       class: 'Class B',
-      value: Math.floor(Math.random() * 0),
+      value: Math.floor(Math.random() * 10),
     },
     {
       class: 'Class C',
-      value: Math.floor(Math.random() * 0),
+      value: Math.floor(Math.random() * 10),
     },
     {
       class: 'Class D',
-      value: Math.floor(Math.random() * 0),
+      value: Math.floor(Math.random() * 10),
     },
     {
       class: 'Class E',
-      value: Math.floor(Math.random() * 0),
+      value: Math.floor(Math.random() * 10),
     },
   ];
 };

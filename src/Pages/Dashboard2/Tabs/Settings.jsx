@@ -5,6 +5,7 @@ import placeholderImage from '../Icons/placeholder.jpg';
 import { faFacebook, faFacebookF, faInstagram, faTwitch, faWhatsapp, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import Bio from '../Components/Bio';
 import SubjectsTaught from '../Components/SubjectsTaught';
+import AccountDetail from '../Components/AccountDetail';
 
 function Settings() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -78,12 +79,15 @@ function Settings() {
         </div>
       </div>
       <div className="flex justify-between lg:flex-row flex-col gap-5 w-full mt-10">
-        <div className="bio lg:w-[60%]">
+        <div className="bio lg:w-[40%]">
           <Bio />
         </div>
-        <div className="subjectsTaught lg:w-[50%]">
+        <div className="subjectsTaught lg:w-[60%]">
           <SubjectsTaught/>
         </div>
+      </div>
+      <div className="">
+        <AccountDetail/>
       </div>
     </div>
   );

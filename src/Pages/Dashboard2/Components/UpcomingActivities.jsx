@@ -4,10 +4,10 @@ import React from 'react';
 
 function UpcomingActivities() {
     const activities = [
-        // { number: '31', name: 'Meeting with the VC', link: 'Meeting link//www.zoom.com', time: '10am - 11am', status: 'Due soon' },
-        // { number: '04', name: 'Meeting with the Jabulani', link: 'Meeting link//www.zoom.com', time: '10am - 11am', status: 'Upcoming' },
-        // { number: '12', name: 'Send B middle session', link: 'Physical science lab', time: '10am - 11am', status: 'Upcoming' },
-        // { number: '16', name: 'Send Mr Ayo class', link: 'Send Document via email', time: '10am - 11am', status: 'Upcoming' },
+        { number: '31', name: 'Meeting with the VC', link: 'Meeting link//www.zoom.com', time: '10am - 11am', status: 'Due soon' },
+        { number: '04', name: 'Meeting with the Jabulani', link: 'Meeting link//www.zoom.com', time: '10am - 11am', status: 'Upcoming' },
+        { number: '12', name: 'Send B middle session', link: 'Physical science lab', time: '10am - 11am', status: 'Upcoming' },
+        { number: '16', name: 'Send Mr Ayo class', link: 'Send Document via email', time: '10am - 11am', status: 'Upcoming' },
     ];
 
     return (

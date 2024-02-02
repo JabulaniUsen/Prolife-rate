@@ -2,32 +2,79 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+//Redux imports
+import { useDispatch, useSelector } from 'react-redux';
+import { createClassAction } from '../../../Redux/actions/Auth';
+import { toast } from 'react-toastify';
+import { clearCreateClassStatus } from '../../../Redux/reducers/authReducer';
+
 
 const SubjectFormModal = ({ isOpen, onClose, onSave, selectedSubject }) => {
+
+  const generateClassId = () => {
+    return Math.floor(1000 + Math.random() * 9000);
+  };
+  const dispatch = useDispatch();
+  const authSelector = useSelector((state) => state.authenticationSlice);
+
+  useEffect(() => {
+    if (authSelector.createClassActionStatus === 'failed') {
+      toast.error(`${authSelector.createClassActionError}`);
+      dispatch(clearCreateClassStatus());
+    }
+  }, [authSelector.createClassActionStatus, dispatch]);
+
+  useEffect(() => {
+    if (authSelector.createClassActionStatus === 'completed') {
+      // Show toast message
+      // toast.success('Account created', {
+      //   position: toast.POSITION.TOP_CENTER,
+      //   autoClose: 3000, // 3 seconds
+      //   hideProgressBar: true,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      // });
+      setTimeout(() => {
+        
+        dispatch(clearCreateClassStatus());
+      }, 3000);
+    }
+  }, [authSelector.createClassActionStatus, dispatch]);
+
+
   const [formData, setFormData] = useState({
     subject: '',
     price: '',
-    grade: '',
-    classId: '',
-    schedules: [], // Array to store time and day schedules
+    level: '',
+    classId: generateClassId(),
+    days: [],
+    timesPerWeek: '',
+    start_time: '',
+    end_time: '',
   });
+  
 
   useEffect(() => {
     if (selectedSubject) {
       setFormData({
         subject: selectedSubject.subject || '',
         price: selectedSubject.price || '',
-        grade: selectedSubject.grade || '',
+        level: selectedSubject.level || '',
         classId: selectedSubject.classId || generateClassId(),
-        schedules: selectedSubject.schedules || [],
+        days: selectedSubject.days || [],
+        start_time: selectedSubject.start_time || '',
+        end_time: selectedSubject.end_time || '',
       });
     } else {
       setFormData({
         subject: '',
         price: '',
-        grade: '',
+        level: '',
         classId: generateClassId(),
-        schedules: [],
+        days: [],
+        start_time: '',
+        end_time: '',
       });
     }
   }, [selectedSubject]);
@@ -42,38 +89,55 @@ const SubjectFormModal = ({ isOpen, onClose, onSave, selectedSubject }) => {
   const handleAddSchedule = () => {
     setFormData({
       ...formData,
-      schedules: [...formData.schedules, { dayOfWeek: '', time: '' }],
+      days: [
+        ...formData.days,
+        {
+          day: '',
+        },
+      ],
     });
   };
+  
 
   const handleRemoveSchedule = (index) => {
-    const updatedSchedules = [...formData.schedules];
-    updatedSchedules.splice(index, 1);
+    const updateddays = [...formData.days];
+    updateddays.splice(index, 1);
     setFormData({
       ...formData,
-      schedules: updatedSchedules,
+      days: updateddays,
     });
   };
 
   const handleScheduleChange = (index, field, value) => {
-    const updatedSchedules = [...formData.schedules];
-    updatedSchedules[index][field] = value;
+    const updatedDays = [...formData.days];
+    updatedDays[index][field] = value;
+
     setFormData({
       ...formData,
-      schedules: updatedSchedules,
+      days: updatedDays,
     });
   };
 
+
   const handleSave = () => {
+    dispatch(
+      createClassAction({
+        subject: formData.subject,
+        price: formData.price,
+        level: formData.level,
+        classId: formData.classId,
+        days: formData.days,
+        start_time: formData.start_time,
+        end_time: formData.end_time,
+      })
+    );
     onSave(formData);
   };
 
-  const generateClassId = () => {
-    return Math.floor(1000 + Math.random() * 9000);
-  };
+  
 
   const isAddScheduleButtonDisabled = () => {
-    return formData.schedules.length === parseInt(formData.timesPerWeek, 10);
+    return formData.days.length === parseInt(formData.timesPerWeek, 10);
   };
 
   return (
@@ -119,16 +183,16 @@ const SubjectFormModal = ({ isOpen, onClose, onSave, selectedSubject }) => {
                   />
                 </div>
                 <div className="mb-4">
-                  <label htmlFor="grade" className="block text-sm font-medium text-gray-600">
-                    Grade
+                  <label htmlFor="level" className="block text-sm font-medium text-gray-600">
+                    level
                   </label>
                   <input
                     required
                     type="number"
-                    id="grade"
-                    name="grade"
-                    placeholder='What grade do you teach'
-                    value={formData.grade}
+                    id="level"
+                    name="level"
+                    placeholder='What level do you teach'
+                    value={formData.level}
                     onChange={handleChange}
                     className="mt-1 p-2 border bg-slate-100 rounded-md w-full"
                   />
@@ -167,43 +231,59 @@ const SubjectFormModal = ({ isOpen, onClose, onSave, selectedSubject }) => {
                 />
               </div>
 
-              {/* Time and Day Schedules */}
+
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-600">
-                  Time and Day Schedules
-                </label>
-                {formData.schedules.map((schedule, index) => (
-                  <div key={index} className="flex gap-4 items-center mt-2">
-                    <select
-                      value={schedule.dayOfWeek}
-                      onChange={(e) => handleScheduleChange(index, 'dayOfWeek', e.target.value)}
-                      className="p-2 border bg-slate-100 rounded-md"
-                    >
-                      <option value="" disabled>Select day</option>
-                      <option value="Monday">Monday</option>
-                      <option value="Tuesday">Tuesday</option>
-                      <option value="Wednesday">Wednesday</option>
-                      <option value="Thursday">Thursday</option>
-                      <option value="Friday">Friday</option>
-                      <option value="Saturday">Saturday</option>
-                      <option value="Sunday">Sunday</option>
-                    </select>
-                    <input
-                      type="time"
-                      value={schedule.time}
-                      onChange={(e) => handleScheduleChange(index, 'time', e.target.value)}
-                      className="p-2 border bg-slate-100 rounded-md"
-                    />
-                    <button
-                      type="button"
-                      className="text-red-500 hover:text-red-700"
-                      onClick={() => handleRemoveSchedule(index)}
-                      // disabled={isAddScheduleButtonDisabled()}
-                    >
-                      <FontAwesomeIcon icon={faTrashCan} />
-                    </button>
-                  </div>
-                ))}
+                  {formData.days.map((schedule, index) => (
+                    <div key={index} className="flex gap-4 items-center mt-2">
+                      <div className="flex flex-col">
+                        <h4>Day</h4>
+                        <select
+                          value={schedule.days} // Corrected property name
+                          onChange={(e) => handleScheduleChange(index, 'days', e.target.value)} // Corrected property name
+                          className="p-2 border bg-slate-100 rounded-md"
+                        >
+
+                          <option value="" disabled>Select day</option>
+                          <option value="Monday">Monday</option>
+                          <option value="Tuesday">Tuesday</option>
+                          <option value="Wednesday">Wednesday</option>
+                          <option value="Thursday">Thursday</option>
+                          <option value="Friday">Friday</option>
+                          <option value="Saturday">Saturday</option>
+                          <option value="Sunday">Sunday</option>
+                        </select>
+                      </div>
+                      <div className="flex flex-col">
+                        <h4>Start time</h4>
+                        <input
+                          type="time"
+                          value={schedule.start_time}
+                          onChange={(e) =>
+                            handleScheduleChange(index, 'start_time', e.target.value)
+                          }
+                          className="p-2 border bg-slate-100 rounded-md"
+                        />
+                      </div>
+                      <div className="flex flex-col">
+                        <h4>End time</h4>
+                        <input
+                          type="time"
+                          value={schedule.end_time}
+                          onChange={(e) =>
+                            handleScheduleChange(index, 'end_time', e.target.value)
+                          }
+                          className="p-2 border bg-slate-100 rounded-md"
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        className="text-red-500 hover:text-red-700"
+                        onClick={() => handleRemoveSchedule(index)}
+                      >
+                        <FontAwesomeIcon icon={faTrashCan} />
+                      </button>
+                    </div>
+                  ))}
                 <button
                   type="button"
                   className={`mt-2 text-blue-500 py-2 rounded-md hover:text-blue-600 ${

@@ -24,9 +24,6 @@ function Signup2() {
   const [last_nameEmpty, setlast_nameEmpty] = useState(false);
   const [emailEmpty, setEmailEmpty] = useState(false);
   // New state for redirecting text
-  const [redirectingText, setRedirectingText] = useState(false);
-  const [is_tutor, setIs_tutor] = useState(null);
-
   const navigate = useNavigate();
 
   const dispatch = useDispatch();

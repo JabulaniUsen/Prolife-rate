@@ -25,30 +25,10 @@ const SubjectsTaught = () => {
       // Add new subject
       setSubjects((prevSubjects) => [...prevSubjects, { id: Date.now(), ...formData }]);
     }
-  
+
     setIsModalOpen(false);
     setSelectedSubject(null);
-  
-    // Update the formRender div with the new values, including schedules
-    const formRenderDiv = document.querySelector('.formRender');
-    if (formRenderDiv) {
-      const scheduleHtml = formData.schedules.map((schedule) => `
-        <div>
-          <p class="text-sm">Day: ${schedule.dayOfWeek}</p>
-          <p class="text-sm">Time: ${schedule.time}(UTC)</p>
-        </div>
-      `).join('');
-  
-      formRenderDiv.innerHTML = `
-        <p class="text-sm flex">Grade: ${formData.grade}<span class='text-xs'>th</span></p>
-        <p class="text-sm">Price: $${formData.price}/month</p>
-        <p class="text-sm">Class Id: ${formData.classId}</p>
-        <div class="text-sm">Schedules: ${scheduleHtml}</div>
-      `;
-    }
   };
-  
-  
 
   const handleEditSubject = (subject) => {
     setSelectedSubject(subject);
@@ -60,15 +40,15 @@ const SubjectsTaught = () => {
   };
 
   return (
-    <div className='p-6 shadow-xl lg:h-[370px] overflow-y-scroll waitingRoom`'>
-      <h3 className='poppins font-semibold text-2xl '>Subjects I teach</h3>
+    <div className='p-6 shadow lg:h-[380px] rounded-xl overflow-y-scroll waitingRoom'>
+      <h3 className='poppins font-semibold text-2xl my-2'>Subjects I teach</h3>
 
       {/* Display Subjects */}
-      <div className="subjectDisplay grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="subjectDisplay grid grid-cols-1 lg:grid-cols-2 gap-4 ">
         {subjects.map((subject) => (
           <motion.div
             key={subject.id}
-            className="bg-white p-4 rounded-lg shadow-md relative w-[200px]"
+            className="bg-white p-4 rounded-lg shadow-md relative"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
@@ -76,7 +56,7 @@ const SubjectsTaught = () => {
           >
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center">
-                <p className="font-semibold text-lg">{subject.subject}</p>
+                <p className="font-bold text-xl">{subject.subject}</p>
               </div>
               <div className="flex items-center space-x-2">
                 <FontAwesomeIcon
@@ -85,22 +65,31 @@ const SubjectsTaught = () => {
                   onClick={() => handleEditSubject(subject)}
                 />
                 <FontAwesomeIcon
-                  icon={faTrash}
+                  icon={faTrash}  
                   className="text-red-500 cursor-pointer"
                   onClick={() => handleDeleteSubject(subject.id)}
                 />
               </div>
             </div>
-            <div className='formRender'>
-              <p className="text-sm flex">Grade: {subject.grade}<span className='text-xs'>th</span></p>
-              <p className="text-sm">Price: ${subject.price}/month</p>
-              <p className="text-sm">Class Id: {subject.classId}</p>
+            <div className='formRender poppins'>
+              <div className="flex flex-col">
+                <p className="flex font-semibold gap-1">Grade: <span className='font-normal'> {subject.level}<span className='text-xs'>th</span></span></p>
+                <p className="font-semibold">Price: $<span className='font-normal'>{subject.price}/month</span></p>
+                <p className="font-semibold">Class Id: <span className='font-normal'>{subject.classId}</span></p>
+              </div>
               {/* Schedules */}
-              <div className="text-sm">Schedules:
-                {subject.schedules.map((schedule, index) => (
-                  <div key={index}>
-                    <p>Date: {schedule.date}</p>
-                    <p>Time: {schedule.time}(UTC)</p>
+              <div className="">
+                <h4 className='font-semibold my-1 mt-2 text-xl poppins'>Schedules:</h4>
+                {subject.days.map((schedule, index) => (
+                  <div key={index} className='p-4 my-2 bg-slate-200 rounded-xl'>
+                    <p className='font-semibold'>Day: <span className='font-normal'>{schedule.days}</span></p>
+                    <p className='flex gap-1 font-semibold'>
+                      Time: 
+                      <div className='flex gap-2'>
+                        <p className='startTime'><span className="font-normal">{schedule.start_time}</span></p> -
+                        <p className='endTime'><span className="font-normal">{schedule.end_time}</span></p>
+                      </div>
+                    </p>
                   </div>
                 ))}
               </div>

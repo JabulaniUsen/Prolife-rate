@@ -4,7 +4,8 @@ import {
     registerStudentAction,
     registerTutorAction,
     contactFormAction,
-    newsletterAction
+    newsletterAction,
+    createClassAction
 } from "../actions/Auth";
 const initialState = {
   // signingInStatus: "idle",
@@ -60,8 +61,13 @@ const authenticationSlice = createSlice({
       state.newsletterActionStatus = 'idle';
       state.newsletterActionSuccess = '';
       state.newsletterActionError = '';
-    }
+    },
 
+    clearCreateClassStatus(state) {
+      state.createClassActionStatus = 'idle';
+      state.createClassActionSuccess = '';
+      state.createClassActionError = '';
+    }
   },
 
   extraReducers: (builder) => {
@@ -134,6 +140,19 @@ const authenticationSlice = createSlice({
 
         state.newsletterActionError = payload;
       });
+
+      builder
+      .addCase(createClassAction.pending, (state) => {
+        state.createClassActionStatus = "loading";
+      })
+      .addCase(createClassAction.fulfilled, (state, { payload }) => {
+        state.createClassActionStatus = "completed";
+      })
+      .addCase(createClassAction.rejected, (state, { payload }) => {
+        state.createClassActionStatus = "failed";
+
+        state.createClassActionError = payload;
+      });
   },
 });
 
@@ -141,7 +160,8 @@ export const {
   clearLoginStatus,
   clearSignUpStatus,
   clearContactFormStatus,
-  clearNewsletterAction
+  clearNewsletterStatus,
+  clearCreateClassStatus
 //   clearAdminLoginStatus,
 //   clearUserData,
 //   clearSocialSignUpStatus,

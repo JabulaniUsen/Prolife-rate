@@ -38,6 +38,7 @@ const AdminDashboard = () => {
   const [fullName, setFullName] = useState('');
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
   const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false);
 
   const location = useLocation();
 
@@ -48,6 +49,15 @@ const AdminDashboard = () => {
       setEmail(location.state.email || '');
     }
   }, [location.state]);
+
+  const handleTabClick = (index) => {
+    setLoading(true);
+    setTimeout(() => {
+      setActiveTab(index);
+      setLoading(false);
+    }, 2000); // 2 seconds delay
+  }
+
   const toggleSidebar = () => {
     setIsSidebarVisible(!isSidebarVisible)
   }

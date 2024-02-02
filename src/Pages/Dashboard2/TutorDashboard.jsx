@@ -132,7 +132,7 @@ const TutorDashboard = () => {
 
           <div className="">
             <button className="flex gap-2 items-center justify-start bg-[#ffffff] w-[200px] py-3 text-sm px-5 rounded-lg my-2 text-[#344054]">
-              <img src={support} alt="" />npm run dev
+              <img src={support} alt="" />
               
               Support
             </button>
@@ -141,7 +141,6 @@ const TutorDashboard = () => {
               Settings
             </button>
           </div>
-          <a href="">hello world</a>
 
           <div className="profile poppins flex items-start justify-center py-5 border-t-[1px] my-5 mx-2 border-white">
             <div className="w-[50px]">

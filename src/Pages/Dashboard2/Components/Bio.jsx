@@ -16,7 +16,7 @@ function Bio() {
   };
 
   return (
-    <div className='p-9 rounded shadow-lg'>
+    <div className='p-9 rounded-xl shadow'>
       <h3 className="poppins font-semibold text-2xl">Bio</h3>
       <textarea
         name="bio"

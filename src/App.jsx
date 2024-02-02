@@ -18,6 +18,7 @@ import { persistStore } from "redux-persist";
 import store from "./Redux/store"
 import { Provider as ReduxProvider } from "react-redux";
 import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import TutorDashboard from './Pages/Dashboard2/TutorDashboard';
 import Signup2 from './SignupAsTutor/Signup2';
