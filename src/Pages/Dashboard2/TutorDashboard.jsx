@@ -154,7 +154,7 @@ const TutorDashboard = () => {
           </div>
         </div>
 
-        <div className="body px-[30px] relative">
+        <div className="body relative">
           <div className={`header flex lg:justify-end justify-between pt-10 px-5 lg:w-[1050px] bg-white items-center ${isSidebarVisible ? '' : 'sidebar-hidden'}`}>
             <div className="menu lg:absolute lg:left-7 w-[50px]" onClick={toggleSidebar}>
               <img src={menu} className="cursor-pointer" alt="" />

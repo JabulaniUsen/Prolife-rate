@@ -3,6 +3,7 @@ import Header from '../Components/Header';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import Footer2 from '../Components/Footer2';
 
 function VerificationAndIdentity() {
   const [fileUploadStatus, setFileUploadStatus] = useState('');
@@ -14,7 +15,6 @@ function VerificationAndIdentity() {
       setFileUploadStatus('File uploaded successfully');
     }, 2000);
 
-    // Clear the file input value to allow selecting the same file again
     fileInput.value = '';
   };
 
@@ -27,7 +27,6 @@ function VerificationAndIdentity() {
       setFileUploadStatus2('File uploaded successfully');
     }, 2000);
 
-    // Clear the file input value to allow selecting the same file again
     fileInput2.value = '';
   };
 
@@ -41,12 +40,12 @@ function VerificationAndIdentity() {
         <div className="poppins m-auto flex items-center justify-center py-10">
           <div className="form flex justify-center flex-col">
             <div className="my-7">
-              <p className="text-[#186BAD] text-sm mb-1 font-semibold">Means of Identification</p>
+              <p className="text-[#186BAD] text-sm lg:text-base mb-1 font-semibold">Means of Identification</p>
               <div className="flex flex-col justify-end">
                 <select
                   id="dropdown1"
                   name="dropdown1"
-                  className='bg-[#F2F1F1] p-3 lg:w-[450px] w-[300px] outline-none rounded-sm'
+                  className='bg-[#F2F1F1] p-3 lg:py-4 lg:w-[600px] w-[300px] outline-none rounded-sm'
                 >
                   <option value="" className='text-[#dadada]'></option>
                   <option value="driver's license">Driver's license</option>
@@ -57,7 +56,7 @@ function VerificationAndIdentity() {
                   <option value="National ID Card">National ID Card</option>
                 </select>
                 <div className="flex justify-end">
-                    <label htmlFor="fileUpload1" className="fileUpload text-right mt-1 text-[#186bad] font-semibold cursor-pointer">
+                    <label htmlFor="fileUpload1" className="fileUpload text-right mt-1 lg:text-base text-[#186bad] font-semibold cursor-pointer">
                     {fileUploadStatus || 'Upload file here'}
                     </label>
                     <input
@@ -72,12 +71,12 @@ function VerificationAndIdentity() {
             </div>
 
             <div className="my-7">
-              <p className="text-[#186BAD] text-sm mb-1 font-semibold">What is your highest Educational Qualification?</p>
+              <p className="text-[#186BAD] text-sm lg:text-base mb-1 font-semibold">What is your highest Educational Qualification?</p>
               <div className="flex flex-col justify-end">
                 <select
                   id="dropdown2"
                   name="dropdown2"
-                  className='bg-[#F2F1F1] p-3 lg:w-[450px] w-[300px] outline-none rounded-sm'
+                  className='bg-[#F2F1F1] p-3 lg:py-4 lg:w-[600px] w-[300px] outline-none rounded-sm'
                 >
                   <option value="" className='text-[#dadada]'></option>
                   <option value="High School Diploma">High School Diploma</option>
@@ -88,7 +87,7 @@ function VerificationAndIdentity() {
                   <option value="Specialized Certification">Specialized Certification</option>
                 </select>
                 <div className="flex justify-end">
-                    <label htmlFor="fileUpload2" className="fileUpload text-right mt-1 text-[#186bad] font-semibold cursor-pointer">
+                    <label htmlFor="fileUpload2" className="fileUpload text-right mt-1 lg:text-base text-[#186bad] font-semibold cursor-pointer">
                     {fileUploadStatus2 || 'Upload file here'}
                     </label>
                     <input
@@ -104,8 +103,8 @@ function VerificationAndIdentity() {
 
             <div className="my-7 flex items-start">
               <input type="checkbox" name="" id="" className='w-[30px] mt-1' />
-              <p>
-                To ensure a secure learning environment, <br />
+              <p className='text-sm'>
+                To ensure a secure learning environment, 
                 a background check may be required.
               </p>
             </div>
@@ -116,6 +115,7 @@ function VerificationAndIdentity() {
           </div>
         </div>
       </div>
+      <Footer2/>
     </div>
   );
 }

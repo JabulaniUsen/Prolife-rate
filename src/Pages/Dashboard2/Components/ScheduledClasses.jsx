@@ -196,17 +196,18 @@ function ScheduledClasses() {
                 <p className='text-[#989898] flex gap-x-1 items-center'><FontAwesomeIcon icon={faCalendarDays} />{item.date}</p>
               </div>
               <div className="flex items-center gap-5">
-                <p
-                  className="status text-sm my-1 p-1 px-3 rounded bg-[#F1F1F1]"
-                >
+                {/* <p className="status text-sm my-1 p-1 px-3 rounded bg-[#F1F1F1]">
                   Class ID: <span className='text-base'>{item.classid}</span>
+                </p> */}
+                <p className="status text-sm text-[#989898] my-1 p-1 px-3 rounded bg-[#F1F1F1]">
+                  Status: <span className=''>Note Started</span>
                 </p>
               </div>
             </div>
           </div>
           <button
             onClick={handleJoinNow}
-            className="bg-[#0c0c0c] w-full p-[0.5rem] mt-1 rounded text-white transition hover:bg-[#000] font-semibold"
+            className="bg-[#727272] w-full p-[0.5rem] mt-1 rounded text-white transition hover:bg-[#000] font-semibold"
           >
             Join Now
           </button>

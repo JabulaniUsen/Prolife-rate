@@ -8,11 +8,12 @@ import ClassProgress from '../Components/ClassProgress';
 import LineChart from '../Components/LineGraph';
 import WaitingRoom from '../Components/WaitingRoom';
 import Documents from '../Components/Documents';
+import Overview from '../Components/Overview';
 
 
 function Home() {
   return (
-    <div className='lg:mt-0 mt-5 py-6'>
+    <div className='lg:mt-0 mt-5 mx-10 py-6'>
       <div className="head bg-[#186BAD] lg:py-0 pt-10 rounded-xl lg:flex lg:justify-between items-center">
         <div className="texts text-white justify-center mx-7 poppins">
           <h1 className='text-3xl '>Welcome back!
@@ -21,6 +22,9 @@ function Home() {
           {/* <p className=' my-5'>You have 27 new student added to your domain. Please reach out to the Head Teacher if you want them excluded from your domain.</p> */}
         </div>
         <img src={studentAndTeacher} className='lg:w-[410px] w-[70%] ml-28' alt="" />
+      </div>
+      <div className="overView">
+        <Overview/>
       </div>
       <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 items-center gap-5">
         <div className="rounded-xl my-7 shadow-xl">

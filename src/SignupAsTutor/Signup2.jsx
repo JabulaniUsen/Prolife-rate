@@ -1,33 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../Components/Header';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerTutorAction } from '../Redux/actions/Auth';
 import { toast } from 'react-toastify';
 import { clearSignUpStatus } from '../Redux/reducers/authReducer';
+import Header from '../Components/Header';
+import { Link, useNavigate } from 'react-router-dom';
+import Footer2 from '../Components/Footer2';
 
 function Signup2() {
-  const [username, setusername] = useState('')
-  const [first_name, setfirst_name] = useState('');
-  const [last_name, setlast_name] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [password2, setPassword2] = useState('');
-  const [passwordEmpty, setPasswordEmpty] = useState(false);
-  const [passwordMatch, setPasswordMatch] = useState(true);
-  const [passwordWeak, setPasswordWeak] = useState(true);
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const [first_nameEmpty, setfirst_nameEmpty] = useState(false);
-  const [usernameEmpty, setusernameEmpty] = useState('')
-  const [last_nameEmpty, setlast_nameEmpty] = useState(false);
-  const [emailEmpty, setEmailEmpty] = useState(false);
-  // New state for redirecting text
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const authSelector = useSelector((state) => state.authenticationSlice);
+
+  const formik = useFormik({
+    initialValues: {
+      full_name: '',
+      email: '',
+      password: '',
+      password2: '',
+    },
+    validationSchema: Yup.object({
+      full_name: Yup.string().required('Full Name is required'),
+      email: Yup.string().email('Invalid email address').required('Email is required'),
+      password: Yup.string().required('Password is required'),
+      password2: Yup.string()
+        .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        .required('Confirm Password is required'),
+    }),
+    onSubmit: (values) => {
+      dispatch(registerTutorAction(values));
+    },
+  });
 
   useEffect(() => {
     if (authSelector.registerTutorActionStatus === 'failed') {
@@ -38,208 +45,119 @@ function Signup2() {
 
   useEffect(() => {
     if (authSelector.registerTutorActionStatus === 'completed') {
-      // Show toast message
       toast.success('Account created', {
         position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000, // 3 seconds
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
       });
       setTimeout(() => {
-        navigate('/tutordashboard', { state: { first_name: first_name, email: email } });
+        navigate('/tutordashboard', { state: { first_name: formik.values.full_name, email: formik.values.email } });
         dispatch(clearSignUpStatus());
       }, 3000);
     }
-  }, [authSelector.registerTutorActionStatus, first_name, email, navigate, dispatch]);
-
-  const handleSignUp = () => {
-    if (!first_name || !last_name || !email || !password || !password2 || !username) {
-      setfirst_nameEmpty(!first_name);
-      setlast_nameEmpty(!last_name)
-      setusernameEmpty(!username)
-      setEmailEmpty(!email);
-      setPasswordEmpty(!password);
-      return;
-    }
-    
-
-    // Check for password match
-    if (password !== password2) {
-      setPasswordMatch(false);
-      return;
-    } else {
-      setPasswordMatch(true);
-    }
-
-    // Check for password requirements
-    const passwordRequirementsRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+]{6,}$/;
-    if (!passwordRequirementsRegex.test(password)) {
-      setPasswordWeak(false);
-      return;
-    } else {
-      setPasswordWeak(true);
-    }
-
-    // Dispatch the signup action
-    dispatch(
-      registerTutorAction({
-        email: email,
-        password: password,
-        password2: password2,
-        first_name: first_name,
-        username: username,
-        last_name: last_name,
-      })
-    );
-  };
+  }, [authSelector.registerTutorActionStatus, formik.values.full_name, formik.values.email, navigate, dispatch]);
 
   return (
     <div>
       <Header />
       <div className="px-5 lg:px-28 my-16">
         <div className="poppins header text-center">
-          <h1 className="lg:text-3xl text-2xl font-bold">Sign up as a Tutor</h1>
+          <h1 className="lg:text-3xl text-2xl font-bold">Have Skills? Share them</h1>
         </div>
-        <div className="poppins m-auto flex items-center justify-center py-10">
-          <div className="form">
-            <p className="text-[#186BAD] text-sm mb-1 font-semibold">Username</p>
-            <div className=" border border-[#e9eaf0]">
+        <div className="poppins m-auto flex flex-col items-center justify-center my-10">
+          <div className="form flex flex-col gap-2">
+            <div className="">
+              <p className="text-[#186BAD] text-sm my-1 font-semibold">Full Name</p>
               <input
                 type="text"
-                name=""
-                placeholder="Username"
-                className={`bg-transparent p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${usernameEmpty ? 'border-red-500' : ''}`}
-                value={username}
-                onChange={(e) => {
-                  setusername(e.target.value);
-                  setusernameEmpty(false);
-                }}
-                required
-              />
-            </div>
-            {usernameEmpty && <p className="text-red-500 text-xs mt-1 mb-4">This must not be empty</p>}
-            <p className="text-[#186BAD] text-sm my-1 font-semibold">First Name</p>
-            <div className=" border border-[#e9eaf0]">
-              <input
-                type="text"
-                name=""
+                name="full_name"
                 placeholder="First Name"
-                className={`bg-transparent p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${first_nameEmpty ? 'border-red-500' : ''}`}
-                value={first_name}
-                onChange={(e) => {
-                  setfirst_name(e.target.value);
-                  setfirst_nameEmpty(false);
-                }}
+                className={`bg-[#f2f1f1]  border p-3 lg:w-[697px] w-[300px] outline-none rounded-sm`}
+                {...formik.getFieldProps('full_name')}
                 required
               />
+              {formik.touched.full_name && formik.errors.full_name && (
+                <div className="text-red-500 text-sm">{formik.errors.full_name}</div>
+              )}
             </div>
-            {first_nameEmpty && <p className="text-red-500 text-xs mt-1 mb-4">This must not be empty</p>}
-            <p className="text-[#186BAD] text-sm my-1 font-semibold">last Name</p>
-            <div className=" border border-[#e9eaf0]">
-              <input
-                type="text"
-                name=""
-                placeholder="Last Name"
-                className={`bg-transparent p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${last_nameEmpty ? 'border-red-500' : ''}`}
-                value={last_name}
-                onChange={(e) => {
-                  setlast_name(e.target.value);
-                  setlast_nameEmpty(false);
-                }}
-                required
-              />
-            </div>
-            {last_nameEmpty && <p className="text-red-500 text-xs mt-1 mb-4">This must not be empty</p>}
-              <p className="text-[#186BAD] text-sm mb-1 font-semibold">Email</p>
-            <div className="mb-3 border border-[#e9eaf0]">
+
+            <div className="mb-3 ">
+              <p className="text-[#186BAD] text-sm font-semibold">Email</p>
               <input
                 type="email"
-                name=""
+                name="email"
                 placeholder="Email"
-                className={`bg-transparent p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${emailEmpty ? 'border-red-500' : ''}`}
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setEmailEmpty(false);
-                }}
+                className={`bg-[#f2f1f1]  p-3 border lg:w-[697px] w-[300px] outline-none rounded-sm`}
+                {...formik.getFieldProps('email')}
                 required
               />
+              {formik.touched.email && formik.errors.email && (
+                <div className="text-red-500 text-sm">{formik.errors.email}</div>
+              )}
             </div>
-            {emailEmpty && <p className="text-red-500 text-xs mt-1 mb-4">This must not be empty</p>}
-
 
             {/* Passwords */}
             <div className="mb-3">
-              <p className="text-[#186BAD] text-sm mb-1 font-semibold">Password</p>
-              <div className="relative border border-[#e9eaf0]">
+              <div className="relative ">
+                <p className="text-[#186BAD] text-sm font-semibold">Password</p>
                 <input
-                  type={passwordVisible ? 'text' : 'password'}
-                  name=""
+                  type={formik.values.passwordVisible ? 'text' : 'password'}
+                  name="password"
                   placeholder="Password..."
-                  className={`p-3 w-[250px] outline-none rounded-sm ${passwordEmpty ? 'border-red-500' : ''}`}
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                    setPasswordEmpty(false);
-                    setPasswordMatch(true);
-                    setPasswordWeak(true);
-                  }}
+                  className={`bg-[#f2f1f1]  p-3 lg: border lg:w-[697px] w-[300px] outline-none rounded-sm`}
+                  {...formik.getFieldProps('password')}
                   required
                 />
                 <button
                   type="button"
-                  className="absolute top-1/2 right-4 transform -translate-y-1/2"
-                  onClick={() => setPasswordVisible(!passwordVisible)}
+                  className="absolute top-2/3 right-4 transform -translate-y-1/2"
+                  onClick={() => formik.setFieldValue('passwordVisible', !formik.values.passwordVisible)}
                 >
-                  <FontAwesomeIcon icon={passwordVisible ? faEyeSlash : faEye} />
+                  <FontAwesomeIcon icon={formik.values.passwordVisible ? faEyeSlash : faEye} />
                 </button>
               </div>
-              {passwordEmpty && <p className="text-red-500 text-xs mt-1">This must not be empty</p>}
-              {!passwordMatch && (
-                <p className="text-red-500 text-xs mt-1">Passwords do not match</p>
-              )}
-              {!passwordWeak && (
-                <p className="text-red-500 text-xs mt-1 w-[300px]">
-                  Password must contain at least one uppercase letter, one number, and be at least 6 characters long.
-                </p>
+              {formik.touched.password && formik.errors.password && (
+                <div className="text-red-500 text-sm">{formik.errors.password}</div>
               )}
             </div>
 
             <div className="mb-3">
-              <p className="text-[#186BAD] text-sm mb-1 font-semibold">Confirm Password</p>
-              <div className="relative border border-[#e9eaf0]">
+              <div className="relative ">
+                <p className="text-[#186BAD] text-sm font-semibold">Confirm Password</p>
                 <input
-                  type={passwordVisible ? 'text' : 'password'}
-                  name=""
+                  type={formik.values.passwordVisible ? 'text' : 'password'}
+                  name="password2"
                   placeholder="Confirm Password"
-                  className={`bg-transparent p-3 lg:w-[400px] w-[300px] outline-none rounded-sm ${!passwordMatch ? 'border-red-500' : ''}`}
-                  value={password2}
-                  onChange={(e) => {
-                    setPassword2(e.target.value);
-                    setPasswordEmpty(false);
-                    setPasswordMatch(true);
-                  }}
+                  className={`bg-[#f2f1f1]  p-3 lg: border lg:w-[697px] w-[300px] outline-none rounded-sm `}
+                  {...formik.getFieldProps('password2')}
                   required
                 />
                 <button
                   type="button"
-                  className="absolute top-1/2 right-4 transform -translate-y-1/2"
-                  onClick={() => setPasswordVisible(!passwordVisible)}
+                  className="absolute top-2/3 right-4 transform -translate-y-1/2"
+                  onClick={() => formik.setFieldValue('passwordVisible', !formik.values.passwordVisible)}
                 >
-                  <FontAwesomeIcon icon={passwordVisible ? faEyeSlash : faEye} />
+                  <FontAwesomeIcon icon={formik.values.passwordVisible ? faEyeSlash : faEye} />
                 </button>
               </div>
-              {!passwordMatch && <p className="text-red-500 text-xs mt-1">Passwords do not match</p>}
+              {formik.touched.password2 && formik.errors.password2 && (
+                <div className="text-red-500 text-sm">{formik.errors.password2}</div>
+              )}
             </div>
-            {/* Passwords */}
-
-            <button 
-            className=' poppins cursor-pointer text-lg font-semibold bg-[#186BAD] text-white px-5 py-2 rounded-lg' 
-            onClick={handleSignUp}>
-              Next <FontAwesomeIcon icon={faChevronRight} className='text-xl font-bold ml-5' />
-            </button>
+            <div className="">
+              <button
+                className="float-right poppins cursor-pointer text-lg font-semibold transition-all mt-9 hover:bg-[#186BAD] hover:text-white px-5 py-2 rounded-lg"
+                onClick={formik.handleSubmit}
+              >
+                Next <FontAwesomeIcon icon={faChevronRight} className="text-xl font-bold ml-5" />
+              </button>
+              <div className="">
+                <p className='lg:text-base text-sm '>Have an account? <Link className='text-[#186bad]'>Log in</Link></p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

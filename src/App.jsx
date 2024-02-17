@@ -28,6 +28,7 @@ import Subject from './Pages/Subject/Subject';
 import EducationalInfomation from './SignupAsStudents/EducationalInfomation';
 import Room from './Pages/Dashboard2/Components/Room';
 import AdminDashboard from './Pages/AdminDashboard/AdminDashboard';
+import BuildProfile from './SignupAsTutor/BuildProfile';
 
 
 let persistor = persistStore(store);
@@ -53,6 +54,7 @@ function App() {
               <Route path='/dashboard' element={<Dashboard/>} />
               <Route path='/tutordashboard' element={<TutorDashboard/>} />
               <Route path='/signupastutor' element={<Signup2/>} />
+              <Route path='/build_profile' element={<BuildProfile/>} />
               <Route path='/verifyidentify' element={<VerificationAndIdentity/>} />
               <Route path='/verifyemail' element={<VerifyEmail/>} />
               <Route path='/subjects' element={<Subject/>} />
