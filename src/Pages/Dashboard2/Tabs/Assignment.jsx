@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { faCalendarDays, faEllipsisVertical, faFileExport, faPaperPlane, faPaperclip, faPenToSquare, faPlus, faXmark, faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import noAssignment from '../../../Assets/no-assignment.png'
-
-// const tabs = ['Reports', 'Transactions', 'Debit', 'Upcoming', 'Due'];
+import AddAssignment from '../Components/AddAssignment';
 
 const Assignment = () => {
-  // const [activeTab, setActiveTab] = useState(0);
 
-  // const handleTabClick = (index) => {
-  //   setActiveTab(index);
-  // }; font-semibold
+  const [showAddAssignments, setShowAddAssignments] = useState(false)
+  
+  const handleAddAssignment = () => {
+    setShowAddAssignments(true);
+  }
 
   const Table = ({ tabData }) => {
     if (tabData.length === 0) {
@@ -91,18 +91,23 @@ const Assignment = () => {
   ];
 
   return (
-    <div className="p-4">
-  
-      <div className="payments flex justify-between items-end mt-8">
-        <div className="poppins ">
-          <p className={`text-[#B5B5C3] mb-[-2rem] text-sm ${tabData.length === 0 ? 'hidden' : '' }`}>A Total of 125 Assignment Have Listed.</p>
+    <div className="">
+      { showAddAssignments ? (
+        <AddAssignment/> 
+      ) : (
+        <div className="p-4">
+        <div className="payments flex justify-between items-end mt-8">
+          <div className="poppins ">
+            <p className={`text-[#B5B5C3] mb-[-2rem] text-sm ${tabData.length === 0 ? 'hidden' : '' }`}>A Total of 125 Assignment Have Listed.</p>
+          </div>
+          <div className="">
+            <button className='mx-3 border-[#696969] border-[1px] bg-[#F6F6F6] hover:bg-[#cacaca] text-[#4F4E4E] transition rounded-xl font-semibold py-[0.3rem] px-8'>Filter Assignment <FontAwesomeIcon icon={faEllipsisVertical} className='ml-3' /></button>
+            <button className='bg-[#186BAD] text-white items-center transition hover:bg-[#0f3f66] rounded-xl font-semibold py-[0.3rem] px-8' onClick={handleAddAssignment}>ADD NEW<FontAwesomeIcon icon={faPlus} className='ml-3'/></button>
+          </div>
         </div>
-        <div className="">
-          <button className='mx-3 border-[#696969] border-[1px] bg-[#F6F6F6] hover:bg-[#cacaca] text-[#4F4E4E] transition rounded-xl font-semibold py-[0.3rem] px-8'>Filter Assignment <FontAwesomeIcon icon={faEllipsisVertical} className='ml-3' /></button>
-          <button className='bg-[#186BAD] text-white items-center transition hover:bg-[#0f3f66] rounded-xl font-semibold py-[0.3rem] px-8'>ADD NEW<FontAwesomeIcon icon={faPlus} className='ml-3'/></button>
-        </div>
-      </div>
-      <Table tabData={tabData} />
+        <Table tabData={tabData} />
+    </div>
+      ) }
     </div>
   );
 };

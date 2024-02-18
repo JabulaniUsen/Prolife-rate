@@ -108,7 +108,7 @@ const TutorDashboard = () => {
     return (
     <div className="">
       <div className={`flex lg:w-[20%] ${isSidebarVisible ? '' : 'sidebar-hidden'} `}>
-        <div className={`sideBar bg-[#2977B5] h-[100%] flex flex-col items-center px-2 ${isSidebarVisible ? 'flex' : 'hidden'}`}>
+        <div className={`sideBar bg-[#2977B5]  flex flex-col items-center px-2 ${isSidebarVisible ? 'flex' : 'hidden'}`}>
           <Link to='/'>
             <div className="logo py-10 px-10">
               <img src={logo} alt="" />

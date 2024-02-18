@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDays, faClock, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faClock, faMagnifyingGlass, faMap, faMapMarked, faUser } from '@fortawesome/free-solid-svg-icons';
 import noClass from '../../../../Assets/no-class.png'
 
 const Monday = () => {
@@ -19,10 +19,6 @@ const Monday = () => {
 
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
   const filteredClasses = classdata.filter((item) => {
     const lowerCaseSearchQuery = searchQuery.toLowerCase();
     return (
@@ -34,6 +30,7 @@ const Monday = () => {
 
   return (
     <div className="grid grid-cols-3 gap-3 inter">
+      <button className='text-[#186BAD] underline text-lg poppins float-right'>Add subject and availability</button>
       {filteredClasses.length === 0 ? (
         <div className="flex flex-col gap-3 absolute top-[20rem] rounded-xl border-[1px] border-[#000000] right-[30rem] w-[250px] h-[250px] justify-center items-center">
           <div className="">
@@ -47,29 +44,30 @@ const Monday = () => {
         <>
           {filteredClasses.map((item, index) => (
             <div
-              className="classBox p-3 rounded-xl flex flex-col justify-center items-center bg-[#186BAD]"
+              className="classBox p-3 rounded-lg flex flex-col justify-center items-center bg-[#186BAD]"
               key={index}
             >
-              <div className="flex flex-col justify-center gap-10 text-[#fff]">
+              <div className="flex flex-col justify-center gap-2 text-center text-[#fff]">
                 <div className="head text-center">
-                  <h2 className="font-semibold text-lg py-3 border-b-[2px] border-white">
+                  <h2 className="font-semibold text-lg py-3">
                     {item.subject}
                   </h2>
+                  <hr />
                 </div>
-                <div className="body">
-                  <p className=" rounded">
+                  <p className="rounded flex gap-5 items-center justify-center">
+                    <FontAwesomeIcon icon={faUser}/>
                     {item.studentName}
                   </p>
-                  <div className="timeAndDate flex gap-4">
-                    <p className=' flex gap-x-1 items-center'><FontAwesomeIcon icon={faClock} />{item.time}</p>
-                    <p className=' flex gap-x-1 items-center'><FontAwesomeIcon icon={faCalendarDays} />{item.date}</p>
+                  <div className="flex justify-between gap-28 my-4">
+                    <p className=' flex gap-x-1 items-center'>
+                      <FontAwesomeIcon icon={faMapMarked} />
+                      704
+                    </p>
+                    <p className=' flex gap-x-1 items-center'>
+                      <FontAwesomeIcon icon={faClock} />
+                      {item.time}
+                    </p>
                   </div>
-                  <p
-                    className=" status  text-sm my-1 p-1 px-3 rounded "
-                  >
-                    Status: {item.status}
-                  </p>
-                </div>
               </div>
               {/* <button className="bg-[#186BAD] w-full p-[0.5rem] rounded text-white transition hover:bg-[#000] font-semibold">Attendance</button> */}
             </div>

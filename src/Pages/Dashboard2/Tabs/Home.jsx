@@ -13,7 +13,7 @@ import Overview from '../Components/Overview';
 
 function Home() {
   return (
-    <div className='lg:mt-0 mt-5 mx-10 py-6'>
+    <div className='lg:mt-0 mt-5 mx-5 py-6'>
       <div className="head bg-[#186BAD] lg:py-0 pt-10 rounded-xl lg:flex lg:justify-between items-center">
         <div className="texts text-white justify-center mx-7 poppins">
           <h1 className='text-3xl '>Welcome back!

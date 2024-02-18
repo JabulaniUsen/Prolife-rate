@@ -40,8 +40,12 @@ const Classes = () => {
 
   return (
     <div className=" px-12">
-      <div className="">
-        <div className="flex gap-4 my-[4rem] ">
+      <div className="my-10">
+        <div className="flex justify-between">
+          <h3 className='Poppins text-3xl font-bold'>My Schedules</h3>
+
+        </div>
+        <div className="flex gap-4 my-[2rem] ">
           {tabs.map((tab, index) => (
             <div
               key={index}
