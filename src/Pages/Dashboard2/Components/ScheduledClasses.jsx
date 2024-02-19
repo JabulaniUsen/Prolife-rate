@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays, faClock, faMagnifyingGlass, faEdit, faEllipsisVertical, faTrash } from '@fortawesome/free-solid-svg-icons';
 import noClass from '../../../Assets/no-class.png'
 import classData from './ScheduleClassData';
-import ClassModal from './AddClassModal';
-import JoinClassModal from './JoinClassModal';
+// import ClassModal from './AddClassModal';
+// import JoinClassModal from './JoinClassModal';
 import { motion } from 'framer-motion';
 
 function ScheduledClasses() {
@@ -212,7 +212,7 @@ function ScheduledClasses() {
         </div>
       ))}
       {/* Modal */}
-      {showModal && (
+      {/* {showModal && (
         <ClassModal
           showModal={showModal}
           closeModal={closeModal}
@@ -220,13 +220,13 @@ function ScheduledClasses() {
           handleInputChange={handleInputChange}
           handleSubmit={handleSubmit}
         />
-      )}
+      )} */}
       {/* Join Now Modal */}
-      <JoinClassModal 
+      {/* <JoinClassModal 
         showModal={showJoinModal} 
         closeModal={closeJoinModal} 
         roomId={formData.classid}
-      />
+      /> */}
     </div>
   );
 }

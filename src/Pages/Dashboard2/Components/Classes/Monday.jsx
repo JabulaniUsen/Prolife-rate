@@ -1,36 +1,89 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDays, faClock, faMagnifyingGlass, faMap, faMapMarked, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faClock, faL, faMagnifyingGlass, faMap, faMapMarked, faUser } from '@fortawesome/free-solid-svg-icons';
 import noClass from '../../../../Assets/no-class.png'
+import classData from '../../Components/ScheduleClassData'
+import AddClassPopup from '../AddClassModal';
 
 const Monday = () => {
-
-  const [classdata, setClassdata] = useState([
-    { id: 1, subject: "Algebra", studentName: "Canny James", time: "12:40 PM", date: "03 Jan 2023", status: "Completed" },
-    { id: 2, subject: "Matrix", studentName: "Jabulani Usen", time: "12:40 PM", date: "03 Jan 2023", status: "Completed" },
-    { id: 3, subject: "Equations", studentName: "Goodness James", time: "12:40 PM", date: "03 Jan 2023", status: "Completed" },
-    { id: 4, subject: "Geometry", studentName: "Edima Mike", time: "12:40 PM", date: "03 Jan 2023", status: "Completed" },
-    { id: 5, subject: "Angles", studentName: "James Abraham", time: "12:40 PM", date: "03 Jan 2023", status: "Completed" },
-    { id: 6, subject: "Numerations", studentName: "Amayen Joseph", time: "12:40 PM", date: "03 Jan 2023", status: "Completed" },
-    { id: 7, subject: "Binary Operations", studentName: "Sediong Ibanga", time: "12:40 PM", date: "03 Jan 2023", status: "Not started" },
-    { id: 8, subject: "Trigonometry", studentName: "Etini Ibanga", time: "12:40 PM", date: "03 Jan 2023", status: "Not started" },
-    { id: 9, subject: "Quadratic", studentName: "Gold Etokakpan", time: "12:40 PM", date: "03 Jan 2023", status: "Not started" },
-  ]);
-
+  const [classdata, setClassdata] = useState(classData);
+  const [showModal, setShowModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Create a unique formData for each class box
+  const [formData, setFormData] = useState({
+    subject: '',
+    grade: '',
+    date: '',
+    startTime: '',
+    endTime: '',
+    classid: '',
+  });
+
+  const OpenModal = () => {
+    // Generate a new random class id and reset formData
+    generateRandomClassId();
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  useEffect(() => {
+    // Generate a random 4-digit number when the component mounts
+    generateRandomClassId();
+  }, []);
+
+  const generateRandomClassId = () => {
+    const randomClassId = Math.floor(100 + Math.random() * 900);
+    setFormData({
+      subject: '',
+      grade: '',
+      date: '',
+      startTime: '',
+      endTime: '',
+      classid: randomClassId.toString(),
+    });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Check if the classid already exists in classdata
+    const existingClassIndex = classdata.findIndex((item) => item.classid === formData.classid);
+
+    if (existingClassIndex !== -1) {
+      // If classid exists, update the existing class data
+      const updatedClassData = [...classdata];
+      updatedClassData[existingClassIndex] = formData;
+      setClassdata(updatedClassData);
+    } else {
+      // If classid doesn't exist, add the new class data
+      setClassdata((prevData) => [...prevData, formData]);
+    }
+
+    // Generate a new random class id and reset formData
+    generateRandomClassId();
+    closeModal();
+  };
 
   const filteredClasses = classdata.filter((item) => {
     const lowerCaseSearchQuery = searchQuery.toLowerCase();
-    return (
-      item.studentName.toLowerCase().includes(lowerCaseSearchQuery) ||
-      item.subject.toLowerCase().includes(lowerCaseSearchQuery) ||
-      item.status.toLowerCase().includes(lowerCaseSearchQuery)
-    );
+    return item.subject.toLowerCase().includes(lowerCaseSearchQuery);
   });
 
   return (
     <div className="grid grid-cols-3 gap-3 inter">
-      <button className='text-[#186BAD] underline text-lg poppins float-right'>Add subject and availability</button>
+      <button className='addClass text-[#186BAD] underline absolute top-32 right-0 text-lg poppins' onClick={OpenModal}>Add subject and availability</button>
       {filteredClasses.length === 0 ? (
         <div className="flex flex-col gap-3 absolute top-[20rem] rounded-xl border-[1px] border-[#000000] right-[30rem] w-[250px] h-[250px] justify-center items-center">
           <div className="">
@@ -54,28 +107,36 @@ const Monday = () => {
                   </h2>
                   <hr />
                 </div>
-                  <p className="rounded flex gap-5 items-center justify-center">
-                    <FontAwesomeIcon icon={faUser}/>
-                    {item.studentName}
+                <p className="rounded flex gap-5 items-center justify-center">
+                  <FontAwesomeIcon icon={faUser}/>
+                  Emma
+                </p>
+                <div className="flex justify-between gap-28 my-4">
+                  <p className=' flex gap-x-1 items-center'>
+                    <FontAwesomeIcon icon={faMapMarked} />
+                    {item.classid}
                   </p>
-                  <div className="flex justify-between gap-28 my-4">
-                    <p className=' flex gap-x-1 items-center'>
-                      <FontAwesomeIcon icon={faMapMarked} />
-                      704
-                    </p>
-                    <p className=' flex gap-x-1 items-center'>
-                      <FontAwesomeIcon icon={faClock} />
-                      {item.time}
-                    </p>
-                  </div>
+                  <p className=' flex gap-x-1 items-center'>
+                    <FontAwesomeIcon icon={faClock} />
+                    {item.startTime} - {item.endTime}
+                  </p>
+                </div>
               </div>
-              {/* <button className="bg-[#186BAD] w-full p-[0.5rem] rounded text-white transition hover:bg-[#000] font-semibold">Attendance</button> */}
             </div>
           ))}
         </>
+      )}
+      {showModal && (
+        <AddClassPopup
+          showModal={showModal}
+          closeModal={closeModal}
+          formData={formData}
+          handleSubmit={handleSubmit}
+          handleInputChange={handleInputChange}
+        />
       )}
     </div>
   );
 }
 
-export default Monday
+export default Monday;

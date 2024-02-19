@@ -1,52 +1,135 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const ClassModal = ({ showModal, closeModal, formData, handleInputChange, handleSubmit }) => {
+const AddClassPopup = ({ showModal, closeModal, formData, handleSubmit, handleInputChange }) => {
   return (
-    <motion.div
-      className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50"
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.8 }}
-      transition={{ duration: 0.3 }}
-    >
-      <div className="absolute inset-0 bg-black opacity-50"></div>
-      <motion.div
-        className="relative z-10 bg-white p-6 rounded-lg w-96"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -50 }}
-        transition={{ duration: 0.3 }}
-      >
-        <span className="absolute top-2 right-2 text-gray-500 cursor-pointer" onClick={closeModal}>&times;</span>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <label className="block">
-            Subject:
-            <input type="text" name="subject" value={formData.subject} onChange={handleInputChange} required className="block w-full p-2 rounded-md border-[2px] border-black shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
-          </label>
-          <label className="block">
-            Student Name:
-            <input type="text" name="studentName" value={formData.studentName} onChange={handleInputChange} required className="block w-full p-2 rounded-md border-[2px] border-black shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
-          </label>
-          <label className="block">
-            Time:
-            <input type="time" name="time" value={formData.time} onChange={handleInputChange} required className="block w-full p-2 rounded-md border-[2px] border-black shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
-          </label>
-          <label className="block">
-            Date:
-            <input type="date" name="date" value={formData.date} onChange={handleInputChange} required className="block w-full p-2 rounded-md border-[2px] border-black shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
-          </label>
-          <label className="block">
-            Class ID:
-            <input type="text" name="classid" value={formData.classid} onChange={handleInputChange} required readOnly className="block w-full p-2 rounded-md border-[2px] border-black shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
-          </label>
-          <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
-            {formData.editing ? 'Update' : 'Submit'}
-          </button>
-        </form>
-      </motion.div>
-    </motion.div>
-  );
-}
+    <AnimatePresence>
+      {showModal && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="popup-overlay fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            className="popup-container poppins bg-white rounded-md px-10 pb-8"
+          >
+            <div className="bg-[#186BAD] rounded p-4 mb-10">
+              <p className='text-white text-xl text-center'>Add Subject & Availability</p>
+            </div>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-4 flex items-center gap-4">
+                <label htmlFor="subject" className="block text-base font-semibold text-gray-600">
+                  Subject:
+                </label>
+                <select
+                  name="subject"
+                  id="subject"
+                  className='w-full px-3 py-2 border-gray-500 border-[1px] rounded-md'
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                >
+                  <option value="Select a subject"></option>
+                  <option value="English">English Language and Composition</option>
+                  <option value="Math">Mathematics for Science and Engineering II</option>
+                </select>
+              </div>
 
-export default ClassModal;
+              <div className="mb-4 flex items-center gap-4">
+                <label htmlFor="grade" className="block text-base font-semibold text-gray-600">
+                  Grade:
+                </label>
+                <select
+                  name="grade"
+                  id="grade"
+                  className='w-full px-3 py-2 border-gray-500 border-[1px] rounded-md'
+                  value={formData.grade}
+                  onChange={handleInputChange}
+                >
+                  <option value="Select a subject"></option>
+                  <option value="Grade1"> Grade 1</option>
+                  <option value="Grade2"> Grade 2 </option>
+                  <option value="Grade3"> Grade 3 </option>
+                  <option value="Grade4"> Grade 4 </option>
+                  <option value="Grade5"> Grade 5 </option>
+                  <option value="Grade6"> Grade 6 </option>
+                  <option value="Grade7"> Grade 7 </option>
+                  <option value="Grade8"> Grade 8 </option>
+                  <option value="Grade9"> Grade 9 </option>
+                  <option value="Grade10"> Grade 10 </option>
+                </select>
+              </div>
+
+
+              <div className="mb-4 flex items-center gap-4">
+              <label htmlFor="date" className="block text-base font-semibold text-gray-600">
+                Date:
+              </label>
+              <input
+                type='date'
+                name='date'
+                id='date'
+                value={formData.date}
+                onChange={handleInputChange}
+                className='w-full px-3 py-2 border-gray-500 border-[1px] rounded-md'
+              />
+            </div>
+
+              <div className="flex gap-10">
+                <div className="mb-4 flex items-center gap-4">
+                  <label htmlFor="startTime" className="block text-base font-semibold text-gray-600">
+                    From:
+                  </label>
+                  <div className="w-full px-3 py-1 border-gray-500 border-[1px] rounded-md">
+                    <input
+                      type="time"
+                      id="startTime"
+                      name="startTime"
+                      value={formData.startTime}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="mb-4 flex items-center gap-4">
+                  <label htmlFor="endTime" className="block text-base font-semibold text-gray-600">
+                    To:
+                  </label>
+                  <div className="w-full px-3 py-1 border-gray-500 border-[1px] rounded-md">
+                    <input
+                      type="time"
+                      id="endTime"
+                      name="endTime"
+                      value={formData.endTime}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-start gap-5 mt-8">
+                <button
+                  type="submit"
+                  className="bg-[#186BAD] text-white px-10 py-1 font-semibold rounded-lg hover:bg-blue-800 shadow"
+                >
+                  Submit
+                </button>
+                <button
+                  type="button"
+                  onClick={closeModal}
+                  className="bg-[#898A8B] text-white px-10 py-1 font-semibold rounded-lg hover:bg-[#626263] shadow"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+export default AddClassPopup;
