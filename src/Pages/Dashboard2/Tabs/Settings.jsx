@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import Credential from "./Profile Components/Credential";
 import LoginSecurity from "./Profile Components/Login&Security";
+import GradeSubjects from "./Profile Components/GradeSubjects";
 
 const tabs = [
   'Account Setting',
   'Login & Security',
-  'Grade/Subjects',
-  'Notification',
-  'Interface'
+  'Grade/Subjects'
   ];
 function Settings() {
 
@@ -23,6 +22,8 @@ function Settings() {
         return <Credential />;
       case 1:
         return <LoginSecurity />;
+      case 2:
+        return <GradeSubjects />;
       default:
         return null;
     }

@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
 function JoinClassModal({ showModal, closeModal, roomId }) {
   const [localRoomId, setLocalRoomId] = useState(roomId || ''); // Set initial value
   const navigate = useNavigate();
+
+  const [showInfo, setShowInfo] = useState(false)
+
+  const handleShowInfo = () => {
+    if (showInfo === false) {
+      setShowInfo(true)
+    } else setShowInfo(false)
+  }
+  
 
   useEffect(() => {
     // Update localRoomId when the roomId prop changes
@@ -14,6 +25,20 @@ function JoinClassModal({ showModal, closeModal, roomId }) {
   function handleJoin() {
     navigate(`/room/${localRoomId}`);
   }
+
+  const handleDocumentClick = (e) => {
+    if (!e.target.closest('.infoText')) {
+      setEditIndex(null); 
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleDocumentClick);
+
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
+  }, []);
 
   return (
     <>
@@ -39,8 +64,15 @@ function JoinClassModal({ showModal, closeModal, roomId }) {
             >
               &times;
             </span>
-            <main>
-              <p>Class ID</p>
+            <main className='relative'>
+              <p className='flex items-center gap-1' onClick={handleShowInfo}>
+                Class ID
+                <FontAwesomeIcon icon={faCircleInfo} className='text-gray-700 text-xs cursor-pointer' />
+              </p>
+              { showInfo && 
+                <p className='infoText absolute right-0 bg-[#2976b5ec] text-white p-4 rounded'>
+                  This is the unique 3 digit number found at the left side of the schedulled class box. Anyone with this Id can join this class
+                </p> }
               <input
                 type="text"
                 placeholder="Enter room id"

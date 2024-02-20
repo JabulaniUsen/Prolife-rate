@@ -16,7 +16,7 @@ function Room() {
                 serverSecret,
                 roomId,
                 uuidv4(),
-                "Jabulani"
+                ""
             );
 
             const ui = ZegoUIKitPrebuilt.create(kitToken);

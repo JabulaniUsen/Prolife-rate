@@ -4,11 +4,13 @@ import { faCalendarDays, faClock, faL, faMagnifyingGlass, faMap, faMapMarked, fa
 import noClass from '../../../../Assets/no-class.png'
 import classData from '../../Components/ScheduleClassData'
 import AddClassPopup from '../AddClassModal';
+import JoinClassModal from '../JoinClassModal';
 
 const Monday = () => {
   const [classdata, setClassdata] = useState(classData);
   const [showModal, setShowModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showJoinModal, setShowJoinModal] = useState(false);
 
   // Create a unique formData for each class box
   const [formData, setFormData] = useState({
@@ -19,6 +21,15 @@ const Monday = () => {
     endTime: '',
     classid: '',
   });
+
+
+  const handleJoinNow = () => {
+    setShowJoinModal(true);
+  };
+
+  const closeJoinModal = () => {
+    setShowJoinModal(false);
+  };
 
   const OpenModal = () => {
     // Generate a new random class id and reset formData
@@ -81,6 +92,8 @@ const Monday = () => {
     return item.subject.toLowerCase().includes(lowerCaseSearchQuery);
   });
 
+
+
   return (
     <div className="grid grid-cols-3 gap-3 inter">
       <button className='addClass text-[#186BAD] underline absolute top-32 right-0 text-lg poppins' onClick={OpenModal}>Add subject and availability</button>
@@ -96,32 +109,40 @@ const Monday = () => {
       ) : (
         <>
           {filteredClasses.map((item, index) => (
-            <div
-              className="classBox p-3 rounded-lg flex flex-col justify-center items-center bg-[#186BAD]"
-              key={index}
-            >
-              <div className="flex flex-col justify-center gap-2 text-center text-[#fff]">
-                <div className="head text-center">
-                  <h2 className="font-semibold text-lg py-3">
-                    {item.subject}
-                  </h2>
-                  <hr />
+            <div className="">
+              <JoinClassModal
+                showModal={showJoinModal} 
+                closeModal={closeJoinModal} 
+                roomId={formData.classid}
+              />
+                <div
+                  className="classBox p-3 rounded-lg flex flex-col justify-center items-center bg-[#186BAD]"
+                  onClick={handleJoinNow}
+                  key={index}
+                >
+                  <div className="flex flex-col justify-center gap-2 text-center text-[#fff]">
+                    <div className="head text-center">
+                      <h2 className="font-semibold text-lg py-3">
+                        {item.subject}
+                      </h2>
+                      <hr />
+                    </div>
+                    <p className="rounded flex gap-5 items-center justify-center">
+                      <FontAwesomeIcon icon={faUser}/>
+                      Emma
+                    </p>
+                    <div className="flex justify-between gap-20 my-4">
+                      <p className=' flex gap-x-1 items-center'>
+                        <FontAwesomeIcon icon={faMapMarked} />
+                        {item.classid}
+                      </p>
+                      <p className=' flex gap-x-1 items-center'>
+                        <FontAwesomeIcon icon={faClock} />
+                        {item.startTime} - {item.endTime}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <p className="rounded flex gap-5 items-center justify-center">
-                  <FontAwesomeIcon icon={faUser}/>
-                  Emma
-                </p>
-                <div className="flex justify-between gap-28 my-4">
-                  <p className=' flex gap-x-1 items-center'>
-                    <FontAwesomeIcon icon={faMapMarked} />
-                    {item.classid}
-                  </p>
-                  <p className=' flex gap-x-1 items-center'>
-                    <FontAwesomeIcon icon={faClock} />
-                    {item.startTime} - {item.endTime}
-                  </p>
-                </div>
-              </div>
             </div>
           ))}
         </>
