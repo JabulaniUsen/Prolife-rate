@@ -42,7 +42,6 @@ const Monday = () => {
   };
 
   useEffect(() => {
-    // Generate a random 4-digit number when the component mounts
     generateRandomClassId();
   }, []);
 
@@ -113,7 +112,7 @@ const Monday = () => {
               <JoinClassModal
                 showModal={showJoinModal} 
                 closeModal={closeJoinModal} 
-                roomId={formData.classid}
+                // roomId={formData.classid}
               />
                 <div
                   className="classBox p-3 rounded-lg flex flex-col justify-center items-center bg-[#186BAD]"

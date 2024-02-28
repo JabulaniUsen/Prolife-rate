@@ -23,7 +23,7 @@ const Reports = () => {
       // Display fallback content if tabData is empty
       return (
         <div className="flex flex-col gap-3 absolute top-[27rem] right-[30rem] w-[250px] justify-center items-center">
-            <p className='text-[#898A8B] text-xl'>No Transaction Yet</p>
+          <p className='text-[#898A8B] text-xl'>No Transaction Yet</p>
         </div>
       );
     }

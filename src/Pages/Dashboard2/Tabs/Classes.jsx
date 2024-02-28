@@ -1,14 +1,10 @@
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import ScheduledClasses from '../Components/ScheduledClasses';
-import ClassHistory from '../Components/ClassHistory';
 import Monday from '../Components/Classes/Monday';
 import Tuesday from '../Components/Classes/Tuesday';
-import Wednesday from '../Components/Classes/Wednesday';
 import Thursday from '../Components/Classes/Thursday';
 import Friday from '../Components/Classes/Friday';
 import Saturday from '../Components/Classes/Saturday';
+import Wednesday from '../Components/Classes/Wednesday';
 
 const tabs = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -25,13 +21,13 @@ const Classes = () => {
         return <Monday />;
       case 1:
         return <Tuesday />;
-      case 3:
+      case 2:
         return <Wednesday/>;
-      case 4: 
+      case 3: 
         return <Thursday/>;
-      case 5:
+      case 4:
         return <Friday/>;
-      case 6:
+      case 5:
         return <Saturday/>
       default:
         return null;

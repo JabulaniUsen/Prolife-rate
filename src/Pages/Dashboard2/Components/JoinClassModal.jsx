@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
-function JoinClassModal({ showModal, closeModal, roomId }) {
-  const [localRoomId, setLocalRoomId] = useState(roomId || ''); // Set initial value
+function JoinClassModal({ showModal, closeModal }) {
+  const [localRoomId, setLocalRoomId] = useState(''); // Set initial value
   const navigate = useNavigate();
 
   const [showInfo, setShowInfo] = useState(false)
@@ -18,9 +18,8 @@ function JoinClassModal({ showModal, closeModal, roomId }) {
   
 
   useEffect(() => {
-    // Update localRoomId when the roomId prop changes
-    setLocalRoomId(roomId || '');
-  }, [roomId]);
+    setLocalRoomId('');
+  }, []);
 
   function handleJoin() {
     navigate(`/room/${localRoomId}`);

@@ -25,6 +25,7 @@ import Reports from './Tabs/Reports';
 import Footer2 from '../../Components/Footer2';
 import { Link } from 'react-router-dom';
 import Transactions from './Tabs/Transactions';
+import WaitingList from './Components/WaitingList';
 
 // Tabs Component
 const Tabs = ({ tabs, setActiveTab, activeTab }) => {
@@ -104,6 +105,12 @@ const TutorDashboard = () => {
         img: messages
       }, 
     ];
+
+    const [showAll, setShowAll] = useState(false);
+
+    const handleSeeAllClick = () => {
+      setShowAll(!showAll);
+    };
   
     return (
     <div className="">
@@ -183,7 +190,14 @@ const TutorDashboard = () => {
         </div>
 
       </div>
-      {/* <Footer2 /> */}
+      {showAll && (
+        <div className="modal-overlay">
+          <button onClick={handleSeeAllClick} className="close-button">
+            Close
+          </button>
+          <WaitingList />
+        </div>
+      )}
     </div>
   );
 };
