@@ -4,11 +4,10 @@ import 'tailwindcss/tailwind.css';
 
 const chartData = [
   ['Class', 'Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
-  ['Class A', 0, 0, 0, 0, 0],
-  ['Class B', 0, 0, 0, 0, 0],
-  ['Class C', 0, 0, 0, 0, 0],
-  ['Class D', 0, 0, 0, 0, 0],
-  ['Class E', 0, 0, 0, 0, 0],
+  ['Maths', 0, 0, 0, 0, 0],
+  ['Chem', 0, 0, 0, 0, 0],
+  ['Phy', 0, 0, 0, 0, 0],
+  ['DP', 0, 0, 0, 0, 0],
 ];
 
 const LineChart = () => {

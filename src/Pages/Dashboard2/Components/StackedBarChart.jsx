@@ -6,23 +6,19 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, CartesianA
 const generateDummyData = (month, year) => {
   return [
     {
-      class: 'Class A',
+      class: 'Maths',
       value: Math.floor(Math.random() * 10),
     },
     {
-      class: 'Class B',
+      class: 'Chem',
       value: Math.floor(Math.random() * 10),
     },
     {
-      class: 'Class C',
+      class: 'Phy',
       value: Math.floor(Math.random() * 10),
     },
     {
-      class: 'Class D',
-      value: Math.floor(Math.random() * 10),
-    },
-    {
-      class: 'Class E',
+      class: 'DP',
       value: Math.floor(Math.random() * 10),
     },
   ];

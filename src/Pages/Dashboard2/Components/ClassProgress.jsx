@@ -2,11 +2,10 @@ import React from 'react';
 
 function ClassProgress() {
   const room = [
-    { class: "Class A", desc: "38 Registered", progress: 45 },
-    { class: "Class B", desc: "43 Registered", progress: 60 },
-    { class: "Class C", desc: "21 Registered", progress: 30 },
-    { class: "Class D", desc: "45 Registered", progress: 75 },
-    { class: "Class E", desc: "61 Registered", progress: 90 },
+    { class: "Mathematics", desc: "3 Registered", progress: 45 },
+    { class: "Chemistry", desc: "4 Registered", progress: 60 },
+    { class: "Physics", desc: "1 Registered", progress: 30 },
+    { class: "Data Processing", desc: "5 Registered", progress: 75 },
   ];
 
   return (

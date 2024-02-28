@@ -2,14 +2,30 @@ import React, { useState } from 'react';
 import { faCalendarDays, faFileExport } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import noPayment from '../../../Assets/noPayment.png'
+import { AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
-const tabs = ['Reports', 'Transactions', 'Upcoming'];
+
+const tabs = ['Transactions'];
 
 const Transactions = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [showAccountDetails, setShowAccountDetails] = useState(false)
+
+  const handleShowAccountDetails = () => {
+    setShowAccountDetails(true)
+  }
+  const handleCloseAccountDetails = () => {
+    setShowAccountDetails(false)
+  }
 
   const handleTabClick = (index) => {
     setActiveTab(index);
+  };
+  
+  const popupVariants = {
+    hidden: { opacity: 0, scale: 0 },
+    visible: { opacity: 1, scale: 1 },
   };
 
   const Table = ({ tabData }) => {
@@ -64,13 +80,13 @@ const Transactions = () => {
   const tabData = [
     
     [
-      { serialNo: 1, name: 'John Doe', date: '02 Apr 2024', transactionId: '16', amount: '$80,000', numberOfClasses: 13, paymentMethod: 'Wire Transfer', status: 'S' },
-      { serialNo: 2, name: 'Amaka David', date: '02 Apr 2024', transactionId: '36', amount: '$80,000', numberOfClasses: 24, paymentMethod: 'Wire Transfer', status: 'S' },
-      { serialNo: 3, name: 'David David', date: '02 Apr 2024', transactionId: '24', amount: '$80,000', numberOfClasses: +12, paymentMethod: 'Wire Transfer', status: 'S', },
-      { serialNo: 4, name: 'Henry Ola', date: '02 Apr 2024', transactionId: '66', amount: '$80,000', numberOfClasses: +14, paymentMethod: 'Wire Transfer', status: 'S', specialStyle: { color: 'red' }  },
-      { serialNo: 5, name: 'Mike Sediong', date: '02 Apr 2024', transactionId: '25', amount: '$80,000', numberOfClasses: +14, paymentMethod: 'Wire Transfer', status: 'S' },
-      { serialNo: 6, name: 'Amaka David', date: '02 Apr 2024', transactionId: '45', amount: '$80,000', numberOfClasses: +55, paymentMethod: 'Wire Transfer', status: 'S' },
-      { serialNo: 7, name: 'Victor David', date: '02 Apr 2024', transactionId: '67', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'S' },
+      { serialNo: 1, name: 'John Doe', date: '02 Apr 2024', transactionId: '16', amount: '$80,000', numberOfClasses: 13, paymentMethod: 'Wire Transfer', status: 'Successfull' },
+      { serialNo: 2, name: 'Amaka David', date: '02 Apr 2024', transactionId: '36', amount: '$80,000', numberOfClasses: 24, paymentMethod: 'Wire Transfer', status: 'Successfull' },
+      { serialNo: 3, name: 'David David', date: '02 Apr 2024', transactionId: '24', amount: '$80,000', numberOfClasses: +12, paymentMethod: 'Wire Transfer', status: 'Successfull', },
+      { serialNo: 4, name: 'Henry Ola', date: '02 Apr 2024', transactionId: '66', amount: '$80,000', numberOfClasses: +14, paymentMethod: 'Wire Transfer', status: 'Successfull', specialStyle: { color: 'red' }  },
+      { serialNo: 5, name: 'Mike Sediong', date: '02 Apr 2024', transactionId: '25', amount: '$80,000', numberOfClasses: +14, paymentMethod: 'Wire Transfer', status: 'Successfull' },
+      { serialNo: 6, name: 'Amaka David', date: '02 Apr 2024', transactionId: '45', amount: '$80,000', numberOfClasses: +55, paymentMethod: 'Wire Transfer', status: 'Successfull' },
+      { serialNo: 7, name: 'Victor David', date: '02 Apr 2024', transactionId: '67', amount: '$80,000', numberOfClasses: +23, paymentMethod: 'Wire Transfer', status: 'Successfull' },
     ],
     
     [
@@ -137,12 +153,65 @@ const Transactions = () => {
             <p>12-12-2024</p>
           </div>
         </div>
-        {/* <div className="">
-          <button className='border-[1px] mx-3 border-[#B63A3A] text-[#B63A3A] hover:bg-[#B63A3A] hover:text-white transition rounded font-semibold py-2 px-6'>Make Payment</button>
-          <button className='border-[1px] border-[#3AB690] text-[#3AB690] hover:bg-[#3AB690] hover:text-white transition rounded font-semibold py-2 px-6'>Request Payment</button>
-        </div> */}
+        <div className="">
+          <button onClick={handleShowAccountDetails} className='border-[1px] border-[#3AB690] text-[#3AB690] hover:bg-[#3AB690] hover:text-white transition rounded font-semibold py-2 px-6'>Request Payment</button>
+        </div>
       </div>
       <Table tabData={tabData[activeTab]} />
+
+      { showAccountDetails && (
+        <AnimatePresence>
+          <motion.div
+            variants={popupVariants}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="popup-overlay poppins fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+            >
+              <div className="popup bg-white rounded-lg lg:w-[700px]">
+                <div className="bg-[#186BAD] rounded-t p-4 px-10">
+                  <p className='text-white text-xl'>Request Payment</p>
+                </div>
+
+                <form action="" className='py-5 gap-5 flex flex-col justify-center px-10'>
+                  <div className="flex items-center justify-between gap-2">
+                    <label htmlFor="" className='text-base font-bold w-[250px]'>Bank:</label>
+                    <input type="text" className='border rounded-full w-full p-2 outline outline-[#999999] outline-[1px]' />
+                  </div>
+                  <div className="flex items-center justify-between gap-2">
+                    <label htmlFor="" className='text-base font-bold w-[250px]'>Account Name:</label>
+                    <input type="text" className='border rounded-full w-full p-2 outline outline-[#999999] outline-[1px]' />
+                  </div>
+                  <div className="flex items-center justify-between gap-2">
+                    <label htmlFor="" className='text-base font-bold w-[250px]'>Account Number:</label>
+                    <input type="number" className='border rounded-full w-full p-2 outline outline-[#999999] outline-[1px]' />
+                  </div>
+                  <div className="flex gap-6">
+                    <div className="flex items-center gap-3 w-full">
+                      <label htmlFor="" className='text-base font-bold '>Payment from:</label>
+                      <select className='border rounded-full w-[100%] px-2 py-1 outline outline-[#999999] outline-[1px]' name="" id="">
+                        <option value=""></option>
+                        <option value=""  >Jabulani Usen</option>
+                      </select>
+                    </div>
+                    <div className="flex items-center gap-3 w-full">
+                      <label htmlFor="" className='text-base font-bold '>To:</label>
+                      <select className='border rounded-full w-[100%] px-2 py-1 outline outline-[#999999] outline-[1px]' name="" id="">
+                        <option value=""></option>
+                        <option value=""  >Me</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="buttons flex my-5 justify-center items-center gap-5">
+                    <button type="submit" className="py-2 px-6 text-white font-bold bg-[#186bad] rounded-xl" onClick={handleCloseAccountDetails}>Submit</button>
+                    <button type="button" className="py-2 px-6 text-gray-500 font-bold rounded-2xl" onClick={handleCloseAccountDetails}>Cancel</button>
+                  </div>
+                </form>
+              </div>
+
+          </motion.div>
+        </AnimatePresence>
+      ) }
     </div>
   );
 };
