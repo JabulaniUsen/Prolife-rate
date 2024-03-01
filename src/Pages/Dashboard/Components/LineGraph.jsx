@@ -1,45 +1,91 @@
-import React from 'react';
-import { Chart } from 'react-google-charts';
-import 'tailwindcss/tailwind.css';
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, CartesianAxis } from 'recharts';
 
-const chartData = [
-  ['Class', 'Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
-  ['Class A', 0, 0, 0, 0, 0],
-  ['Class B', 0, 0, 0, 0, 0],
-  ['Class C', 0, 0, 0, 0, 0],
-  ['Class D', 0, 0, 0, 0, 0],
-  ['Class E', 0, 0, 0, 0, 0],
-];
+const generateDummyData = (month, year) => {
+  return [
+    {
+      class: 'Maths',
+      value: Math.floor(Math.random() * 10),
+    },
+    {
+      class: 'Chem',
+      value: Math.floor(Math.random() * 10),
+    },
+    {
+      class: 'Phy',
+      value: Math.floor(Math.random() * 10),
+    },
+    {
+      class: 'DP',
+      value: Math.floor(Math.random() * 10),
+    },
+  ];
+};
+
+const getMonthAbbreviation = (month) => {
+  const monthsAbbreviation = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return monthsAbbreviation[month - 1];
+};
 
 const LineChart = () => {
+  const [currentMonth, setCurrentMonth] = useState(1); // Initial month
+  const [currentYear, setCurrentYear] = useState(2023); // Initial year
+
+  const handleNextMonth = () => {
+    if (currentMonth === 12) {
+      setCurrentMonth(1);
+      setCurrentYear((prevYear) => prevYear + 1);
+    } else {
+      setCurrentMonth((prevMonth) => prevMonth + 1);
+    }
+  };
+
+  const handlePrevMonth = () => {
+    if (currentMonth === 1) {
+      setCurrentMonth(12);
+      setCurrentYear((prevYear) => prevYear - 1);
+    } else {
+      setCurrentMonth((prevMonth) => prevMonth - 1);
+    }
+  };
+
+  const data = generateDummyData(currentMonth, currentYear);
+
   return (
-    <div className="flex justify-center items-center  bg-gray-200">
-      <div className="bg-white rounded">
-        <Chart
-          width={'340px'}
-          height={'350px'}
-          chartType="LineChart"
-          loader={<div>Loading Chart</div>}
-          data={chartData}
-          options={{
-            // title: 'Students\' Attendance in Classes',
-            curveType: 'function',
-            legend: { position: 'bottom' },
-            pointSize: 4, // Set the size of notable dots
-            series: {
-              0: { color: '#2196F3' }, // Set line color to blue
-            },
-            areaOpacity: 0.1, // Set transparency for the gradient area
-            // hAxis: {
-            //   title: 'Classes',
-            // },
-            // vAxis: {
-            //   title: 'Attendance Percentage',
-            // },
-          }}
-          rootProps={{ 'data-testid': '1' }}
-        />
+    <div className='h-[430px] rounded-2xl shadow-lg border'>
+      <div className="jost my-5 flex justify-between">
+         <div className="text-[#2E3A59] mx-5 font-bold">
+            <h2>Class Progress</h2>
+         </div>
+         <div style={{ textAlign: 'right', marginBottom: '10px' }}>
+          <button onClick={handlePrevMonth} className='text-[#2E3A59]  mx-2'><FontAwesomeIcon icon={faAngleLeft} /></button>
+          <span style={{ margin: '0 10px' }} className='text-[#2E3A59]'>
+              {`${getMonthAbbreviation(currentMonth)} ${currentYear}`}
+          </span>
+          <button onClick={handleNextMonth} className='text-[#2E3A59]  mx-2'><FontAwesomeIcon icon={faAngleRight} /></button>
+         </div>
       </div>
+      <BarChart
+        width={340}
+        height={350}
+        data={data}
+        className='jost'
+        margin={{
+          top: 20,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        {/* <CartesianGrid strokeDasharray="3 3" /> */}
+        <XAxis dataKey="class" className='text-xs' />
+        <YAxis tickFormatter={(value) => `${value}%`} />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="value" fill="#186bad" />
+      </BarChart>
     </div>
   );
 };

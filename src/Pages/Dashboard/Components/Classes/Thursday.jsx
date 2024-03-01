@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDays, faClock, faL, faMagnifyingGlass, faMap, faMapMarked, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faCalendar, faCalendarDays, faClock, faL, faMagnifyingGlass, faMap, faMapMarked, faUser } from '@fortawesome/free-solid-svg-icons';
 import noClass from '../../../../Assets/no-class.png'
 import classData from '../../Components/ScheduleClassData'
-import AddClassPopup from '../AddClassModal';
+// import AddClassPopup from '../AddClassModal';
 import JoinClassModal from '../JoinClassModal';
 
-const Wednesday = () => {
+const Thursday = () => {
   const [classdata, setClassdata] = useState(classData);
   const [showModal, setShowModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -20,6 +20,7 @@ const Wednesday = () => {
     startTime: '',
     endTime: '',
     classid: '',
+    tutorsName: ''
   });
 
 
@@ -53,6 +54,7 @@ const Wednesday = () => {
       date: '',
       startTime: '',
       endTime: '',
+      tutorsName: '',
       classid: randomClassId.toString(),
     });
   };
@@ -95,7 +97,6 @@ const Wednesday = () => {
 
   return (
     <div className="grid grid-cols-3 gap-3 inter">
-      <button className='addClass text-[#186BAD] underline absolute top-32 right-0 text-lg poppins' onClick={OpenModal}>Add subject and availability</button>
       {filteredClasses.length === 0 ? (
         <div className="flex flex-col gap-3 absolute top-[20rem] rounded-xl border-[1px] border-[#000000] right-[30rem] w-[250px] h-[250px] justify-center items-center">
           <div className="">
@@ -115,25 +116,31 @@ const Wednesday = () => {
                 // roomId={formData.classid}
               />
                 <div
-                  className="classBox p-3 cursor-pointer rounded-lg flex flex-col justify-center items-center bg-[#186BAD]"
+                  className="classBox p-3 cursor-pointer rounded-lg flex flex-col justify-center items-center bg-[#e57553]"
                   onClick={handleJoinNow}
                   key={index}
                 >
                   <div className="flex flex-col justify-center gap-2 text-center text-[#fff]">
                     <div className="head text-center">
                       <h2 className="font-semibold text-lg py-3">
-                        {item.subject}
+                        Class ID: {item.classid}
                       </h2>
                       <hr />
                     </div>
-                    <p className="rounded flex gap-5 items-center justify-center">
-                      <FontAwesomeIcon icon={faUser}/>
-                      Emma
-                    </p>
-                    <div className="flex justify-between gap-20 my-4">
+                    <div className="flex justify-between">
+                      <p className="rounded flex gap-5 items-center justify-center">
+                        <FontAwesomeIcon icon={faUser}/>
+                        {item.tutorsName}
+                      </p>
+                      <p className="rounded flex gap-5 items-center justify-center">
+                        <FontAwesomeIcon icon={faBook}/>
+                        {item.subject}
+                      </p>
+                    </div>
+                    <div className="flex justify-between gap-5 my-4">
                       <p className=' flex gap-x-1 items-center'>
-                        <FontAwesomeIcon icon={faMapMarked} />
-                        {item.classid}
+                        <FontAwesomeIcon icon={faCalendar} />
+                        {item.date}
                       </p>
                       <p className=' flex gap-x-1 items-center'>
                         <FontAwesomeIcon icon={faClock} />
@@ -146,17 +153,8 @@ const Wednesday = () => {
           ))}
         </>
       )}
-      {showModal && (
-        <AddClassPopup
-          showModal={showModal}
-          closeModal={closeModal}
-          formData={formData}
-          handleSubmit={handleSubmit}
-          handleInputChange={handleInputChange}
-        />
-      )}
     </div>
   );
 }
 
-export default Wednesday;
+export default Thursday;

@@ -1,17 +1,19 @@
 import { faCloudArrowDown, faFileImport } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import chatBubble from '../Icons/Vector (1).svg'
+import user from '../../../Assets/user1.png'
+import user2 from '../../../Assets/user.png'
 
 function Documents() {
     
     const activities = [
-        { name: 'Maths text book'},
-        { name: 'Latin lesson outline'},
-        { name: 'Maths home work correction'},
+        { img: user, name: 'Bamidele Johnson'},
+        { img: user2, name: 'Victoria Ekanem'},
     ];
 
     return (
-        <div className='relative lg:w-[450px] w-[400px] my-6 mx-2 rounded-2xl shadow-lg border p-5'>
+        <div className='relative '>
             {activities.length === 0 && (
             <div className="absolute top-[7rem] right-[7rem]">
                 <p className='jost text-[#9e9e9e]'>No progress yet</p>
@@ -19,19 +21,20 @@ function Documents() {
             )}
             <div className="m-3">
                 <div className="flex justify-between pb-6">
-                    <h2 className='text-lg jost font-semibold'>Quick access to resources</h2>
+                    <h2 className='text-lg jost font-semibold ml-5'>Tutors</h2>
                     {/* <h2 className=' jost font-semibold cursor-pointer text-[#186bad]'>See all</h2> */}
                 </div>
                 <div className="waitingRoom overflow-y-scroll h-[300px] pr-5">
                     {activities.map((item, index) => (
-                        <div className="class p-5 my-2 bg-[#F5FAFF] rounded-lg" key={index}>
+                        <div className="class p-6 my-2 shadow-lg rounded-lg" key={index}>
                             <div className="jost flex items-center justify-between">
-                                <h3 className='name font-bold lg:w-[200px] text-[14px] text-[#186BAD]' title={item.name}>
+                                <h3 className='name flex items-center gap-3 font-semibold lg:w-[270px] text-lg' >
+                                    <div className="tutorImg">
+                                        <img src={item.img} className='w-10' alt="" />
+                                    </div>
                                     {item.name}
                                 </h3>
-                                <p className='text-gray-500 text-xs overflow-hidden whitespace-nowrap overflow-ellipsis'>
-                                    <FontAwesomeIcon icon={faCloudArrowDown} className='text-[#186BAD] text-[20px]'/>
-                                </p>
+                                    <img src={chatBubble} alt="" />
                             </div>
                         </div>
                     ))}

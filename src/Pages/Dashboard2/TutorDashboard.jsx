@@ -99,11 +99,11 @@ const TutorDashboard = () => {
         contentComponent: <Reports />,
         img: report
       },
-      {
-        label: 'Messages',
-        contentComponent: <Messages />,
-        img: messages
-      }, 
+      // {
+      //   label: 'Messages',
+      //   contentComponent: <Messages />,
+      //   img: messages
+      // }, 
     ];
 
     const [showAll, setShowAll] = useState(false);

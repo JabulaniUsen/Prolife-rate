@@ -4,6 +4,8 @@ import UpcomingClasses from '../Components/UpcomingClasses';
 import PendingAssignments from '../Components/PendingAssignments';
 import WaitingRoom from '../Components/WaitingRoom';
 import Documents from '../Components/Documents';
+import LineChart from '../Components/LineGraph';
+import ExploreMore from '../Components/ExploreMore';
 
 
 function Home() {
@@ -18,7 +20,10 @@ function Home() {
         </div>
         <img src={studentAndTeacher} className='lg:w-[410px] w-[70%] ml-28' alt="" />
       </div>
-      <div className="grid lg:grid-cols-2 sm:grid-cols-2 grid-cols-1  mt-7 place-items-center mx-10">
+      <div className="grid lg:grid-cols-3 gap-5 sm:grid-cols-2 grid-cols-1 mt-7 place-items-center">
+        <div className="lineChart">
+          <LineChart/>
+        </div>
         <div className="PendingAssignments">
           <UpcomingClasses/>
         </div>
@@ -26,10 +31,13 @@ function Home() {
           <PendingAssignments/>
         </div>
         <div className="PendingAssignments">
-          <WaitingRoom/>
+          <Documents/>
         </div>
         <div className="docs">
-          <Documents/>
+          <WaitingRoom/>
+        </div>
+        <div className="exploreMore">
+          <ExploreMore/>
         </div>
       </div>
     </div>

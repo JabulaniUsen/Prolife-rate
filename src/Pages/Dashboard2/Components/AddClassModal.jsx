@@ -22,6 +22,24 @@ const AddClassPopup = ({ showModal, closeModal, formData, handleSubmit, handleIn
             </div>
             <form onSubmit={handleSubmit}>
               <div className="mb-4 flex items-center gap-4">
+                <label htmlFor="student" className="block text-base font-semibold text-gray-600">
+                  Student Name:
+                </label>
+                <select
+                  name="studentName"
+                  id="studentName"
+                  className='w-full px-3 py-2 border-gray-500 border-[1px] rounded-md'
+                  value={formData.studentName}
+                  onChange={handleInputChange}
+                >
+                  <option value="SelectStudent"></option>
+                  <option value="Jabulani">Jabulani Usen</option>
+                  <option value="Martins">Martins Olu</option>
+                  <option value="Kingsley">Kingsley Donald</option>
+                  <option value="Goodness">Goodness Mbak</option>
+                </select>
+              </div>
+              <div className="mb-4 flex items-center gap-4">
                 <label htmlFor="subject" className="block text-base font-semibold text-gray-600">
                   Subject:
                 </label>

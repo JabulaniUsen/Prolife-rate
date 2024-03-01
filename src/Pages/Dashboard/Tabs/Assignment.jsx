@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import noAssignment from '../../../Assets/no-assignment.png'
+import { motion, AnimatePresence } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload, faCheck } from '@fortawesome/free-solid-svg-icons';
+import noAssignment from '../../../Assets/no-assignment.png';
 
 function Assignment() {
 const assignment = [
@@ -32,14 +35,46 @@ const assignment = [
       date: "02/10/2023"
     }
   ]
-  const [dropdownStates, setDropdownStates] = useState(
-    Array.from({ length: assignment.length }, () => false)
-  );
+
+  const [dropdownStates, setDropdownStates] = useState(Array.from({ length: assignment.length }, () => false));
+  const [submitting, setSubmitting] = useState(Array.from({ length: assignment.length }, () => false));
+  const [uploading, setUploading] = useState(Array.from({ length: assignment.length }, () => false));
+  const [uploaded, setUploaded] = useState(Array.from({ length: assignment.length }, () => false));
 
   const toggleDropdown = (index) => {
     const newDropdownStates = [...dropdownStates];
     newDropdownStates[index] = !newDropdownStates[index];
     setDropdownStates(newDropdownStates);
+  };
+
+  const handleUpload = async (index, event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+      setUploading((prev) => {
+        const newUploading = [...prev];
+        newUploading[index] = true;
+        return newUploading;
+      });
+
+      // Add logic for handling file upload here
+      // For example, you can use FormData and send it to the server
+
+      // Simulating delay for demonstration purposes
+      setTimeout(() => {
+        setUploading((prev) => {
+          const newUploading = [...prev];
+          newUploading[index] = false;
+          return newUploading;
+        });
+
+        setUploaded((prev) => {
+          const newUploaded = [...prev];
+          newUploaded[index] = true;
+          return newUploaded;
+        });
+      }, 2000);
+    }
   };
 
   return ( 
@@ -59,23 +94,25 @@ const assignment = [
         <div>
           {assignment.map((item, index) => (
             <div
-              key={index}
-              className={`assignment subject relative cursor-pointer rounded-xl ${
-                dropdownStates[index] ? 'active' : ''
-              }`}
-              onClick={() => toggleDropdown(index)}
-            >
-              <h2
-                className={`text-3xl font-semibold w-[100wv] border-[1px] bg-blue-100 text-black border-blue-700 rounded-xl h-[150px] p-8 mt-8 transition-all ${
-                  dropdownStates[index] ? 'border-0 ' : ''
+            key={index}>
+              <div
+                className={`assignment subject relative cursor-pointer rounded-xl ${
+                  dropdownStates[index] ? 'active' : ''
                 }`}
+                onClick={() => toggleDropdown(index)}
               >
-                {item.subject}
-              </h2>
-              <p className={`view absolute bottom-7 right-12 font-light dropdownStates[index] ${dropdownStates[index] ? 'hidden' : 'block'}`}>View</p>
+                <h2
+                  className={`text-3xl font-semibold w-[100wv] border-[1px] bg-[#186BAD] text-white rounded-xl h-[150px] p-8 mt-8 transition-all ${
+                    dropdownStates[index] ? 'border-0 ' : ''
+                  }`}
+                >
+                  {item.subject}
+                </h2>
+                <p className={`view absolute bottom-7 right-12 font-light ${dropdownStates[index] ? 'hidden' : 'block'}`}>View</p>
+              </div>
 
               {dropdownStates[index] && (
-                <div className="dropDown bg-blue-100 border-[1px] border-b-blue-700 border-l-blue-700 border-r-blue-700 p-10 rounded-b-xl mt-[-10px] transition-all">
+                <div className="dropDown bg-[#f2f1f1] p-10 rounded-b-xl mt-[-10px] transition-all">
                   <div className="up">
                     <p>{item.instruction}</p>
                     <div className="names flex lg:flex-row flex-col justify-between lg:items-center pt-10 lg:gap-0 gap-6">
@@ -87,15 +124,57 @@ const assignment = [
                         <a href="/" className="text-[#186BAD] font-semibold">
                           Download Materials
                         </a>
-                        <button className="bg-[#186BAD] py-3 px-5 rounded-lg text-white">
-                          Upload Assignment
-                        </button>
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className={`bg-[#186BAD] py-3 px-5 rounded-lg text-white ${uploading[index] ? 'cursor-not-allowed' : ''} ${uploaded[index] ? 'bg-gray-300 text-black' : ''}`}
+                            disabled={uploading[index] || uploaded[index]}
+                          >
+                            {uploading[index] ? (
+                              'Uploading...'
+                            ) : uploaded[index] ? (
+                              'Uploaded'
+                            ) : (
+                              <span>
+                                <label htmlFor={`fileInput-${index}`}>
+                                  <FontAwesomeIcon icon={faUpload} className="mr-2 cursor-pointer" />
+                                  Upload Assignment
+                                </label>
+                                <input
+                                  id={`fileInput-${index}`}
+                                  type="file"
+                                  style={{ display: 'none' }}
+                                  onChange={(e) => handleUpload(index, e)}
+                                />
+                              </span>
+                            )}
+                          </motion.button>
+
+                            <motion.button
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              className={`bg-[#186BAD] py-3 px-5 rounded-lg text-white ${submitting[index] ? 'cursor-not-allowed' : ''}`}
+                              disabled={submitting[index]}
+                              onClick={() => handleSubmission(index)}
+                            >
+                              {submitting[index] ? (
+                                'Submitting...'
+                              ) : (
+                                <span>
+                                  {submitting[index] ? 'Submitting...' : 'Submit'}
+                                </span>
+                              )}
+                            </motion.button>
                       </div>
                     </div>
                   </div>
+                  
                 </div>
               )}
+
             </div>
+
+
           ))}
         </div>
       )}

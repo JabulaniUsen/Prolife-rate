@@ -115,7 +115,7 @@ const Saturday = () => {
                 // roomId={formData.classid}
               />
                 <div
-                  className="classBox p-3 rounded-lg flex flex-col justify-center items-center bg-[#186BAD]"
+                  className="classBox p-3 cursor-pointer rounded-lg flex flex-col justify-center items-center bg-[#186BAD]"
                   onClick={handleJoinNow}
                   key={index}
                 >

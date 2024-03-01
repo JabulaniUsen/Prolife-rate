@@ -15,7 +15,7 @@ function UpcomingClasses() {
     ];
 
     return (
-        <div className='upcomingActivities relative lg:w-[450px] w-[400px] my-6  rounded-2xl shadow-lg border'>
+        <div className='upcomingActivities relative my-6  rounded-2xl shadow-lg border'>
             {activities.length === 0 && (
                 <div className="absolute top-[7rem] right-[9rem]">
                     <p className='jost text-[#9e9e9e]'>No upcoming classes yet</p>
@@ -32,7 +32,7 @@ function UpcomingClasses() {
 
                             <p className="num text-white bg-[#186bad] flex items-center justify-center rounded-xl jost w-[3rem] h-[3rem] text-xl">{item.number}</p>
 
-                            <div className="jost w-[170px]">
+                            <div className="jost w-[150px]">
                                 <h3 className='name font-bold overflow-hidden whitespace-nowrap overflow-ellipsis' title={item.name}>
                                     {item.name}
                                 </h3>

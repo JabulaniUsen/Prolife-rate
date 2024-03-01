@@ -15,6 +15,7 @@ const Monday = () => {
   // Create a unique formData for each class box
   const [formData, setFormData] = useState({
     subject: '',
+    studentName: '',
     grade: '',
     date: '',
     startTime: '',
@@ -49,6 +50,7 @@ const Monday = () => {
     const randomClassId = Math.floor(100 + Math.random() * 900);
     setFormData({
       subject: '',
+      studentName: '',
       grade: '',
       date: '',
       startTime: '',
@@ -115,7 +117,7 @@ const Monday = () => {
                 // roomId={formData.classid}
               />
                 <div
-                  className="classBox p-3 rounded-lg flex flex-col justify-center items-center bg-[#186BAD]"
+                  className="classBox p-3 cursor-pointer rounded-lg flex flex-col justify-center items-center bg-[#186BAD]"
                   onClick={handleJoinNow}
                   key={index}
                 >
@@ -128,7 +130,7 @@ const Monday = () => {
                     </div>
                     <p className="rounded flex gap-5 items-center justify-center">
                       <FontAwesomeIcon icon={faUser}/>
-                      Emma
+                      {item.studentName}
                     </p>
                     <div className="flex justify-between gap-20 my-4">
                       <p className=' flex gap-x-1 items-center'>
