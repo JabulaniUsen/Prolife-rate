@@ -1,100 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import kristin from '../../../Assets/kristin.png';
-import brooklyn from '../../../Assets/brooklyn.png'
-import img1 from '../../../Assets/img1.png'
-import img2 from '../../../Assets/img2.png'
-import img3 from '../../../Assets/img3.png'
-import img4 from '../../../Assets/img4.png'
-import img5 from '../../../Assets/img5.png'
-import img6 from '../../../Assets/img6.png'
-import img7 from '../../../Assets/img7.png'
-import img8 from '../../../Assets/img8.png'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-
-const allMentors = [
-    { id: 1, name: 'Kristin Watson', course: 'Mathematics, Science', image: kristin },
-    { id: 2, name: 'Product ', course: 'Nulla facilisi..' , image: brooklyn },
-    { id: 3, name: 'Product ', course: 'Fusce semper porta.', image: img1  },
-    { id: 4, name: 'Product ', course: 'Vestibulum lacinia .',image: img2 },
-    { id: 5, name: 'Product ', course: 'Class aptent.' , image: img3 },
-    { id: 6, name: 'Product ', course: 'Class aptent.' , image: img4 },
-    { id: 7, name: 'Product ', course: 'Class aptent.' , image: img5 },
-    { id: 8, name: 'Product ', course: 'Class aptent.' , image: img6 },
-    { id: 9, name: 'Product ', course: 'Class aptent.' , image: img7 },
-    { id: 10, name: 'Product ', course: 'Class aptent.' , image: img8 },
-    { id: 11, name: 'Product ', course: 'Class aptent.' , image: brooklyn },
-    { id: 12, name: 'Product ', course: 'Class aptent.' , image: img1 },
-    { id: 13, name: 'Product ', course: 'Class aptent.' , image: img4 },
-    { id: 14, name: 'Product ', course: 'Class aptent.' , image: img3 },
-    { id: 15, name: 'Product ', course: 'Class aptent.' , image: img2 },
-    { id: 16, name: 'Product ', course: 'Class aptent.' , image: img8 },
-    { id: 17, name: 'Product ', course: 'Class aptent.' , image: img7 },
-    { id: 18, name: 'Product ', course: 'Class aptent.' , image: img6 },
-    { id: 19, name: 'Product ', course: 'Class aptent.' , image: img5 },
-    { id: 20, name: 'Product ', course: 'Class aptent.' , image: brooklyn },
-    { id: 21, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 22, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 23, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 24, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 25, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 26, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 27, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 28, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 55, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 29, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 30, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 31, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 32, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 33, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 34, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 35, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 36, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 37, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 38, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 39, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 40, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 41, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 42, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 43, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 44, name: 'Product ', course: 'Nunc efficitur.' , image: kristin },
-    { id: 45, name: 'Product ', course: 'Wetpis egestas.' , image: kristin },
-    { id: 46, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 47, name: 'Product ', course: 'Class aptent.' , image: kristin },
-    { id: 48, name: 'Product ', course: 'Maecenas interdum.' , image: kristin },
-    { id: 49, name: 'Product ', course: 'Suspendisse potenti.' , image: kristin },
-    { id: 50, name: 'Product ', course: 'Aenean ullamcorper.' , image: kristin },
-  ];
-  
-  const kindergartenMentors = [
-    { id: 51, name: 'Brooklyn Donale ', course: 'ABCs and 123s', image: brooklyn },
-    { id: 52, name: ' Donald Kindergarten', course: 'Playing and Learning', image: brooklyn },
-    // Add more mentors as needed
-  ];
-  
-  const highSchoolMentors = [
-    { id: 1, name: 'High School Mentor 1', course: 'Algebra and Chemistry', image: kristin },
-    { id: 2, name: 'High School Mentor 2', course: 'Physics and Literature', image: kristin },
-    // Add more mentors as needed
-  ];
-  
-  const collegeMentors = [
-    { id: 1, name: 'College Mentor 1', course: 'Computer Science Major', image: kristin },
-    { id: 2, name: 'College Mentor 2', course: 'Business Administration Major', image: kristin },
-    // Add more mentors as needed
-  ];
-  
-  const technologyMentors = [
-    { id: 1, name: 'Tech Mentor 1', course: 'Web Development', image: kristin },
-    { id: 2, name: 'Tech Mentor 2', course: 'Data Science', image: kristin },
-    // Add more mentors as needed
-  ];
+import axios from 'axios';
   
 
 const Tutors = () => {
-    // All Tutors
-    const [displayedMentors, setDisplayedMentors] = useState(allMentors);
+    const [displayedMentors, setDisplayedMentors] = useState([]);
+    const [allMentors, setAllMentors] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [activeTab, setActiveTab] = useState('all'); // Default to 'all'
     const tutorsPerPage = 12;
@@ -150,6 +63,17 @@ const Tutors = () => {
   };
 
 
+  useEffect(() => {
+    // Fetch data from API
+    axios.get('https://newproliferate-backend.onrender.com/api/tutor/find-tutors/')
+        .then(response => {
+            setAllMentors(response.data); // Set all mentors data
+            setDisplayedMentors(response.data); // Initially display all mentors
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}, []);
 
   return (
     <div className='poppins my-10 flex flex-col px-5 lg:px-28'>

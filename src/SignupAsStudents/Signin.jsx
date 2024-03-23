@@ -23,25 +23,25 @@ function Signin() {
   const dispatch = useDispatch();
   const authSelector = useSelector((state) => state.authenticationSlice);
 
-  useEffect(() => {
-    if (isloading && authSelector.signingInStatus === 'failed') {
-      toast.error(`${authSelector.signingInError}`);
-      setIsloading(false);
-    }
-    if (authSelector.signingInStatus === 'failed' || authSelector.signingInStatus === 'completed') {
-      dispatch(clearLoginStatus());
-    }
-  }, [isloading, authSelector.signingInStatus, authSelector.signingInError, dispatch]);
+  // useEffect(() => {
+  //   if (isloading && authSelector.signingInStatus === 'failed') {
+  //     toast.error(`${authSelector.signingInError}`);
+  //     setIsloading(false);
+  //   }
+  //   if (authSelector.signingInStatus === 'failed' || authSelector.signingInStatus === 'completed') {
+  //     dispatch(clearLoginStatus());
+  //   }
+  // }, [isloading, authSelector.signingInStatus, authSelector.signingInError, dispatch]);
 
-  useEffect(() => {
-    if (authSelector.signingInStatus === 'completed') {
-      // Show the popup modal
-      setShowModal(true);
-      setTimeout(() => {
-        setShowModal(false);
-      }, 3000);
-    }
-  }, [authSelector.signingInStatus, navigate]);
+  // useEffect(() => {
+  //   if (authSelector.signingInStatus === 'completed') {
+  //     // Show the popup modal
+  //     setShowModal(true);
+  //     setTimeout(() => {
+  //       setShowModal(false);
+  //     }, 3000);
+  //   }
+  // }, [authSelector.signingInStatus, navigate]);
   
   const handleLogin = () => {
     // Check for empty fields
@@ -52,13 +52,13 @@ function Signin() {
     }
 
     // Dispatch the login action
-    dispatch(
-      signInAction({
-        email: email,
-        password: password,
-      })
-    );
-    setIsloading(true);
+    // dispatch(
+    //   signInAction({
+    //     email: email,
+    //     password: password,
+    //   })
+    // );
+    // setIsloading(true);
   };
 
 
@@ -84,7 +84,7 @@ function Signin() {
                 }}
                 required
               />
-              {/* {emailEmpty && <p className='text-red-500 text-xs mt-1'>This must not be empty</p>} */}
+              
             </div>
             <div className='mb-3'>
               <p className='text-[#186BAD] text-sm mb-1 font-semibold'>Password</p>

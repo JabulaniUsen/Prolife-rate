@@ -1,45 +1,36 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
 import noAssignment from '../../../Assets/no-assignment.png';
 
 function Assignment() {
-const assignment = [
-    {
-      id: 1,
-      subject: 'Algebra',
-      instruction: "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante.",
-      tutor: "Jeremy Ching",
-      date: "21/09/2023"
-    },
-    {
-      id: 2,
-      subject: 'Verb',
-      instruction: "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante.",
-      tutor: "Olatunde Michael",
-      date: "28/09/2023"
-    },
-    {
-      id: 3,
-      subject: 'People and Beliefs',
-      instruction: "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante.",
-      tutor: "Jabulani Usen",
-      date: "21/09/2023"
-    },
-    {
-      id: 4,
-      subject: 'Piano Lessons',
-      instruction: "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante.",
-      tutor: "Bello Victor",
-      date: "02/10/2023"
-    }
-  ]
+  const [assignments, setAssignments] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [dropdownStates, setDropdownStates] = useState([]);
+  const [uploading, setUploading] = useState([]);
+  const [uploaded, setUploaded] = useState([]);
 
-  const [dropdownStates, setDropdownStates] = useState(Array.from({ length: assignment.length }, () => false));
-  const [submitting, setSubmitting] = useState(Array.from({ length: assignment.length }, () => false));
-  const [uploading, setUploading] = useState(Array.from({ length: assignment.length }, () => false));
-  const [uploaded, setUploaded] = useState(Array.from({ length: assignment.length }, () => false));
+  useEffect(() => {
+    async function fetchAssignments() {
+      try {
+        const response = await fetch('https://newproliferate-backend.onrender.com/api/student/my-assignments/');
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          setAssignments(data);
+          setDropdownStates(Array.from({ length: data.length }, () => false));
+          setUploading(Array.from({ length: data.length }, () => false));
+          setUploaded(Array.from({ length: data.length }, () => false));
+        } else {
+          console.error('Unexpected response format:', data);
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching assignments:', error);
+      }
+    }
+    fetchAssignments();
+  }, []);
 
   const toggleDropdown = (index) => {
     const newDropdownStates = [...dropdownStates];
@@ -48,40 +39,18 @@ const assignment = [
   };
 
   const handleUpload = async (index, event) => {
-    const file = event.target.files[0];
-
-    if (file) {
-      setUploading((prev) => {
-        const newUploading = [...prev];
-        newUploading[index] = true;
-        return newUploading;
-      });
-
-      // Add logic for handling file upload here
-      // For example, you can use FormData and send it to the server
-
-      // Simulating delay for demonstration purposes
-      setTimeout(() => {
-        setUploading((prev) => {
-          const newUploading = [...prev];
-          newUploading[index] = false;
-          return newUploading;
-        });
-
-        setUploaded((prev) => {
-          const newUploaded = [...prev];
-          newUploaded[index] = true;
-          return newUploaded;
-        });
-      }, 2000);
-    }
+    // Your file upload logic here
   };
 
-  return ( 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
     <div className="poppins lg:p-12 py-12 p-5 relative">
       <div className="header text-4xl font-semibold">Home Work</div>
 
-      {assignment.length === 0 ? (
+      {assignments.length === 0 ? (
         <div className="flex flex-col gap-3 absolute top-[15rem] rounded-xl border-[1px] border-[#000000] left-[20rem] w-[250px] h-[250px] justify-center items-center">
           <div className="">
             <img src={noAssignment} alt="" />
@@ -92,9 +61,8 @@ const assignment = [
         </div>
       ) : (
         <div>
-          {assignment.map((item, index) => (
-            <div
-            key={index}>
+          {assignments.map((item, index) => (
+            <div key={index}>
               <div
                 className={`assignment subject relative cursor-pointer rounded-xl ${
                   dropdownStates[index] ? 'active' : ''
@@ -149,32 +117,12 @@ const assignment = [
                               </span>
                             )}
                           </motion.button>
-
-                            <motion.button
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
-                              className={`bg-[#186BAD] py-3 px-5 rounded-lg text-white ${submitting[index] ? 'cursor-not-allowed' : ''}`}
-                              disabled={submitting[index]}
-                              onClick={() => handleSubmission(index)}
-                            >
-                              {submitting[index] ? (
-                                'Submitting...'
-                              ) : (
-                                <span>
-                                  {submitting[index] ? 'Submitting...' : 'Submit'}
-                                </span>
-                              )}
-                            </motion.button>
                       </div>
                     </div>
                   </div>
-                  
                 </div>
               )}
-
             </div>
-
-
           ))}
         </div>
       )}
